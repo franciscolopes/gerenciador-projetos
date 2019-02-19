@@ -11,14 +11,14 @@ import java.util.List;
 
 interface ExibeTarefas {
 
-	List<Tarefa> exibirTodasTarefas();
+	public List<Tarefa> exibirTodasTarefas();
 
-	List<Tarefa> exibirTarefasPendentes();
+	public List<Tarefa> exibirTarefasPendentes();
 
-	List<Tarefa> exibirTarefasConcluidas();
+	public List<Tarefa> exibirTarefasConcluidas();
 
-	List<Tarefa> exibirTarefasAtrasadas();
+	public List<Tarefa> exibirTarefasAtrasadas();
 
-	List<Tarefa> exibirTarefasParaEntregarAte(Date data);
+	public List<Tarefa> exibirTarefasParaEntregarAte(Date data);
 
 }
