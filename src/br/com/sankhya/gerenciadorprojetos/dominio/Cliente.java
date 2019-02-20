@@ -12,15 +12,14 @@ public class Cliente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String telefone;
-	private Endereco endereco = new Endereco();
+	private Endereco endereco;
 	
 	public Cliente() { }
 
-	public Cliente(Integer usuarioID, String nome, String cpf, String email, String telefone, Endereco endereco) {
+	public Cliente(Integer usuarioID, String nome, String cpf, String email, String telefone) {
 		super(usuarioID, nome, cpf);
 		this.email = email;
 		this.telefone = telefone;
-		this.endereco = endereco; 
 	}
 
 	public String getEmail() {
