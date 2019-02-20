@@ -8,17 +8,17 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.enumsrequisitos;
 
 public enum Prioridade {
-	ALTA("Alta"),
-	MEDIA("Media"),
-	BAIXA("Baixa");
+	ALTA(1),
+	MEDIA(2),
+	BAIXA(3);
 	
-	String prioridade;
+	int prioridade;
 
-	private Prioridade(String prioridade) {
+	private Prioridade(int prioridade) {
 		this.prioridade = prioridade;
 	}
 
-	public String getPrioridade() {
+	public int getPrioridade() {
 		return prioridade;
 	}
 	
