@@ -7,11 +7,14 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
-public class Requisitos {
+import java.io.Serializable;
+
+public class Requisitos implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
 	private Integer requisitoID;
 	private String descricao;
-	
-	
 	
 	public Requisitos() {
 		super();
