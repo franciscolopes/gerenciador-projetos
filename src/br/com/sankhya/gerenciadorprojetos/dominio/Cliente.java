@@ -1,7 +1,7 @@
 /*
 Nome do autor: Elian Melo Morais
 Data de criação do arquivo: 19/02/2019
-Objetivo sucinto da classe: Possui as caracteristicas de um cliente do programa
+Objetivo sucinto da classe: Simular o funcionamento de um cliente deste programa
 Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
@@ -12,6 +12,7 @@ public class Cliente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String telefone;
+	private Endereco endereco;
 	
 	public Cliente() { }
 
@@ -37,6 +38,14 @@ public class Cliente extends Usuario implements Serializable {
 		this.telefone = telefone;
 	}
 	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,6 +73,6 @@ public class Cliente extends Usuario implements Serializable {
 
 	@Override
 	public String toString() {		
-		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + "]";
+		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
 	}
 }
