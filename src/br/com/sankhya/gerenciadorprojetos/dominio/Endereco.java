@@ -6,7 +6,10 @@ Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5U
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer enderecoID;
 	private String logradouro;
 	private Integer numero;
@@ -15,7 +18,9 @@ public class Endereco {
 	private String cep;
 	private String cidade;
 	private String estado;
-	private Cliente cliente;
+	private Cliente cliente = new Cliente();
+	
+	public Endereco() { }
 	
 	public Endereco(Integer enderecoID, String logradouro, Integer numero, String complemento, String bairro,
 			String cep, String cidade, String estado, Cliente cliente) {

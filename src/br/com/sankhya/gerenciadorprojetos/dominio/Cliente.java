@@ -12,7 +12,7 @@ public class Cliente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String telefone;
-	private Endereco endereco;
+	private Endereco endereco = new Endereco();
 	
 	public Cliente() { }
 
