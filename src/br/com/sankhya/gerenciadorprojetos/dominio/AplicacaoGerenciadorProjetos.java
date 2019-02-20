@@ -8,6 +8,9 @@ public class AplicacaoGerenciadorProjetos {
 		
 		Cliente cliente = new Cliente(2, "João", "226.468.060-19", "joao@gmail.com", "(34)99999-9999");
 		System.out.println(cliente.toString());
+		
+		Endereco endereco = new Endereco(1, "rua", 1010, "Proximo a uma casa", "Santa Monica", "38408-226", "Uberlândia", "MG");
+		System.out.println(endereco.toString());
 	}
 
 }
