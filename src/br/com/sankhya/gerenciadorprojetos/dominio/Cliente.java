@@ -12,13 +12,15 @@ public class Cliente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String telefone;
+	private Endereco endereco;
 	
 	public Cliente() { }
 
-	public Cliente(Integer usuarioID, String nome, String cpf, String email, String telefone) {
+	public Cliente(Integer usuarioID, String nome, String cpf, String email, String telefone, Endereco endereco) {
 		super(usuarioID, nome, cpf);
 		this.email = email;
 		this.telefone = telefone;
+		this.endereco = endereco; 
 	}
 
 	public String getEmail() {
@@ -37,6 +39,14 @@ public class Cliente extends Usuario implements Serializable {
 		this.telefone = telefone;
 	}
 	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,6 +74,6 @@ public class Cliente extends Usuario implements Serializable {
 
 	@Override
 	public String toString() {		
-		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + "]";
+		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
 	}
 }

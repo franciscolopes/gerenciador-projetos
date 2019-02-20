@@ -15,9 +15,10 @@ public class Endereco {
 	private String cep;
 	private String cidade;
 	private String estado;
+	private Cliente cliente;
 	
 	public Endereco(Integer enderecoID, String logradouro, Integer numero, String complemento, String bairro,
-			String cep, String cidade, String estado) {
+			String cep, String cidade, String estado, Cliente cliente) {
 		super();
 		this.enderecoID = enderecoID;
 		this.logradouro = logradouro;
@@ -27,6 +28,7 @@ public class Endereco {
 		this.cep = cep;
 		this.cidade = cidade;
 		this.estado = estado;
+		this.cliente = cliente;
 	}
 
 	public Integer getEnderecoID() {
@@ -91,6 +93,14 @@ public class Endereco {
 	
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
