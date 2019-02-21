@@ -5,7 +5,7 @@ Objetivo sucinto do enum: gerenciar a prioridade de um requisito
 Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 
-package br.com.sankhya.gerenciadorprojetos.enumsrequisitos;
+package br.com.sankhya.gerenciadorprojetos.dominio;
 
 public enum Prioridade {
 	ALTA(1),
