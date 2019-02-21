@@ -10,25 +10,31 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Projeto implements Serializable{
-	
+
+import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
+
+public class Projeto implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private Integer projetoID;
 	private String nome;
 	private String objetivoInteligente;
 	private Date dataInicio;
 	private Date dataFim;
+	private EstadoProjeto status;
 
 	public Projeto() {
 
 	}
 
-	public Projeto(Integer projetoID, String nome, String objetivoInteligente, Date dataInicio, Date dataFim) {
+	public Projeto(Integer projetoID, String nome, String objetivoInteligente, Date dataInicio, Date dataFim,
+			EstadoProjeto status) {
 		this.projetoID = projetoID;
 		this.nome = nome;
 		this.objetivoInteligente = objetivoInteligente;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
+		this.status = status;
 	}
 
 	public Integer getProjetoID() {
@@ -71,6 +77,14 @@ public class Projeto implements Serializable{
 		this.dataFim = dataFim;
 	}
 
+	public EstadoProjeto getStatusProjeto() {
+		return status;
+	}
+
+	public void setStatusProjeto(EstadoProjeto Status) {
+		this.status = Status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,7 +113,7 @@ public class Projeto implements Serializable{
 	@Override
 	public String toString() {
 		return "Projeto [projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
-				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + "]";
+				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + " statusProjeto:" + getStatusProjeto() + "]";
 	}
 
 }
