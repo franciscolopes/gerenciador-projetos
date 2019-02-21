@@ -7,16 +7,35 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 public enum EstadoProjeto {
-	EM_ANDAMENTO(1), CONCLUIDO(2);
+	EM_ANDAMENTO(1, "Em_Andamento"), CONCLUIDO(2,"Concluido");
 
-	private int estado;
+	private int codigo;
+	private String descricao;
+	
 
-	EstadoProjeto(int estado) {
-		this.estado = estado;
+	EstadoProjeto(int codigo, String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
 	}
 
-	public int getEstadoProjeto() {
-		return estado;
+	public int getCodigo() {
+		return codigo;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	
+	public static EstadoProjeto toEnum(Integer codigo) {
+		if(codigo == null) {
+			return null;
+		}
+		for(EstadoProjeto i : EstadoProjeto.values()) {
+			if(codigo.equals(i.getCodigo())) {
+				return i;
+			}
+		}
+		throw new IllegalArgumentException("ID invalido: " + codigo);
 	}
 
 }
