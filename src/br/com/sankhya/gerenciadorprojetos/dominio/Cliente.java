@@ -8,7 +8,10 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
 
 public class Cliente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -85,5 +88,41 @@ public class Cliente extends Usuario implements Serializable {
 	@Override
 	public String toString() {		
 		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
+	}
+	
+	public List<Projeto> exibirTodosProjetos() {
+		List<Projeto> todosProjetos = projetos;
+		return todosProjetos;
+	}
+	
+	public List<Projeto> exibirProjetosConcluidos() {
+		List<Projeto> percorreProjetos = new ArrayList<>();
+		for(int i = 0; i < projetos.size(); i++) {
+			if(projetos.get(i).getStatusProjeto() == EstadoProjeto.toEnum(2)) {
+				percorreProjetos.add(projetos.get(i));
+			}
+		}
+		return percorreProjetos;
+	}
+	
+	public List<Projeto> exibirProjetosAtrasados() {
+		List<Projeto> percorreProjetos = new ArrayList<>();
+		Date dataAtual = new Date();
+		for(int i = 0; i < projetos.size(); i++) {
+			if(dataAtual.getTime() > projetos.get(i).getDataFim().getTime()) {
+				percorreProjetos.add(projetos.get(i));
+			}
+		}
+		return percorreProjetos;
+	}
+	
+	public List<Projeto> exibirProjetosEmAndamento() {
+		List<Projeto> percorreProjetos = new ArrayList<>();
+		for(int i = 0; i < projetos.size(); i++) {
+			if(projetos.get(i).getStatusProjeto() == EstadoProjeto.toEnum(1)) {
+				percorreProjetos.add(projetos.get(i));
+			}
+		}
+		return percorreProjetos;
 	}
 }
