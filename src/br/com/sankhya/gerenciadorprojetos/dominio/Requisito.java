@@ -103,11 +103,10 @@ public class Requisito implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Requisito ["
-				+ "requisitoID=" + requisitoID + ", "
-				+ "descricao=" + descricao + ", "
-				+ "prioridade=" + prioridade
-				+ ", produto=" + produto + "]";
+		return "\n__________________________________\n"
+				+"\nrequisitoID = " + requisitoID
+				+ "\ndescricao = " + descricao
+				+ "\nprioridade = " + Prioridade.toEnum(prioridade);
 	}
 
 

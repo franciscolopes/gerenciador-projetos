@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
+
 public class Produto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -87,13 +89,25 @@ public class Produto implements Serializable{
 			return false;
 		return true;
 	}
+	
+	public List<Requisito> exibirTodosRequisitos(){
 
+		return requisitos;
+		
+	}
+	
+	public List<Requisito> exibirRequisitosPorPrioridade(Prioridade prioridade){		
+		
+		return null;
+		
+	}
+	
 	@Override
 	public String toString() {
-		return "Produto ["
-				+ "produtoID=" + produtoID + ", "
-				+ "nome=" + nome + ", "
-				+ "descricao=" + descricao + "]";
+		return "\n__________________________________\n"
+				+ "\nprodutoID = " + getProdutoID()
+				+ "\nnome = " + getNome()
+				+ "\ndescricao = " + getDescricao();
 	}
 	
 }
