@@ -97,9 +97,9 @@ public class Cliente extends Usuario implements Serializable {
 	
 	public List<Projeto> exibirProjetosConcluidos() {
 		List<Projeto> percorreProjetos = new ArrayList<>();
-		for(int i = 0; i < projetos.size(); i++) {
-			if(projetos.get(i).getStatusProjeto() == EstadoProjeto.toEnum(2)) {
-				percorreProjetos.add(projetos.get(i));
+		for(Projeto projetoAtual : projetos) {
+			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
+				percorreProjetos.add(projetoAtual);
 			}
 		}
 		return percorreProjetos;
@@ -108,9 +108,9 @@ public class Cliente extends Usuario implements Serializable {
 	public List<Projeto> exibirProjetosAtrasados() {
 		List<Projeto> percorreProjetos = new ArrayList<>();
 		Date dataAtual = new Date();
-		for(int i = 0; i < projetos.size(); i++) {
-			if(dataAtual.getTime() > projetos.get(i).getDataFim().getTime()) {
-				percorreProjetos.add(projetos.get(i));
+		for(Projeto projetoAtual : projetos) {
+			if(dataAtual.getTime() > projetoAtual.getDataFim().getTime()) {
+				percorreProjetos.add(projetoAtual);
 			}
 		}
 		return percorreProjetos;
@@ -118,9 +118,9 @@ public class Cliente extends Usuario implements Serializable {
 	
 	public List<Projeto> exibirProjetosEmAndamento() {
 		List<Projeto> percorreProjetos = new ArrayList<>();
-		for(int i = 0; i < projetos.size(); i++) {
-			if(projetos.get(i).getStatusProjeto() == EstadoProjeto.toEnum(1)) {
-				percorreProjetos.add(projetos.get(i));
+		for(Projeto projetoAtual : projetos) {
+			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(1).getCodigo()) {
+				percorreProjetos.add(projetoAtual);
 			}
 		}
 		return percorreProjetos;
