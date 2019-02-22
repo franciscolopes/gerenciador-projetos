@@ -10,22 +10,26 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 import java.io.Serializable;
 import java.util.Date;
 
+import br.com.sankhya.gerenciadorprojetos.enums.EstadoTarefa;
+
 public class Tarefa implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private Integer tarefaID;
 	private String descricao;
 	private Date dataEntrega;
+	private Integer estado;
 	
 	public Tarefa() {
 		super();
 	}
 	
-	public Tarefa(Integer tarefaID, String descricao, Date dataEntrega) {
+	public Tarefa(Integer tarefaID, String descricao, Date dataEntrega, EstadoTarefa estado) {
 		super();
 		this.tarefaID = tarefaID;
 		this.descricao = descricao;
 		this.dataEntrega = dataEntrega;
+		this.estado = estado.getCodigo();
 	}
 
 	public Integer getTarefaID() {
@@ -51,7 +55,15 @@ public class Tarefa implements Serializable {
 	public void setDataEntrega(Date dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
+	
+	public EstadoTarefa getEstado() {
+		return EstadoTarefa.toEnum(estado);
+	}
 
+	public void setEstado(EstadoTarefa estado) {
+		this.estado = estado.getCodigo();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,7 +103,8 @@ public class Tarefa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Tarefa [tarefaID=" + tarefaID + ", descricao=" + descricao + ", dataEntrega=" + dataEntrega + "]";
+		return "Tarefa [tarefaID=" + tarefaID + ", descricao=" + descricao + ", dataEntrega=" + dataEntrega
+				+ ", estado=" + EstadoTarefa.toEnum(estado) + "]";
 	}
 
 }

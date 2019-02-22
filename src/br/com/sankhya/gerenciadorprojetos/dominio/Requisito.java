@@ -9,21 +9,25 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
 
-public class Requisitos implements Serializable{
+import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
+
+public class Requisito implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	private Integer requisitoID;
 	private String descricao;
+	private Integer prioridade;
 	
-	public Requisitos() {
+	public Requisito() {
 		super();
 	}
 	
-	public Requisitos(Integer requisitoID, String descricao) {
+	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum) {
 		super();
 		this.requisitoID = requisitoID;
 		this.descricao = descricao;
+		this.prioridade = prioridadeEnum.getCodigo();
 	}
 	
 	public Integer getRequisitoID() {
@@ -42,6 +46,27 @@ public class Requisitos implements Serializable{
 		this.descricao = descricao;
 	}
 	
+	public Prioridade getPrioridade() {
+		return Prioridade.toEnum(prioridade);
+	}
+
+	public void setPrioridade(Integer prioridade) {
+		this.prioridade = prioridade;
+	}
+	
+	public void atualizaPrioridade(Prioridade prioridade) {
+		if(prioridade == Prioridade.toEnum(1)) {
+			System.out.println("ALTA");
+		}
+		else if(prioridade == Prioridade.toEnum(2)) {
+			System.out.println("MEDIA");
+		}
+		else if(prioridade == Prioridade.toEnum(3)) {
+			System.out.println("BAIXA");
+
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -57,7 +82,7 @@ public class Requisitos implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Requisitos other = (Requisitos) obj;
+		Requisito other = (Requisito) obj;
 		if (requisitoID == null) {
 			if (other.requisitoID != null)
 				return false;
@@ -65,12 +90,13 @@ public class Requisitos implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Requisitos ["
+		return "Requisito ["
 				+ "requisitoID=" + requisitoID + ", "
-				+ "descricao=" + descricao + "]";
+				+ "descricao=" + descricao + ", "
+				+ "prioridade=" + getPrioridade()+ "]";
 	}
-	
+
 }
