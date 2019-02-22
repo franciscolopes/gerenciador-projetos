@@ -104,22 +104,64 @@ public class AplicacaoGerenciadorProjetos {
 		while(true) {
 			System.out.println();
 			System.out.println("[ Detalhes do Cliente ]");
-			System.out.println("0.Voltar ao menu principal");
-			System.out.println("1.Dados pessoais");
-			System.out.println("2.Projetos do cliente");
+			System.out.println("1.Voltar ao menu principal");
+			System.out.println("2.Dados pessoais");
+			System.out.println("3.Projetos do cliente");
 			System.out.println();
 		
 			System.out.print("Escolha uma opção: ");
 			int opcao = leitor.nextInt();
 			leitor.nextLine();
 			
-			if(opcao == 0) {
+			if(opcao == 1) {
 				menuPrincipal();
-			} else if(opcao == 1) {
-				// Algo
 			} else if(opcao == 2) {
+				dadosPessoais();
+			} else if(opcao == 3) {
 				// Algo
 			}  else {
+				System.out.println("opção inválida, tente novamente");
+			}
+		}
+	}
+	
+	public static void dadosPessoais() {
+		System.out.println();
+		System.out.println("[ Dados Pessoais ]");
+		System.out.println();
+		
+		System.out.println("Nome: " + cliente.getNome());
+		System.out.println("CPF: " + cliente.getCpf());
+		System.out.println("E-mail: " + cliente.getEmail());
+		System.out.println("Telefone: " + cliente.getTelefone());
+		
+		System.out.println();
+		System.out.println("[ Dados da Residência ]");
+		System.out.println();
+		
+		System.out.println("Logradouro(Rua): " + cliente.getEndereco().getLogradouro());
+		System.out.println("Número: " + cliente.getEndereco().getNumero());
+		System.out.println("Complemento: " + cliente.getEndereco().getComplemento());
+		System.out.println("Bairro: " + cliente.getEndereco().getBairro());
+		System.out.println("CEP: " + cliente.getEndereco().getCep());
+		System.out.println("Cidade: " + cliente.getEndereco().getCidade());
+		System.out.println("Estado: " + cliente.getEndereco().getEstado());
+		
+		while(true) {
+			System.out.println();
+			System.out.println("1.Voltar ao menu detalhes do cliente");
+			System.out.println("2.Voltar ao menu principal");
+			System.out.println();
+		
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				detalhesDoCliente();
+			} else if(opcao == 2) {
+				menuPrincipal();
+			} else {
 				System.out.println("opção inválida, tente novamente");
 			}
 		}
