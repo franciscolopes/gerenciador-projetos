@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Funcionario implements Serializable  {
+public class Funcionario extends Usuario implements Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	private String cargo;
@@ -23,8 +23,8 @@ public class Funcionario implements Serializable  {
 		super();
 	}
 	
-	public Funcionario(String cargo, BigDecimal salario) {
-		super();
+	public Funcionario(Integer usuarioID, String nome, String cpf, String cargo, BigDecimal salario) {
+		super(usuarioID, nome, cpf);
 		this.cargo = cargo;
 		this.salario = salario;
 	}
@@ -52,7 +52,7 @@ public class Funcionario implements Serializable  {
 	public void setTarefas(List<Tarefa> tarefas) {
 		this.tarefas = tarefas;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,8 +85,9 @@ public class Funcionario implements Serializable  {
 	}
 
 	@Override
-	public String toString() {
-		return "Funcionario [cargo=" + cargo + ", salario=" + salario + "]";
+	public String toString() { 
+		return "Funcionario [usuarioID= " + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", cargo=" + cargo + ", salario=" + salario + ", tarefas=" + tarefas + "]";
 	}
+	
 	
 }
