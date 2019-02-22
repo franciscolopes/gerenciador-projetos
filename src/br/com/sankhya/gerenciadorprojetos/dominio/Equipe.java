@@ -14,14 +14,16 @@ public class Equipe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer equipeID;
 	private String nome;
+	private Projeto projeto;
 
 	public Equipe() {
 	}
 
-	public Equipe(Integer iD, String nome) {
+	public Equipe(Integer iD, String nome, Projeto projeto) {
 		super();
 		equipeID = iD;
 		this.nome = nome;
+		this.projeto = projeto;
 	}
 
 	public Integer getEquipeID() {
@@ -38,6 +40,14 @@ public class Equipe implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
 	}
 
 	@Override
@@ -67,6 +77,6 @@ public class Equipe implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Equipe [equipeID=" + equipeID + ", nome=" + nome + "]";
+		return "Equipe [equipeID=" + equipeID + ", nome=" + nome + ", projeto=" + projeto + "]";
 	}
 }

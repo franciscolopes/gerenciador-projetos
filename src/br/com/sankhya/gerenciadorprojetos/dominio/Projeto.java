@@ -10,7 +10,6 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 import java.io.Serializable;
 import java.util.Date;
 
-
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
 
 public class Projeto implements Serializable {
@@ -22,18 +21,20 @@ public class Projeto implements Serializable {
 	private Date dataInicio;
 	private Date dataFim;
 	private Integer status;
+	private Equipe equipe;
 
 	public Projeto() {
 
 	}
 
 	public Projeto(Integer projetoID, String nome, String objetivoInteligente, Date dataInicio, Date dataFim,
-			EstadoProjeto status) {
+			EstadoProjeto status, Equipe equipe) {
 		this.projetoID = projetoID;
 		this.nome = nome;
 		this.objetivoInteligente = objetivoInteligente;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
+		this.equipe = equipe;
 		this.status = status.getCodigo();
 	}
 
@@ -85,6 +86,14 @@ public class Projeto implements Serializable {
 		this.status = Status.getCodigo();
 	}
 
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,7 +122,7 @@ public class Projeto implements Serializable {
 	@Override
 	public String toString() {
 		return "Projeto [projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
-				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + " statusProjeto:" + getStatusProjeto() + "]";
+				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", status=" + status + ", equipe=" + equipe
+				+ "]";
 	}
-
 }
