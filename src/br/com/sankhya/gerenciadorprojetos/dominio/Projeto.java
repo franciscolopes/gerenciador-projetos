@@ -22,19 +22,21 @@ public class Projeto implements Serializable {
 	private Date dataInicio;
 	private Date dataFim;
 	private EstadoProjeto status;
+	private Cliente cliente;
 
 	public Projeto() {
 
 	}
 
 	public Projeto(Integer projetoID, String nome, String objetivoInteligente, Date dataInicio, Date dataFim,
-			EstadoProjeto status) {
+			EstadoProjeto status, Cliente cliente) {
 		this.projetoID = projetoID;
 		this.nome = nome;
 		this.objetivoInteligente = objetivoInteligente;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 		this.status = status;
+		this.cliente = cliente;
 	}
 
 	public Integer getProjetoID() {
@@ -84,6 +86,14 @@ public class Projeto implements Serializable {
 	public void setStatusProjeto(EstadoProjeto Status) {
 		this.status = Status;
 	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	@Override
 	public int hashCode() {
@@ -112,7 +122,7 @@ public class Projeto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Projeto [projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
+		return "Projeto [IDCliente=" + cliente.getUsuarioID() + ", nomeCliente=" + cliente.getNome() + ", projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
 				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + " statusProjeto:" + getStatusProjeto() + "]";
 	}
 

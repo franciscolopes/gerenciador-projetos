@@ -7,12 +7,15 @@ Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5U
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente extends Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String telefone;
 	private Endereco endereco;
+	private List<Projeto> projetos = new ArrayList<>();
 	
 	public Cliente() { }
 
@@ -44,6 +47,14 @@ public class Cliente extends Usuario implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public List<Projeto> getProjetos() {
+		return projetos;
+	}
+
+	public void setProjetos(List<Projeto> projetos) {
+		this.projetos = projetos;
 	}
 
 	@Override
