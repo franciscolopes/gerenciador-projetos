@@ -7,25 +7,43 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 
-public class Requisitos implements Serializable{
+import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
+
+@SuppressWarnings("unused")
+public class Requisito implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	private Integer requisitoID;
 	private String descricao;
+	private Integer prioridade;
 	
-	public Requisitos() {
+	public Requisito() {
 		super();
 	}
 	
-	public Requisitos(Integer requisitoID, String descricao) {
+	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum) {
 		super();
 		this.requisitoID = requisitoID;
 		this.descricao = descricao;
+		this.prioridade = prioridadeEnum.getCodigo();
 	}
 	
+
+
+	public Prioridade getPrioridade() {
+		return Prioridade.toEnum(prioridade);
+	}
+
+	public void setPrioridade(Integer prioridade) {
+		this.prioridade = prioridade;
+	}
+	
+
 	public Integer getRequisitoID() {
 		return requisitoID;
 	}
@@ -40,6 +58,19 @@ public class Requisitos implements Serializable{
 	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public void atualizaPrioridade(Prioridade prioridade) {
+		if(prioridade == Prioridade.toEnum(1)) {
+			System.out.println("ALTA");
+		}
+		else if(prioridade == Prioridade.toEnum(2)) {
+			System.out.println("MEDIA");
+		}
+		else if(prioridade == Prioridade.toEnum(3)) {
+			System.out.println("BAIXA");
+
+		}
 	}
 	
 	@Override
@@ -57,7 +88,7 @@ public class Requisitos implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Requisitos other = (Requisitos) obj;
+		Requisito other = (Requisito) obj;
 		if (requisitoID == null) {
 			if (other.requisitoID != null)
 				return false;
@@ -65,12 +96,17 @@ public class Requisitos implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Requisitos ["
+		return "Requisito ["
 				+ "requisitoID=" + requisitoID + ", "
-				+ "descricao=" + descricao + "]";
+				+ "descricao=" + descricao + ", "
+				+ "prioridade=" + getPrioridade()+ "]";
 	}
+
+
+	
+	
 	
 }
