@@ -21,21 +21,24 @@ public class Projeto implements Serializable {
 	private Date dataInicio;
 	private Date dataFim;
 	private Integer status;
+	private Cliente cliente;
 	private Equipe equipe;
+	private Produto produto;
 
 	public Projeto() {
 
 	}
 
 	public Projeto(Integer projetoID, String nome, String objetivoInteligente, Date dataInicio, Date dataFim,
-			EstadoProjeto status, Equipe equipe) {
+			EstadoProjeto status, Cliente cliente) {
 		this.projetoID = projetoID;
 		this.nome = nome;
 		this.objetivoInteligente = objetivoInteligente;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
-		this.equipe = equipe;
 		this.status = status.getCodigo();
+		this.cliente = cliente;
+		
 	}
 
 	public Integer getProjetoID() {
@@ -85,6 +88,14 @@ public class Projeto implements Serializable {
 	public void setStatusProjeto(EstadoProjeto Status) {
 		this.status = Status.getCodigo();
 	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public Equipe getEquipe() {
 		return equipe;
@@ -92,6 +103,14 @@ public class Projeto implements Serializable {
 
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	@Override
@@ -121,8 +140,7 @@ public class Projeto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Projeto [projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
-				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", status=" + status + ", equipe=" + equipe
-				+ "]";
+		return "Projeto [IDCliente=" + cliente.getUsuarioID() + ", nomeCliente=" + cliente.getNome() + ", projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
+				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", status=" + status + "]";
 	}
 }
