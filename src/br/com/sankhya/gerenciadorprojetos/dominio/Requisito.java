@@ -7,13 +7,11 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
 
-@SuppressWarnings("unused")
+
 public class Requisito implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
