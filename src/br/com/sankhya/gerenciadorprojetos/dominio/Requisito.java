@@ -18,16 +18,18 @@ public class Requisito implements Serializable{
 	private Integer requisitoID;
 	private String descricao;
 	private Integer prioridade;
+	private Produto produto;
 	
 	public Requisito() {
 		super();
 	}
 	
-	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum) {
+	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum, Produto produto) {
 		super();
 		this.requisitoID = requisitoID;
 		this.descricao = descricao;
 		this.prioridade = prioridadeEnum.getCodigo();
+		this.produto = produto;
 	}
 	
 	public Integer getRequisitoID() {
@@ -54,6 +56,14 @@ public class Requisito implements Serializable{
 		this.prioridade = prioridade;
 	}
 	
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
 	public void atualizaPrioridade(Prioridade prioridade) {
 		if(prioridade == Prioridade.toEnum(1)) {
 			System.out.println("ALTA");
@@ -93,10 +103,12 @@ public class Requisito implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Requisito ["
-				+ "requisitoID=" + requisitoID + ", "
-				+ "descricao=" + descricao + ", "
-				+ "prioridade=" + getPrioridade()+ "]";
+		return "\n__________________________________\n"
+				+"\nrequisitoID = " + requisitoID
+				+ "\ndescricao = " + descricao
+				+ "\nprioridade = " + Prioridade.toEnum(prioridade);
 	}
+
+
 
 }

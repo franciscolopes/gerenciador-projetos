@@ -1,6 +1,6 @@
 /*
-Nome do autor: Ilton Batista da Silva Júnior
-Data de criação do arquivo: Ilton Batista da Silva Júnior
+Nome do autor: Ilton Batista da Silva JÃºnior
+Data de criaÃ§Ã£o do arquivo: Ilton Batista da Silva JÃºnior
 Objetivo sucinto da classe: Cria uma classe que manipula estado e comportamento de um produto e exibe seus requisitos
 Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
@@ -8,10 +8,11 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
 
-@SuppressWarnings("unused")
 public class Produto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -19,8 +20,10 @@ public class Produto implements Serializable{
 	private Integer produtoID;
 	private String nome;
 	private String descricao;
+
+	private List<Requisito> requisitos = new ArrayList<>();
+  
 	private Projeto projeto;
-	
 
 	public Produto() {
 		super();
@@ -57,6 +60,14 @@ public class Produto implements Serializable{
 		this.descricao = descricao;
 	}
 	
+	public List<Requisito> getRequisitos() {
+		return requisitos;
+	}
+
+	public void setRequisitos(List<Requisito> requisitos) {
+		this.requisitos = requisitos;
+	}
+
 	public Projeto getProjeto() {
 		return projeto;
 	}
@@ -64,7 +75,7 @@ public class Produto implements Serializable{
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,7 +100,19 @@ public class Produto implements Serializable{
 			return false;
 		return true;
 	}
+	
+	public List<Requisito> exibirTodosRequisitos(){
 
+		return requisitos;
+		
+	}
+	
+	public List<Requisito> exibirRequisitosPorPrioridade(Prioridade prioridade){		
+		
+		return null;
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "Produto ["
