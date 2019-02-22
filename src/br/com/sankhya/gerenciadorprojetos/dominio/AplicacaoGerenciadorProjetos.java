@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AplicacaoGerenciadorProjetos {
-	public static List<Cliente> clientes = new ArrayList<>();
+	public static List<Cliente> clientes = new ArrayList<>(); 
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
@@ -27,7 +27,7 @@ public class AplicacaoGerenciadorProjetos {
 			if(opcao == 1) {
 				cadastrarCliente();
 			} else if(opcao == 2) {
-				// Algo
+				listarClientes();
 			}  else {
 				System.out.println("opção inválida, tente novamente");
 			}
@@ -70,16 +70,38 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Estado: ");
 			String estado = leitor.nextLine();
 			
-			Endereco endereco = new Endereco(numero, logradouro, numero, complemento, bairro, cep, cidade, estado);
-			Cliente cliente = new Cliente(numero, nome, cpf, email, telefone);
+			Endereco endereco = new Endereco(enderecoID, logradouro, numero, complemento, bairro, cep, cidade, estado);
+			Cliente cliente = new Cliente(usuarioID, nome, cpf, email, telefone);
 			cliente.setEndereco(endereco);
 			clientes.add(cliente);
+			
+			enderecoID++;
+			usuarioID++;
 			
 			menuPrincipal();
 		}
 	}
 	
+	public static void listarClientes() {
+		System.out.println();
+		System.out.println("[ Lista de Clientes ]");
+		System.out.println();
+		
+		for(Cliente cliente : clientes) {
+			System.out.println(cliente.getUsuarioID() + " " + cliente.getNome());
+		}
+		
+		System.out.println();
+		System.out.print("Selecione um cliente por seu ID: ");
+		leitor.nextInt();
+	}
+	
 	public static void main(String[] args) {
+		Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
+		Cliente cliente1 = new Cliente(1, "Roobson Silva", "069.231.590-08", "roobson@gmail.com", "34 9999-9999");
+		cliente1.setEndereco(endereco1);
+		clientes.add(cliente1);
+		
 		System.out.println("----- Gerenciador de Projetos ------");
 		menuPrincipal();
 	}
