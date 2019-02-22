@@ -109,7 +109,7 @@ public class Cliente extends Usuario implements Serializable {
 		List<Projeto> percorreProjetos = new ArrayList<>();
 		Date dataAtual = new Date();
 		for(Projeto projetoAtual : projetos) {
-			if(dataAtual.getTime() > projetoAtual.getDataFim().getTime()) {
+			if(dataAtual.getTime() > projetoAtual.getDataFim().getTime() && projetoAtual.getStatusProjeto().getCodigo() != EstadoProjeto.toEnum(2).getCodigo()) {
 				percorreProjetos.add(projetoAtual);
 			}
 		}
