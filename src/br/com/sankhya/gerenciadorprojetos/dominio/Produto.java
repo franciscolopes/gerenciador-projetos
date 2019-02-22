@@ -19,6 +19,8 @@ public class Produto implements Serializable{
 	private Integer produtoID;
 	private String nome;
 	private String descricao;
+	private Projeto projeto;
+	
 
 	public Produto() {
 		super();
@@ -55,6 +57,14 @@ public class Produto implements Serializable{
 		this.descricao = descricao;
 	}
 	
+	public Projeto getProjeto() {
+		return projeto;
+	}
+	
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,9 +93,12 @@ public class Produto implements Serializable{
 	@Override
 	public String toString() {
 		return "Produto ["
-				+ "produtoID=" + produtoID + ", "
+				+ "ProjetoID=" + projeto.getProjetoID() + ", "
+				+ " ProjetoNome=" + projeto.getNome() + ", "
+				+ " produtoID=" + produtoID + ", "
 				+ "nome=" + nome + ", "
-				+ "descricao=" + descricao + "]";
+				+ "descricao=" + descricao + 
+				"]" ;
 	}
 	
 }
