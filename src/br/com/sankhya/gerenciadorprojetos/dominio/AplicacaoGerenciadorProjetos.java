@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AplicacaoGerenciadorProjetos {
-	public static List<Cliente> clientes = new ArrayList<>(); 
+	public static List<Cliente> clientes = new ArrayList<>();
+	public static Cliente cliente;
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
@@ -26,7 +27,7 @@ public class AplicacaoGerenciadorProjetos {
 			
 			if(opcao == 1) {
 				cadastrarCliente();
-			} else if(opcao == 2) {
+			} else if(opcao == 2 && clientes.size() >= 1) {
 				listarClientes();
 			}  else {
 				System.out.println("opção inválida, tente novamente");
@@ -93,7 +94,35 @@ public class AplicacaoGerenciadorProjetos {
 		
 		System.out.println();
 		System.out.print("Selecione um cliente por seu ID: ");
-		leitor.nextInt();
+		int ID = leitor.nextInt();
+		leitor.nextLine();
+		cliente = clientes.get(ID - 1);
+		detalhesDoCliente();
+	}
+	
+	public static void detalhesDoCliente() {
+		while(true) {
+			System.out.println();
+			System.out.println("[ Detalhes do Cliente ]");
+			System.out.println("0.Voltar ao menu principal");
+			System.out.println("1.Dados pessoais");
+			System.out.println("2.Projetos do cliente");
+			System.out.println();
+		
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 0) {
+				menuPrincipal();
+			} else if(opcao == 1) {
+				// Algo
+			} else if(opcao == 2) {
+				// Algo
+			}  else {
+				System.out.println("opção inválida, tente novamente");
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
