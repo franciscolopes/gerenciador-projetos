@@ -19,17 +19,19 @@ public class Tarefa implements Serializable {
 	private String descricao;
 	private Date dataEntrega;
 	private Integer estado;
+	private Funcionario funcionario;
 	
 	public Tarefa() {
 		super();
 	}
-	
-	public Tarefa(Integer tarefaID, String descricao, Date dataEntrega, EstadoTarefa estado) {
+
+	public Tarefa(Integer tarefaID, String descricao, Date dataEntrega, EstadoTarefa estado, Funcionario funcionario) {
 		super();
 		this.tarefaID = tarefaID;
 		this.descricao = descricao;
 		this.dataEntrega = dataEntrega;
 		this.estado = estado.getCodigo();
+		this.funcionario = funcionario;
 	}
 
 	public Integer getTarefaID() {
@@ -64,6 +66,14 @@ public class Tarefa implements Serializable {
 		this.estado = estado.getCodigo();
 	}
 	
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,7 +114,7 @@ public class Tarefa implements Serializable {
 	@Override
 	public String toString() {
 		return "Tarefa [tarefaID=" + tarefaID + ", descricao=" + descricao + ", dataEntrega=" + dataEntrega
-				+ ", estado=" + EstadoTarefa.toEnum(estado) + "]";
+				+ ", estado=" + EstadoTarefa.toEnum(estado) + ", funcionario=" + funcionario + "]";
 	}
 
 }
