@@ -19,11 +19,10 @@ public class Equipe implements Serializable {
 	public Equipe() {
 	}
 
-	public Equipe(Integer iD, String nome, Projeto projeto) {
+	public Equipe(Integer iD, String nome) {
 		super();
 		equipeID = iD;
 		this.nome = nome;
-		this.projeto = projeto;
 	}
 
 	public Integer getEquipeID() {
@@ -77,6 +76,10 @@ public class Equipe implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Equipe [equipeID=" + equipeID + ", nome=" + nome + ", projeto=" + projeto + "]";
+		return "Equipe ["+ "ProjetoID=" + projeto.getProjetoID() + ", "
+				+ " ProjetoNome=" + projeto.getNome() + ", "
+				+ "equipeID=" + equipeID + ", "
+				+ "nome=" + nome + ", "
+				+ "]";
 	}
 }
