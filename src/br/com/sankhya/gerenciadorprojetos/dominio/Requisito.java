@@ -11,7 +11,6 @@ import java.io.Serializable;
 
 import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
 
-
 public class Requisito implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -31,17 +30,6 @@ public class Requisito implements Serializable{
 		this.prioridade = prioridadeEnum.getCodigo();
 	}
 	
-
-
-	public Prioridade getPrioridade() {
-		return Prioridade.toEnum(prioridade);
-	}
-
-	public void setPrioridade(Integer prioridade) {
-		this.prioridade = prioridade;
-	}
-	
-
 	public Integer getRequisitoID() {
 		return requisitoID;
 	}
@@ -56,6 +44,14 @@ public class Requisito implements Serializable{
 	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public Prioridade getPrioridade() {
+		return Prioridade.toEnum(prioridade);
+	}
+
+	public void setPrioridade(Integer prioridade) {
+		this.prioridade = prioridade;
 	}
 	
 	public void atualizaPrioridade(Prioridade prioridade) {
@@ -103,8 +99,4 @@ public class Requisito implements Serializable{
 				+ "prioridade=" + getPrioridade()+ "]";
 	}
 
-
-	
-	
-	
 }
