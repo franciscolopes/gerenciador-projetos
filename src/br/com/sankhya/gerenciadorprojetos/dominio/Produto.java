@@ -8,10 +8,9 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-
-@SuppressWarnings("unused")
 public class Produto implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -19,7 +18,8 @@ public class Produto implements Serializable{
 	private Integer produtoID;
 	private String nome;
 	private String descricao;
-
+	private List<Requisito> requisitos = new ArrayList<>();
+	
 	public Produto() {
 		super();
 	}
@@ -55,6 +55,14 @@ public class Produto implements Serializable{
 		this.descricao = descricao;
 	}
 	
+	public List<Requisito> getRequisitos() {
+		return requisitos;
+	}
+
+	public void setRequisitos(List<Requisito> requisitos) {
+		this.requisitos = requisitos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
