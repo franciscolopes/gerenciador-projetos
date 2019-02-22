@@ -21,7 +21,7 @@ public class Projeto implements Serializable {
 	private String objetivoInteligente;
 	private Date dataInicio;
 	private Date dataFim;
-	private EstadoProjeto status;
+	private Integer status;
 	private Cliente cliente;
 
 	public Projeto() {
@@ -35,7 +35,7 @@ public class Projeto implements Serializable {
 		this.objetivoInteligente = objetivoInteligente;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
-		this.status = status;
+		this.status = status.getCodigo();
 		this.cliente = cliente;
 	}
 
@@ -80,11 +80,11 @@ public class Projeto implements Serializable {
 	}
 
 	public EstadoProjeto getStatusProjeto() {
-		return status;
+		return EstadoProjeto.toEnum(status);
 	}
 
 	public void setStatusProjeto(EstadoProjeto Status) {
-		this.status = Status;
+		this.status = Status.getCodigo();
 	}
 	
 	public Cliente getCliente() {
