@@ -1,3 +1,17 @@
+/*
+Nome do autor: Elian Melo Morais
+Data de criação do arquivo: 19/02/2019
+Objetivo sucinto da classe: Gerencia os dados e os menus da aplicação
+Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
+Sumário:
+	Main - Código ^(P6tO
+	Menu Principal - Código wbo$Lp
+ 	Menu Cadastrar Cliente - Código 5tg:h&
+ 	Menu Listar Clientes - Código 2d:U5!
+ 	Menu Detalhes do Cliente - Código QA)DWd
+ 	Menu Dados Pessoais - Código dtzsP+
+ 	Menu de Projetos - Código !E.U^x
+*/
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.util.ArrayList;
@@ -11,6 +25,7 @@ public class AplicacaoGerenciadorProjetos {
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
 	
+	// Menu Principal - Código wbo$Lp
 	public static void menuPrincipal() {
 		while(true) {
 			System.out.println();
@@ -35,6 +50,7 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu Cadastrar Cliente - Código 5tg:h&
 	public static void cadastrarCliente() {
 		while(true) {
 			System.out.println();
@@ -83,6 +99,7 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu Listar Clientes - Código 2d:U5!
 	public static void listarClientes() {
 		System.out.println();
 		System.out.println("[ Lista de Clientes ]");
@@ -100,6 +117,7 @@ public class AplicacaoGerenciadorProjetos {
 		detalhesDoCliente();
 	}
 	
+	// Menu Detalhes do Cliente - Código QA)DWd
 	public static void detalhesDoCliente() {
 		while(true) {
 			System.out.println();
@@ -125,6 +143,7 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu Dados Pessoais - Código dtzsP+
 	public static void dadosPessoais() {
 		System.out.println();
 		System.out.println("[ Dados Pessoais ]");
@@ -167,6 +186,12 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu de Projetos - Código !E.U^x
+	public static void menuDeProjetos() {
+		// Algo
+	}
+	
+	// Main - Código ^(P6tO
 	public static void main(String[] args) {
 		Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
 		Cliente cliente1 = new Cliente(1, "Roobson Silva", "069.231.590-08", "roobson@gmail.com", "34 9999-9999");
