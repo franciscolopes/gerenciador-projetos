@@ -7,6 +7,8 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
+
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,10 +98,16 @@ public class Produto implements Serializable{
 		
 	}
 	
-	public List<Requisito> exibirRequisitosPorPrioridade(Prioridade prioridade){		
+	public String exibirRequisitosPorPrioridade(Prioridade prioridade){		
+		StringBuffer listaRequisitos = new StringBuffer("-------------------------Lista Prioridade--------------------------\n");
 		
-		return null;
-		
+		for(Requisito requisitoProduto : requisitos) {
+				if(requisitoProduto.getPrioridade().getCodigo() == prioridade.getCodigo()) {
+					
+					listaRequisitos.append("").append(requisitoProduto.getRequisitoID()).append(" - ").append(requisitoProduto.getDescricao()).append(" - ").append("Prioridade: ").append(requisitoProduto.getPrioridade()).append("\n");
+				}
+			}
+		return listaRequisitos.toString();
 	}
 	
 	@Override
@@ -109,5 +117,4 @@ public class Produto implements Serializable{
 				+ "\nnome = " + getNome()
 				+ "\ndescricao = " + getDescricao();
 	}
-	
 }
