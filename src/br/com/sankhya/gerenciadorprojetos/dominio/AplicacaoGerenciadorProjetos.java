@@ -1,3 +1,26 @@
+/*
+Nome do autor: Elian Melo Morais
+Data de criação do arquivo: 19/02/2019
+Objetivo sucinto da classe: Gerencia os dados e os menus da aplicação
+Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
+Sumário:
+	Main - Código ^(P6tO
+	Menu Principal - Código wbo$Lp
+ 	Menu Cadastrar Cliente - Código 5tg:h&
+ 	Menu Listar Clientes - Código 2d:U5!
+ 	Menu Detalhes do Cliente - Código QA)DWd
+ 	Menu Dados Pessoais - Código dtzsP+
+ 	Menu de Projetos - Código !E.U^x
+ 	Menu de Cadastro de Projeto - Código Lq>?Ie
+	Menu de Cadastro de Produto e Requisitos - Código duxkX0
+	Menu de Cadastro de Equipe e Tarefas - Código ?<&H$#
+	Menu de Listagem de Projetos - Código :+%8$R
+	Menu de Informações do Projeto - Código YJYF|&
+	Menu de Tarefas do Projeto - Código D!)maL
+	Menu de Produto e Requisitos do Projeto - Código k)Lf(A
+	Menu de Equipe do Projeto - Código T9a(xJ
+	Menu de Funcionário do Projeto - Código Llc*q[
+*/
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.util.ArrayList;
@@ -5,12 +28,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AplicacaoGerenciadorProjetos {
-	public static List<Cliente> clientes = new ArrayList<>();
+	public static List<Cliente> clientes = new ArrayList<>();     
 	public static Cliente cliente;
+	public static Projeto projeto;
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
 	
+	// Menu Principal - Código wbo$Lp
 	public static void menuPrincipal() {
 		while(true) {
 			System.out.println();
@@ -35,6 +60,7 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu Cadastrar Cliente - Código 5tg:h&
 	public static void cadastrarCliente() {
 		while(true) {
 			System.out.println();
@@ -83,6 +109,7 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu Listar Clientes - Código 2d:U5!
 	public static void listarClientes() {
 		System.out.println();
 		System.out.println("[ Lista de Clientes ]");
@@ -100,6 +127,7 @@ public class AplicacaoGerenciadorProjetos {
 		detalhesDoCliente();
 	}
 	
+	// Menu Detalhes do Cliente - Código QA)DWd
 	public static void detalhesDoCliente() {
 		while(true) {
 			System.out.println();
@@ -118,13 +146,14 @@ public class AplicacaoGerenciadorProjetos {
 			} else if(opcao == 2) {
 				dadosPessoais();
 			} else if(opcao == 3) {
-				// Algo
+				menuDeProjetos();
 			}  else {
 				System.out.println("opção inválida, tente novamente");
 			}
 		}
 	}
 	
+	// Menu Dados Pessoais - Código dtzsP+
 	public static void dadosPessoais() {
 		System.out.println();
 		System.out.println("[ Dados Pessoais ]");
@@ -167,6 +196,78 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
+	// Menu de Projetos - Código !E.U^x
+	public static void menuDeProjetos() {
+		System.out.println();
+		System.out.println("[ Menu de Projetos ]");
+		System.out.println("1.Voltar ao menu detalhes do cliente");
+		System.out.println("2.Cadastrar projeto");
+		if(cliente.getProjetos().size() > 0) {
+			System.out.println("3.Listar projetos");
+		}
+		System.out.println();
+		
+		System.out.print("Escolha uma opção: ");
+		int opcao = leitor.nextInt();
+		leitor.nextLine();
+		
+		if(opcao == 1) {
+			detalhesDoCliente();
+		} else if(opcao == 2) {
+			// Algo
+		} else if(opcao == 3 && cliente.getProjetos().size() > 0) {
+			// Algo
+		} else {
+			System.out.println("opção inválida, tente novamente");
+		}
+	}
+	
+	// Menu de Cadastro de Projeto - Código Lq>?Ie
+	public static void cadastroDeProjeto() {
+		// Algo
+	}
+	
+	// Menu de Cadastro de Produto e Requisitos - Código duxkX0
+	public static void cadastroDeProdutosERequisitos() {
+		// Algo
+	}
+	
+	// Menu de Cadastro de Equipe e Tarefas - Código ?<&H$#
+	public static void cadastroDeEquipeETarefas() {
+		// Algo
+	}
+	
+	// Menu de Listagem de Projetos - Código :+%8$R
+	public static void listarProjetos() {
+		// Algo
+	}
+	
+	// Menu de Informações do Projeto - Código YJYF|&
+	public static void informacoesDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Tarefas do Projeto - Código D!)maL
+	public static void tarefasDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Produto e Requisitos do Projeto - Código k)Lf(A
+	public static void produtoERequisitosDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Equipe do Projeto - Código T9a(xJ
+	public static void equipeDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Funcionário da Equipe - Código Llc*q[
+	public static void funcionarioDaEquipe() {
+		// Algo
+	}
+	
+	// Main - Código ^(P6tO
 	public static void main(String[] args) {
 		Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
 		Cliente cliente1 = new Cliente(1, "Roobson Silva", "069.231.590-08", "roobson@gmail.com", "34 9999-9999");
