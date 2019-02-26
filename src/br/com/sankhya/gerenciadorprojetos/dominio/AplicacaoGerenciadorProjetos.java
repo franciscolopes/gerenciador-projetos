@@ -11,6 +11,7 @@ Sumário:
  	Menu Detalhes do Cliente - Código QA)DWd
  	Menu Dados Pessoais - Código dtzsP+
  	Menu de Projetos - Código !E.U^x
+ 	Menu de Cadastro de Projeto - Código Lq>?Ie
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
@@ -213,6 +214,11 @@ public class AplicacaoGerenciadorProjetos {
 		} else {
 			System.out.println("opção inválida, tente novamente");
 		}
+	}
+	
+	// Menu de Cadastro de Projeto - Código Lq>?Ie
+	public static void cadastroDeProjeto() {
+		// Algo
 	}
 	
 	// Main - Código ^(P6tO
