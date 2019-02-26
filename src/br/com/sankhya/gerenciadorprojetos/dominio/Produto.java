@@ -1,6 +1,6 @@
 /*
-Nome do autor: Ilton Batista da Silva Júnior
-Data de criação do arquivo: Ilton Batista da Silva Júnior
+Nome do autor: Ilton Batista da Silva JÃºnior
+Data de criaÃ§Ã£o do arquivo: Ilton Batista da Silva JÃºnior
 Objetivo sucinto da classe: Cria uma classe que manipula estado e comportamento de um produto e exibe seus requisitos
 Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
@@ -22,8 +22,11 @@ public class Produto implements Serializable{
 	private Integer produtoID;
 	private String nome;
 	private String descricao;
+
 	private List<Requisito> requisitos = new ArrayList<>();
-	
+  
+	private Projeto projeto;
+
 	public Produto() {
 		super();
 	}
@@ -65,6 +68,14 @@ public class Produto implements Serializable{
 
 	public void setRequisitos(List<Requisito> requisitos) {
 		this.requisitos = requisitos;
+	}
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+	
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
 	}
 
 	@Override
@@ -112,9 +123,12 @@ public class Produto implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "\n__________________________________\n"
-				+ "\nprodutoID = " + getProdutoID()
-				+ "\nnome = " + getNome()
-				+ "\ndescricao = " + getDescricao();
+		return "Produto ["
+				+ "ProjetoID=" + projeto.getProjetoID() + ", "
+				+ " ProjetoNome=" + projeto.getNome() + ", "
+				+ " produtoID=" + produtoID + ", "
+				+ "nome=" + nome + ", "
+				+ "descricao=" + descricao + 
+				"]" ;
 	}
 }

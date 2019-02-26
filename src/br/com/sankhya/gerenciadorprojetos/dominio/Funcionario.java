@@ -9,23 +9,26 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Funcionario implements Serializable {
+public class Funcionario extends Usuario implements Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	private String cargo;
 	private BigDecimal salario;
-	
-	public Funcionario(String cargo, BigDecimal salario) {
-		super();
-		this.cargo = cargo;
-		this.salario = salario;
-	}
+	private List<Tarefa> tarefas = new ArrayList<>();
 	
 	public Funcionario() {
 		super();
 	}
-
+	
+	public Funcionario(Integer usuarioID, String nome, String cpf, String cargo, BigDecimal salario) {
+		super(usuarioID, nome, cpf);
+		this.cargo = cargo;
+		this.salario = salario;
+	}
+	
 	public String getCargo() {
 		return cargo;
 	}
@@ -42,6 +45,14 @@ public class Funcionario implements Serializable {
 		this.salario = salario;
 	}
 
+	public List<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,8 +85,9 @@ public class Funcionario implements Serializable {
 	}
 
 	@Override
-	public String toString() {
-		return "Funcionario [cargo=" + cargo + ", salario=" + salario + "]";
+	public String toString() { 
+		return "Funcionario [usuarioID= " + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", cargo=" + cargo + ", salario=" + salario + ", tarefas=" + tarefas + "]";
 	}
+	
 	
 }
