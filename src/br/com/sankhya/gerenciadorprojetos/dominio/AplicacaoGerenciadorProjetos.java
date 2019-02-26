@@ -20,7 +20,10 @@ import java.util.Scanner;
 
 public class AplicacaoGerenciadorProjetos {
 	public static List<Cliente> clientes = new ArrayList<>();
+	public static ArrayList<ArrayList<Projeto>> projetos = new ArrayList<ArrayList<Projeto>>();
+	public static ArrayList<Projeto> inner = new ArrayList<Projeto>();        
 	public static Cliente cliente;
+	public static Projeto projeto;
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
@@ -136,7 +139,7 @@ public class AplicacaoGerenciadorProjetos {
 			} else if(opcao == 2) {
 				dadosPessoais();
 			} else if(opcao == 3) {
-				// Algo
+				menuDeProjetos();
 			}  else {
 				System.out.println("opção inválida, tente novamente");
 			}
@@ -188,7 +191,28 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Menu de Projetos - Código !E.U^x
 	public static void menuDeProjetos() {
-		// Algo
+		System.out.println();
+		System.out.println("[ Menu de Projetos ]");
+		System.out.println("1.Voltar ao menu detalhes do cliente");
+		System.out.println("2.Cadastrar projeto");
+		if(cliente.getProjetos().size() > 0) {
+			System.out.println("3.Listar projetos");
+		}
+		System.out.println();
+		
+		System.out.print("Escolha uma opção: ");
+		int opcao = leitor.nextInt();
+		leitor.nextLine();
+		
+		if(opcao == 1) {
+			detalhesDoCliente();
+		} else if(opcao == 2) {
+			// Algo
+		} else if(opcao == 3 && cliente.getProjetos().size() > 0) {
+			// Algo
+		} else {
+			System.out.println("opção inválida, tente novamente");
+		}
 	}
 	
 	// Main - Código ^(P6tO
