@@ -10,16 +10,17 @@ Sumário:
  	Menu Listar Clientes - Código 2d:U5!
  	Menu Detalhes do Cliente - Código QA)DWd
  	Menu Dados Pessoais - Código dtzsP+
- 	Menu de Projetos - Código !E.U^x
- 	Menu de Cadastro de Projeto - Código Lq>?Ie
-	Menu de Cadastro de Produto e Requisitos - Código duxkX0
-	Menu de Cadastro de Equipe e Tarefas - Código ?<&H$#
-	Menu de Listagem de Projetos - Código :+%8$R
-	Menu de Informações do Projeto - Código YJYF|&
-	Menu de Tarefas do Projeto - Código D!)maL
-	Menu de Produto e Requisitos do Projeto - Código k)Lf(A
-	Menu de Equipe do Projeto - Código T9a(xJ
-	Menu de Funcionário do Projeto - Código Llc*q[
+ 	Menu Projetos - Código !E.U^x
+ 	Menu Cadastro de Projeto - Código Lq>?Ie
+	Menu Cadastro do Produto e Requisitos - Código duxkX0
+	Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
+	Menu Listar Projetos - Código :+%8$R
+	Menu Exibicao de Projetos - Código >de1DM
+	Menu Informações do Projeto - Código YJYF|&
+	Menu Tarefas do Projeto - Código D!)maL
+	Menu Produto e Requisitos do Projeto - Código k)Lf(A
+	Menu Equipe do Projeto - Código T9a(xJ
+	Menu Funcionário do Projeto - Código Llc*q[
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
@@ -111,20 +112,26 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Menu Listar Clientes - Código 2d:U5!
 	public static void listarClientes() {
-		System.out.println();
-		System.out.println("[ Lista de Clientes ]");
-		System.out.println();
-		
-		for(Cliente cliente : clientes) {
-			System.out.println(cliente.getUsuarioID() + " " + cliente.getNome());
+		while(true) {
+			System.out.println();
+			System.out.println("[ Lista de Clientes ]");
+			System.out.println();
+			
+			for(Cliente cliente : clientes) {
+				System.out.println(cliente.getUsuarioID() + " " + cliente.getNome());
+			}
+			
+			System.out.println();
+			System.out.print("Selecione um cliente por seu ID: ");
+			int ID = leitor.nextInt();
+			leitor.nextLine();
+			try {
+				cliente = clientes.get(ID - 1);
+				detalhesDoCliente();
+			} catch(Exception e) {
+				System.out.println("ID inválido, insira um valor válido");
+			}
 		}
-		
-		System.out.println();
-		System.out.print("Selecione um cliente por seu ID: ");
-		int ID = leitor.nextInt();
-		leitor.nextLine();
-		cliente = clientes.get(ID - 1);
-		detalhesDoCliente();
 	}
 	
 	// Menu Detalhes do Cliente - Código QA)DWd
@@ -146,7 +153,7 @@ public class AplicacaoGerenciadorProjetos {
 			} else if(opcao == 2) {
 				dadosPessoais();
 			} else if(opcao == 3) {
-				menuDeProjetos();
+				projetos();
 			}  else {
 				System.out.println("opção inválida, tente novamente");
 			}
@@ -154,6 +161,7 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Dados Pessoais - Código dtzsP+
+	// Incompleto
 	public static void dadosPessoais() {
 		System.out.println();
 		System.out.println("[ Dados Pessoais ]");
@@ -196,74 +204,215 @@ public class AplicacaoGerenciadorProjetos {
 		}
 	}
 	
-	// Menu de Projetos - Código !E.U^x
-	public static void menuDeProjetos() {
-		System.out.println();
-		System.out.println("[ Menu de Projetos ]");
-		System.out.println("1.Voltar ao menu detalhes do cliente");
-		System.out.println("2.Cadastrar projeto");
-		if(cliente.getProjetos().size() > 0) {
-			System.out.println("3.Listar projetos");
-		}
-		System.out.println();
-		
-		System.out.print("Escolha uma opção: ");
-		int opcao = leitor.nextInt();
-		leitor.nextLine();
-		
-		if(opcao == 1) {
-			detalhesDoCliente();
-		} else if(opcao == 2) {
-			// Algo
-		} else if(opcao == 3 && cliente.getProjetos().size() > 0) {
-			// Algo
-		} else {
-			System.out.println("opção inválida, tente novamente");
+	// Menu Projetos - Código !E.U^x
+	// Incompleto
+	public static void projetos() {
+		while(true) {
+			System.out.println();
+			System.out.println("[ Menu de Projetos ]");
+			System.out.println("1.Voltar ao menu detalhes do cliente");
+			System.out.println("2.Cadastrar projeto");
+			if(cliente.getProjetos().size() > 0) {
+				System.out.println("3.Listar projetos");
+			}
+			System.out.println();
+			
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				detalhesDoCliente();
+			} else if(opcao == 2) {
+				cadastroDeProjeto();
+			} else if(opcao == 3 && cliente.getProjetos().size() > 0) {
+				listarProjetos();
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
 		}
 	}
 	
-	// Menu de Cadastro de Projeto - Código Lq>?Ie
+	// Menu Cadastro de Projeto - Código Lq>?Ie
+	// Incompleto
 	public static void cadastroDeProjeto() {
+		System.out.println();
+		System.out.println("[ Cadastro de Projeto ]");
+		System.out.println();
 		// Algo
 	}
 	
-	// Menu de Cadastro de Produto e Requisitos - Código duxkX0
-	public static void cadastroDeProdutosERequisitos() {
+	// Menu Cadastro do Produto e Requisitos - Código duxkX0
+	// Incompleto
+	public static void cadastroDoProdutoERequisitos() {
+		System.out.println();
+		System.out.println("[ Cadastro do Produto ]");
+		System.out.println();
+		// Algo
+		System.out.println();
+		System.out.println("[ Cadastro dos Requisitos ]");
+		System.out.println();
 		// Algo
 	}
 	
-	// Menu de Cadastro de Equipe e Tarefas - Código ?<&H$#
+	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
+	// Incompleto
 	public static void cadastroDeEquipeETarefas() {
+		System.out.println();
+		System.out.println("[ Cadastro de Equipe e Tarefas ]");
+		System.out.println();
 		// Algo
 	}
 	
-	// Menu de Listagem de Projetos - Código :+%8$R
+	// Menu Listar Projetos - Código :+%8$R
+	// Incompleto
 	public static void listarProjetos() {
+		while(true) {
+			System.out.println();
+			System.out.println("[ Listagem de Projetos ]");
+			System.out.println("1.Voltar ao menu de projetos");
+			System.out.println("2.Todos os projetos");
+			System.out.println("3.Projetos em andamento");
+			System.out.println("4.Projetos concluidos");
+			System.out.println("5.Projetos atrasados");
+			System.out.println();
+
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				projetos();
+			} else if(opcao == 2) {
+				exibicaoDeProjetos(1);
+			} else if(opcao == 3) {
+				exibicaoDeProjetos(2);
+			} else if(opcao == 4) {
+				exibicaoDeProjetos(3);
+			} else if(opcao == 5) {
+				exibicaoDeProjetos(4);
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}	
+		}
+	}
+	
+	// Menu Exibicao de Projetos - Código >de1DM
+	// Incompleto
+	public static void exibicaoDeProjetos(int modoExibicao) {
 		// Algo
 	}
 	
-	// Menu de Informações do Projeto - Código YJYF|&
+	// Menu Informações do Projeto - Código YJYF|&
+	// Incompleto
 	public static void informacoesDoProjeto() {
-		// Algo
+		while(true) {
+			System.out.println();
+			System.out.println("[ Informações do Projeto ]");
+			System.out.println("1.Voltar ao menu listagem de projetos");
+			System.out.println("2.Tarefas");
+			System.out.println("3.Produto e Requisitos");
+			System.out.println("4.Equipe");
+			System.out.println();
+
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				listarProjetos();
+			} else if(opcao == 2) {
+				tarefasDoProjeto();
+			} else if(opcao == 3) {
+				produtoERequisitosDoProjeto();
+			} else if(opcao == 4) {
+				equipeDoProjeto();
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}	
+		}
 	}
 	
-	// Menu de Tarefas do Projeto - Código D!)maL
+	// Menu Tarefas do Projeto - Código D!)maL
+	// Incompleto
 	public static void tarefasDoProjeto() {
-		// Algo
+		System.out.println();
+		System.out.println("[ Tarefas do Projeto ]");
+		System.out.println();
+		
+		while(true) {
+			System.out.println();
+			System.out.println("1.Voltar ao menu informações do projeto");
+			System.out.println("2.Voltar ao menu principal");
+			System.out.println();
+		
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				informacoesDoProjeto();
+			} else if(opcao == 2) {
+				menuPrincipal();
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+		}
 	}
 	
-	// Menu de Produto e Requisitos do Projeto - Código k)Lf(A
+	// Menu Produto e Requisitos do Projeto - Código k)Lf(A
+	// Incompleto
 	public static void produtoERequisitosDoProjeto() {
+		System.out.println();
+		System.out.println("[ Produto do Projeto ]");
+		System.out.println();
+		
 		// Algo
+		
+		System.out.println();
+		System.out.println("[ Requisitos do Produto ]");
+		System.out.println();
+		
+		// Algo
+		
+		while(true) {
+			System.out.println();
+			System.out.println("1.Voltar ao menu informações do projeto");
+			System.out.println("2.Voltar ao menu principal");
+			System.out.println();
+		
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				informacoesDoProjeto();
+			} else if(opcao == 2) {
+				menuPrincipal();
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+		}
 	}
 	
-	// Menu de Equipe do Projeto - Código T9a(xJ
+	// Menu Equipe do Projeto - Código T9a(xJ
+	// Incompleto
 	public static void equipeDoProjeto() {
-		// Algo
+		while(true) {
+			System.out.println();
+			System.out.println("[ Equipe do Projeto ]");
+			System.out.println();
+			
+			// Algo
+		}	
 	}
 	
-	// Menu de Funcionário da Equipe - Código Llc*q[
+	// Menu Funcionário da Equipe - Código Llc*q[
+	// Incompleto
 	public static void funcionarioDaEquipe() {
+		System.out.println();
+		System.out.println("[ Funcionario da Equipe ]");
+		System.out.println();
 		// Algo
 	}
 	
