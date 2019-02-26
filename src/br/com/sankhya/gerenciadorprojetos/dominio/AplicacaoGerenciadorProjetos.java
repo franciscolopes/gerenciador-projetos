@@ -12,6 +12,14 @@ Sumário:
  	Menu Dados Pessoais - Código dtzsP+
  	Menu de Projetos - Código !E.U^x
  	Menu de Cadastro de Projeto - Código Lq>?Ie
+	Menu de Cadastro de Produto e Requisitos - Código duxkX0
+	Menu de Cadastro de Equipe e Tarefas - Código ?<&H$#
+	Menu de Listagem de Projetos - Código :+%8$R
+	Menu de Informações do Projeto - Código YJYF|&
+	Menu de Tarefas do Projeto - Código D!)maL
+	Menu de Produto e Requisitos do Projeto - Código k)Lf(A
+	Menu de Equipe do Projeto - Código T9a(xJ
+	Menu de Funcionário do Projeto - Código Llc*q[
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
@@ -20,9 +28,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AplicacaoGerenciadorProjetos {
-	public static List<Cliente> clientes = new ArrayList<>();
-	public static ArrayList<ArrayList<Projeto>> projetos = new ArrayList<ArrayList<Projeto>>();
-	public static ArrayList<Projeto> inner = new ArrayList<Projeto>();        
+	public static List<Cliente> clientes = new ArrayList<>();     
 	public static Cliente cliente;
 	public static Projeto projeto;
 	public static Scanner leitor = new Scanner(System.in);
@@ -218,6 +224,46 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Menu de Cadastro de Projeto - Código Lq>?Ie
 	public static void cadastroDeProjeto() {
+		// Algo
+	}
+	
+	// Menu de Cadastro de Produto e Requisitos - Código duxkX0
+	public static void cadastroDeProdutosERequisitos() {
+		// Algo
+	}
+	
+	// Menu de Cadastro de Equipe e Tarefas - Código ?<&H$#
+	public static void cadastroDeEquipeETarefas() {
+		// Algo
+	}
+	
+	// Menu de Listagem de Projetos - Código :+%8$R
+	public static void listarProjetos() {
+		// Algo
+	}
+	
+	// Menu de Informações do Projeto - Código YJYF|&
+	public static void informacoesDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Tarefas do Projeto - Código D!)maL
+	public static void tarefasDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Produto e Requisitos do Projeto - Código k)Lf(A
+	public static void produtoERequisitosDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Equipe do Projeto - Código T9a(xJ
+	public static void equipeDoProjeto() {
+		// Algo
+	}
+	
+	// Menu de Funcionário da Equipe - Código Llc*q[
+	public static void funcionarioDaEquipe() {
 		// Algo
 	}
 	
