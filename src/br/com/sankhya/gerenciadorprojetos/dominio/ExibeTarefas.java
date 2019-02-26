@@ -7,18 +7,17 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.util.Date;
-import java.util.List;
 
 interface ExibeTarefas {
 
-	public List<Tarefa> exibirTodasTarefas();
+	public String exibirTodasTarefas();
 
-	public List<Tarefa> exibirTarefasPendentes();
+	public String exibirTarefasPendentes();
 
-	public List<Tarefa> exibirTarefasConcluidas();
+	public String exibirTarefasConcluidas();
 
-	public List<Tarefa> exibirTarefasAtrasadas();
+	public String exibirTarefasAtrasadas();
 
-	public List<Tarefa> exibirTarefasParaEntregarAte(Date data);
+	public String exibirTarefasParaEntregarAte(Date data);
 
 }
