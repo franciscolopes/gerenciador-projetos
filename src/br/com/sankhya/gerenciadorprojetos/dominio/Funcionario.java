@@ -10,9 +10,12 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Funcionario extends Usuario implements Serializable  {
+import br.com.sankhya.gerenciadorprojetos.enums.EstadoTarefa;
+
+public class Funcionario extends Usuario implements ExibeTarefas, Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 	private String cargo;
@@ -87,6 +90,64 @@ public class Funcionario extends Usuario implements Serializable  {
 	@Override
 	public String toString() { 
 		return "Funcionario [usuarioID= " + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", cargo=" + cargo + ", salario=" + salario + ", tarefas=" + tarefas + "]";
+	}
+
+	@Override
+	public String exibirTodasTarefas() {
+		StringBuffer listaTarefas = new StringBuffer("-------------------------Lista de todas as tarefas--------------------------\n");
+		
+		for(Tarefa colecaoDeTarefas : tarefas) {
+			listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ").append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ").append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ").append(colecaoDeTarefas.getEstado());
+		}
+		return listaTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasPendentes() {
+		StringBuffer listaTarefas = new StringBuffer("-------------------------Lista de todas as tarefas pendentes--------------------------\n");
+		
+		for(Tarefa colecaoDeTarefas : tarefas) {
+			if(colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.PENDENTE.getCodigo()) {			
+				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ").append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ").append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ").append(colecaoDeTarefas.getEstado());
+			}
+		}
+		return listaTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasConcluidas() {
+		StringBuffer listaTarefas = new StringBuffer("-------------------------Lista de todas as tarefas concluidas--------------------------\n");
+		
+		for(Tarefa colecaoDeTarefas : tarefas) {
+			if(colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.CONCLUIDA.getCodigo()) {			
+				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ").append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ").append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ").append(colecaoDeTarefas.getEstado());
+			}
+		}
+		return listaTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasAtrasadas() {
+		StringBuffer listaTarefas = new StringBuffer("-------------------------Lista de todas as tarefas atrasadas--------------------------\n");
+		
+		for(Tarefa colecaoDeTarefas : tarefas) {
+			if(colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.ATRASADA.getCodigo()) {			
+				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ").append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ").append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ").append(colecaoDeTarefas.getEstado());
+			}
+		}
+		return listaTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasParaEntregarAte(Date data) {
+		StringBuffer listaTarefas = new StringBuffer("-------------------------Lista de tarefas para entregar ate a data especificada--------------------------\n");
+		
+		for(Tarefa colecaoDeTarefas : tarefas) {
+			if(colecaoDeTarefas.getDataEntrega().compareTo(data) <= 0) {			
+				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ").append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ").append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ").append(colecaoDeTarefas.getEstado());
+			}
+		}
+		return listaTarefas.toString();
 	}
 	
 	
