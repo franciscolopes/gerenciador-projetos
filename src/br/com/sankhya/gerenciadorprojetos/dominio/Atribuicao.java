@@ -102,4 +102,8 @@ public class Atribuicao implements Serializable {
 		return "Atribuicao [qtdeHoras=" + qtdeHoras + ", precoHora=" + precoHora + ", equipe=" + equipe
 				+ ", funcionario=" + funcionario + "]";
 	}
+	
+	public BigDecimal calcularPrecoTotal() {
+		return new BigDecimal(qtdeHoras).multiply(precoHora);
+	}
 }
