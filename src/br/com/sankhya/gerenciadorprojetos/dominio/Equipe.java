@@ -101,4 +101,22 @@ public class Equipe implements Serializable {
 		}
 		return retorno.toString();
 	}
+	
+	public String exibirFuncionaraios() {
+		StringBuilder listaFuncionarios = new StringBuilder("-----------------------------Lista de membros da equipe-----------------------------\n");
+			
+			for (Atribuicao atribuicao : atribuicoes) {
+				listaFuncionarios.append(atribuicao.getFuncionario().getUsuarioID());
+				listaFuncionarios.append(" - ");
+				listaFuncionarios.append("Nome: ");
+				listaFuncionarios.append(atribuicao.getFuncionario().getNome());
+				listaFuncionarios.append(" Cargo: ");
+				listaFuncionarios.append(atribuicao.getFuncionario().getCargo());
+				listaFuncionarios.append(" Papel: ");
+				listaFuncionarios.append(atribuicao.getPapel());
+				listaFuncionarios.append("\n");
+			}	
+		
+		return listaFuncionarios.toString();
+	}
 }
