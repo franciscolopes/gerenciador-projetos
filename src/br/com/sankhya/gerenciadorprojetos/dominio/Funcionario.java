@@ -70,9 +70,8 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
-		result = prime * result + ((salario == null) ? 0 : salario.hashCode());
+		int result = super.hashCode();
+		result = prime * result + ((getUsuarioID() == null) ? 0 : getUsuarioID().hashCode());
 		return result;
 	}
 
@@ -80,20 +79,15 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Funcionario other = (Funcionario) obj;
-		if (cargo == null) {
-			if (other.cargo != null)
+		Cliente other = (Cliente) obj;
+		if (getUsuarioID() == null) {
+			if (other.getUsuarioID() != null)
 				return false;
-		} else if (!cargo.equals(other.cargo))
-			return false;
-		if (salario == null) {
-			if (other.salario != null)
-				return false;
-		} else if (!salario.equals(other.salario))
+		} else if (!getUsuarioID().equals(other.getUsuarioID()))
 			return false;
 		return true;
 	}
