@@ -8,6 +8,8 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Equipe implements Serializable {
 
@@ -15,6 +17,7 @@ public class Equipe implements Serializable {
 	private Integer equipeID;
 	private String nome;
 	private Projeto projeto;
+	private Set<Atribuicao> atribuicoes = new HashSet<>();
 
 	public Equipe() {
 	}
@@ -49,6 +52,14 @@ public class Equipe implements Serializable {
 		this.projeto = projeto;
 	}
 
+	public Set<Atribuicao> getAtribuicoes() {
+		return atribuicoes;
+	}
+
+	public void setAtribuicoes(Set<Atribuicao> atribuicoes) {
+		this.atribuicoes = atribuicoes;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,10 +87,18 @@ public class Equipe implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Equipe ["+ "ProjetoID=" + projeto.getProjetoID() + ", "
-				+ " ProjetoNome=" + projeto.getNome() + ", "
-				+ "equipeID=" + equipeID + ", "
-				+ "nome=" + nome + ", "
-				+ "]";
+		StringBuilder retorno = new StringBuilder();
+		retorno.append("Equipe [equipeID= ");
+		retorno.append(equipeID);
+		retorno.append(", nome=");
+		retorno.append(nome);
+		retorno.append(", atribuicoes= ");
+		for (Atribuicao atribuicao : atribuicoes) {
+			retorno.append(" Nome do funcionario= ");
+			retorno.append(atribuicao.getFuncionario().getNome());
+			retorno.append(" Papel= ");
+			retorno.append(atribuicao.getPapel());
+		}
+		return retorno.toString();
 	}
 }
