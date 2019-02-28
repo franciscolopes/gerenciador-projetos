@@ -1,7 +1,7 @@
 /*
-Nome do autor: Ilton Batista da Silva Júnior
-Data de criação do arquivo: 20/02/2019
-Objetivo sucinto da classe:Cria uma classe que manipula os requisitos e atualizações de prioridade de um produto
+Nome do autor: Ilton Batista da Silva JÃºnior
+Data de criaÃ§Ã£o do arquivo: 20/02/2019
+Objetivo sucinto da classe:Cria uma classe que manipula os requisitos e atualizaÃ§Ãµes de prioridade de um produto
 Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 
@@ -52,31 +52,10 @@ public class Requisito implements Serializable{
 		return Prioridade.toEnum(prioridade);
 	}
 
-	public void setPrioridade(Integer prioridade) {
-		this.prioridade = prioridade;
-	}
-	
-	public Produto getProduto() {
-		return produto;
+	public void setPrioridade(Prioridade prioridade) {
+		this.prioridade = prioridade.getCodigo();
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
-	public void atualizaPrioridade(Prioridade prioridade) {
-		if(prioridade == Prioridade.toEnum(1)) {
-			System.out.println("ALTA");
-		}
-		else if(prioridade == Prioridade.toEnum(2)) {
-			System.out.println("MEDIA");
-		}
-		else if(prioridade == Prioridade.toEnum(3)) {
-			System.out.println("BAIXA");
-
-		}
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,6 +63,7 @@ public class Requisito implements Serializable{
 		result = prime * result + ((requisitoID == null) ? 0 : requisitoID.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -108,7 +88,9 @@ public class Requisito implements Serializable{
 				+ "\ndescricao = " + descricao
 				+ "\nprioridade = " + Prioridade.toEnum(prioridade);
 	}
-
-
-
+	
+	public void atualizaPrioridade(Prioridade prioridade) {
+		setPrioridade(prioridade);
+	}
 }
+
