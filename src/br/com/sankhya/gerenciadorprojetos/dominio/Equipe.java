@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import br.com.sankhya.gerenciadorprojetos.enums.Papel;
+
 public class Equipe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -101,22 +103,52 @@ public class Equipe implements Serializable {
 		}
 		return retorno.toString();
 	}
-	
+
 	public String exibirFuncionaraios() {
-		StringBuilder listaFuncionarios = new StringBuilder("-----------------------------Lista de membros da equipe-----------------------------\n");
-			
-			for (Atribuicao atribuicao : atribuicoes) {
-				listaFuncionarios.append(atribuicao.getFuncionario().getUsuarioID());
-				listaFuncionarios.append(" - ");
-				listaFuncionarios.append("Nome: ");
-				listaFuncionarios.append(atribuicao.getFuncionario().getNome());
-				listaFuncionarios.append(" Cargo: ");
-				listaFuncionarios.append(atribuicao.getFuncionario().getCargo());
-				listaFuncionarios.append(" Papel: ");
-				listaFuncionarios.append(atribuicao.getPapel());
-				listaFuncionarios.append("\n");
-			}	
-		
+		StringBuilder listaFuncionarios = new StringBuilder(
+				"-----------------------------Lista de membros da equipe-----------------------------\n");
+
+		for (Atribuicao atribuicao : atribuicoes) {
+			listaFuncionarios.append(atribuicao.getFuncionario().getUsuarioID());
+			listaFuncionarios.append(" - ");
+			listaFuncionarios.append("Nome: ");
+			listaFuncionarios.append(atribuicao.getFuncionario().getNome());
+			listaFuncionarios.append(" Cargo: ");
+			listaFuncionarios.append(atribuicao.getFuncionario().getCargo());
+			listaFuncionarios.append(" Papel: ");
+			listaFuncionarios.append(atribuicao.getPapel());
+			listaFuncionarios.append("\n");
+		}
 		return listaFuncionarios.toString();
+	}
+
+	public String exibirFuncionariosTarefasAtrasadas() {
+		StringBuilder funcionariosTarefasAtrasadas = new StringBuilder();
+
+		for (Atribuicao atribuicao : atribuicoes) {
+			for (Tarefa tarefa : atribuicao.getFuncionario().getTarefas()) {
+				if (tarefa.getEstado().getCodigo() == 3) {
+					funcionariosTarefasAtrasadas.append(tarefa.getFuncionario().getUsuarioID());
+					funcionariosTarefasAtrasadas.append(" - ");
+					funcionariosTarefasAtrasadas.append(tarefa.getFuncionario().getNome());
+					funcionariosTarefasAtrasadas.append("\n");
+				}
+			}
+		}
+		return funcionariosTarefasAtrasadas.toString();
+	}
+
+	public String exibirGerente() {
+		StringBuilder exibeGerente = new StringBuilder(
+				"-----------------------------Geremte do projeto-----------------------------\n");
+
+		for (Atribuicao atribuicao : atribuicoes) {
+			if (atribuicao.getPapel() == Papel.GERENTE) {
+				exibeGerente.append(atribuicao.getFuncionario().getUsuarioID());
+				exibeGerente.append(" - ");
+				exibeGerente.append(atribuicao.getFuncionario().getNome());
+			}
+		}
+		return exibeGerente.toString();
 	}
 }
