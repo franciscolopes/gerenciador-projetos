@@ -267,6 +267,7 @@ public class AplicacaoGerenciadorProjetos {
 		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
 				String dataFimString = leitor.nextLine();
 				Date dataFim = formatadorData.parse(dataFimString);
+				System.out.println("\n\n");
 				
 				Projeto projeto = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
 				cliente.getProjetos().addAll(Arrays.asList(projeto));
@@ -307,9 +308,10 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Descrição: ");
 			String descricaoRequisito = leitor.nextLine();
 			
-			System.out.print("Prioridade(1 Alta)(2 Media)(3 Alta): ");
+			System.out.print("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
 			Integer prioridade = leitor.nextInt();
 			leitor.nextLine();
+			System.out.println("\n\n");
 			
 			Requisito requisito = new Requisito(requisitoID, descricaoRequisito, Prioridade.toEnum(prioridade), produto);
 			cliente.getProjetos().get(projetoID - 1).getProduto().getRequisitos().addAll(Arrays.asList(requisito));
@@ -451,6 +453,7 @@ public class AplicacaoGerenciadorProjetos {
 		} else if(modoExibicao == 5) {
 			System.out.println(cliente.exibirProjetosAtrasados());
 		}
+		
 	}
 	
 	// Menu Informações do Projeto - Código YJYF|&
