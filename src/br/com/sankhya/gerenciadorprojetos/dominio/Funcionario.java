@@ -95,7 +95,7 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 	@Override
 	public String exibirTodasTarefas() {
 		StringBuffer listaTarefas = new StringBuffer(
-				"-------------------------Lista de todas as tarefas--------------------------\n");
+				"\n-------------------------Lista de todas as tarefas do funcionario ").append(getNome()).append("--------------------------\n");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ")
@@ -103,13 +103,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 					.append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ")
 					.append(colecaoDeTarefas.getEstado());
 		}
+		listaTarefas.append("\n");
 		return listaTarefas.toString();
 	}
 
 	@Override
 	public String exibirTarefasPendentes() {
 		StringBuffer listaTarefas = new StringBuffer(
-				"-------------------------Lista de todas as tarefas pendentes--------------------------\n");
+				"\n-------------------------Lista de todas as tarefas pendentes do funcionario ").append(getNome()).append("--------------------------\n");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.PENDENTE.getCodigo()) {
@@ -119,13 +120,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 						.append(colecaoDeTarefas.getEstado());
 			}
 		}
+		listaTarefas.append("\n");
 		return listaTarefas.toString();
 	}
 
 	@Override
 	public String exibirTarefasConcluidas() {
 		StringBuffer listaTarefas = new StringBuffer(
-				"-------------------------Lista de todas as tarefas concluidas--------------------------\n");
+				"\n-------------------------Lista de todas as tarefas concluidas do funcionario ").append(getNome()).append("--------------------------\n");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.CONCLUIDA.getCodigo()) {
@@ -135,13 +137,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 						.append(colecaoDeTarefas.getEstado());
 			}
 		}
+		listaTarefas.append("\n");
 		return listaTarefas.toString();
 	}
 
 	@Override
 	public String exibirTarefasAtrasadas() {
 		StringBuffer listaTarefas = new StringBuffer(
-				"-------------------------Lista de todas as tarefas atrasadas--------------------------\n");
+				"\n-------------------------Lista de todas as tarefas atrasadas do funcionario ").append(getNome()).append("--------------------------\n");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.ATRASADA.getCodigo()) {
@@ -151,13 +154,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 						.append(colecaoDeTarefas.getEstado());
 			}
 		}
+		listaTarefas.append("\n");
 		return listaTarefas.toString();
 	}
 
 	@Override
 	public String exibirTarefasParaEntregarAte(Date data) {
 		StringBuffer listaTarefas = new StringBuffer(
-				"-------------------------Lista de tarefas para entregar ate a data especificada--------------------------\n");
+				"\n-------------------------Lista de tarefas para entregar ate a data especificada do funcionario ").append(getNome()).append("--------------------------\n");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getDataEntrega().compareTo(data) <= 0) {
@@ -167,6 +171,7 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 						.append(colecaoDeTarefas.getEstado());
 			}
 		}
+		listaTarefas.append("\n");
 		return listaTarefas.toString();
 	}
 

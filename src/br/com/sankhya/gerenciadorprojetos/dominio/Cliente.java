@@ -90,39 +90,54 @@ public class Cliente extends Usuario implements Serializable {
 		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
 	}
 	
-	public List<Projeto> exibirTodosProjetos() {
-		List<Projeto> todosProjetos = projetos;
+	public String exibirTodosProjetos() {
+		StringBuffer strProjetos = new StringBuffer();
+		
+		for(Projeto projeto : projetos) {
+			strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome() + "\n");
+		}
+		
+		String todosProjetos = strProjetos.toString();
 		return todosProjetos;
 	}
 	
-	public List<Projeto> exibirProjetosConcluidos() {
-		List<Projeto> percorreProjetos = new ArrayList<>();
+	public String exibirProjetosConcluidos() {
+		StringBuffer strProjetos = new StringBuffer();
+		
 		for(Projeto projetoAtual : projetos) {
 			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
-				percorreProjetos.add(projetoAtual);
+				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		return percorreProjetos;
+		
+		String projetosConcluidos = strProjetos.toString();
+		return projetosConcluidos;
 	}
 	
-	public List<Projeto> exibirProjetosAtrasados() {
-		List<Projeto> percorreProjetos = new ArrayList<>();
+	public String exibirProjetosAtrasados() {
+		StringBuffer strProjetos = new StringBuffer();
 		Date dataAtual = new Date();
+		
 		for(Projeto projetoAtual : projetos) {
 			if(dataAtual.getTime() > projetoAtual.getDataFim().getTime() && projetoAtual.getStatusProjeto().getCodigo() != EstadoProjeto.toEnum(2).getCodigo()) {
-				percorreProjetos.add(projetoAtual);
+				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		return percorreProjetos;
+		
+		String projetosAtrasados = strProjetos.toString();
+		return projetosAtrasados;
 	}
 	
-	public List<Projeto> exibirProjetosEmAndamento() {
-		List<Projeto> percorreProjetos = new ArrayList<>();
+	public String exibirProjetosEmAndamento() {
+		StringBuffer strProjetos = new StringBuffer();
+		
 		for(Projeto projetoAtual : projetos) {
 			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(1).getCodigo()) {
-				percorreProjetos.add(projetoAtual);
+				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		return percorreProjetos;
+		
+		String projetosEmAndamento = strProjetos.toString();
+		return projetosEmAndamento;
 	}
 }

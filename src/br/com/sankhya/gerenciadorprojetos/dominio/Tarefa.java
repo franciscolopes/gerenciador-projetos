@@ -116,5 +116,8 @@ public class Tarefa implements Serializable {
 		return "Tarefa [tarefaID=" + tarefaID + ", descricao=" + descricao + ", dataEntrega=" + dataEntrega
 				+ ", estado=" + EstadoTarefa.toEnum(estado) + ", funcionario=" + funcionario + "]";
 	}
-
+	
+	public void atualizarStatus(EstadoTarefa status) {
+		setEstado(status);
+	}
 }
