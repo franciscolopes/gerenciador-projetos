@@ -94,22 +94,24 @@ public class Cliente extends Usuario implements Serializable {
 		StringBuffer strProjetos = new StringBuffer();
 		
 		for(Projeto projeto : projetos) {
-			strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome());
+			strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome() + "\n");
 		}
 		
 		String todosProjetos = strProjetos.toString();
-		
 		return todosProjetos;
 	}
 	
-	public List<Projeto> exibirProjetosConcluidos() {
-		List<Projeto> percorreProjetos = new ArrayList<>();
-		for(Projeto projetoAtual : projetos) {
-			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
-				percorreProjetos.add(projetoAtual);
+	public String exibirProjetosConcluidos() {
+		StringBuffer strProjetos = new StringBuffer();
+		
+		for(Projeto projeto : projetos) {
+			if(projeto.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
+				strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome() + "\n");
 			}
 		}
-		return percorreProjetos;
+		
+		String projetosConcluidos = strProjetos.toString();
+		return projetosConcluidos;
 	}
 	
 	public List<Projeto> exibirProjetosAtrasados() {
