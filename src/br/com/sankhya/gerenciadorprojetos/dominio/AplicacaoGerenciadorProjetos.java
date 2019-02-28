@@ -317,7 +317,6 @@ public class AplicacaoGerenciadorProjetos {
 			cliente.getProjetos().get(projetoID - 1).getProduto().getRequisitos().addAll(Arrays.asList(requisito));
 			requisitoID++;
 		}
-		
 		produtoID++;
 		cadastroDeEquipeETarefas();
 	}
@@ -337,7 +336,6 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println();
 		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
 		System.out.println("\n\n");
-
 		
 		System.out.print("Deseja cadastrar quantos funcionarios?\n");
 		Integer quantidadeFuncionarios = leitor.nextInt();
@@ -400,12 +398,10 @@ public class AplicacaoGerenciadorProjetos {
 					System.out.println("Formato Incorreto de Data");
 				}
 			}
-			
 			Atribuicao atribuicao = new Atribuicao(qtdeHoras, precoHora, equipe, funcionario, Papel.toEnum(papel));
 			
 			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
 		}
-		
 		projetoID++;
 		projetos();
 	}
@@ -442,7 +438,6 @@ public class AplicacaoGerenciadorProjetos {
 			}	
 		}
 	}
-	
 	// Menu Exibicao de Projetos - Código >de1DM
 	public static void exibicaoDeProjetos(int modoExibicao) {
 		if(modoExibicao == 2) {
@@ -596,5 +591,4 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("----- Gerenciador de Projetos ------");
 		menuPrincipal();
 	}
-
 }
