@@ -8,12 +8,16 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Equipe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer equipeID;
 	private String nome;
+	private Projeto projeto;
+	private Set<Atribuicao> atribuicoes = new HashSet<>();
 
 	public Equipe() {
 	}
@@ -38,6 +42,22 @@ public class Equipe implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
+
+	public Set<Atribuicao> getAtribuicoes() {
+		return atribuicoes;
+	}
+
+	public void setAtribuicoes(Set<Atribuicao> atribuicoes) {
+		this.atribuicoes = atribuicoes;
 	}
 
 	@Override
@@ -67,6 +87,36 @@ public class Equipe implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Equipe [equipeID=" + equipeID + ", nome=" + nome + "]";
+		StringBuilder retorno = new StringBuilder();
+		retorno.append("Equipe [equipeID= ");
+		retorno.append(equipeID);
+		retorno.append(", nome=");
+		retorno.append(nome);
+		retorno.append(", atribuicoes= ");
+		for (Atribuicao atribuicao : atribuicoes) {
+			retorno.append(" Nome do funcionario= ");
+			retorno.append(atribuicao.getFuncionario().getNome());
+			retorno.append(" Papel= ");
+			retorno.append(atribuicao.getPapel());
+		}
+		return retorno.toString();
+	}
+	
+	public String exibirFuncionaraios() {
+		StringBuilder listaFuncionarios = new StringBuilder("-----------------------------Lista de membros da equipe-----------------------------\n");
+			
+			for (Atribuicao atribuicao : atribuicoes) {
+				listaFuncionarios.append(atribuicao.getFuncionario().getUsuarioID());
+				listaFuncionarios.append(" - ");
+				listaFuncionarios.append("Nome: ");
+				listaFuncionarios.append(atribuicao.getFuncionario().getNome());
+				listaFuncionarios.append(" Cargo: ");
+				listaFuncionarios.append(atribuicao.getFuncionario().getCargo());
+				listaFuncionarios.append(" Papel: ");
+				listaFuncionarios.append(atribuicao.getPapel());
+				listaFuncionarios.append("\n");
+			}	
+		
+		return listaFuncionarios.toString();
 	}
 }
