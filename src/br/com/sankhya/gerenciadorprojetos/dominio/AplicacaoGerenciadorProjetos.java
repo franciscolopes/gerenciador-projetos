@@ -24,9 +24,14 @@ Sumário:
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
 
 public class AplicacaoGerenciadorProjetos {
 	public static List<Cliente> clientes = new ArrayList<>();     
@@ -35,6 +40,8 @@ public class AplicacaoGerenciadorProjetos {
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
+	public static Integer projetoID = 1;
+	public static SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy"); 
 	
 	// Menu Principal - Código wbo$Lp
 	public static void menuPrincipal() {
@@ -234,12 +241,33 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Cadastro de Projeto - Código Lq>?Ie
-	// Incompleto
 	public static void cadastroDeProjeto() {
-		System.out.println();
-		System.out.println("[ Cadastro de Projeto ]");
-		System.out.println();
-		// Algo
+		while(true) {
+			System.out.println();
+			System.out.println("[ Cadastro de Projeto ]");
+			System.out.println();
+			
+			System.out.print("Nome: ");
+			String nome = leitor.nextLine();
+			System.out.print("Objetivo Inteligente: ");
+			String objetivoInteligente = leitor.nextLine();
+
+			try {
+				System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
+				String dataInicioString = leitor.nextLine();
+				Date dataInicio = formatadorData.parse(dataInicioString);
+				
+		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
+				String dataFimString = leitor.nextLine();
+				Date dataFim = formatadorData.parse(dataFimString);
+				
+				Projeto projeto = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
+				cliente.getProjetos().addAll(Arrays.asList(projeto));
+				cadastroDoProdutoERequisitos();
+			} catch(Exception e) {
+				System.out.println("Formato Incorreto de Data");
+			}
+		}
 	}
 	
 	// Menu Cadastro do Produto e Requisitos - Código duxkX0
