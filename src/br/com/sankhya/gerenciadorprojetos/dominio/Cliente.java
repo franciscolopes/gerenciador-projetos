@@ -104,9 +104,9 @@ public class Cliente extends Usuario implements Serializable {
 	public String exibirProjetosConcluidos() {
 		StringBuffer strProjetos = new StringBuffer();
 		
-		for(Projeto projeto : projetos) {
-			if(projeto.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
-				strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome() + "\n");
+		for(Projeto projetoAtual : projetos) {
+			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
+				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
 		
@@ -114,24 +114,30 @@ public class Cliente extends Usuario implements Serializable {
 		return projetosConcluidos;
 	}
 	
-	public List<Projeto> exibirProjetosAtrasados() {
-		List<Projeto> percorreProjetos = new ArrayList<>();
+	public String exibirProjetosAtrasados() {
+		StringBuffer strProjetos = new StringBuffer();
 		Date dataAtual = new Date();
+		
 		for(Projeto projetoAtual : projetos) {
 			if(dataAtual.getTime() > projetoAtual.getDataFim().getTime() && projetoAtual.getStatusProjeto().getCodigo() != EstadoProjeto.toEnum(2).getCodigo()) {
-				percorreProjetos.add(projetoAtual);
+				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		return percorreProjetos;
+		
+		String projetosAtrasados = strProjetos.toString();
+		return projetosAtrasados;
 	}
 	
-	public List<Projeto> exibirProjetosEmAndamento() {
-		List<Projeto> percorreProjetos = new ArrayList<>();
+	public String exibirProjetosEmAndamento() {
+		StringBuffer strProjetos = new StringBuffer();
+		
 		for(Projeto projetoAtual : projetos) {
 			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(1).getCodigo()) {
-				percorreProjetos.add(projetoAtual);
+				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		return percorreProjetos;
+		
+		String projetosEmAndamento = strProjetos.toString();
+		return projetosEmAndamento;
 	}
 }
