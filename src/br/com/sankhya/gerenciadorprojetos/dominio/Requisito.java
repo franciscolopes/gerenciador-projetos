@@ -18,11 +18,11 @@ public class Requisito implements Serializable{
 	private Integer requisitoID;
 	private String descricao;
 	private Integer prioridade;
-	
+	/*
 	public Requisito() {
 		super();
 	}
-	
+	*/
 	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum) {
 		super();
 		this.requisitoID = requisitoID;
@@ -55,17 +55,9 @@ public class Requisito implements Serializable{
 	}
 	
 	public void atualizaPrioridade(Prioridade prioridade) {
-		if(prioridade == Prioridade.toEnum(1)) {
-			System.out.println("ALTA");
-		}
-		else if(prioridade == Prioridade.toEnum(2)) {
-			System.out.println("MEDIA");
-		}
-		else if(prioridade == Prioridade.toEnum(3)) {
-			System.out.println("BAIXA");
+		setPrioridade(prioridade.getCodigo());
+}
 
-		}
-	}
 	
 	@Override
 	public int hashCode() {
