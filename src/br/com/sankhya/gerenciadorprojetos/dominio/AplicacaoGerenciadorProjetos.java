@@ -566,6 +566,22 @@ public class AplicacaoGerenciadorProjetos {
 		cliente1.setEndereco(endereco1);
 		clientes.add(cliente1);
 		
+		Date data = new Date();
+		BigDecimal big = new BigDecimal(10);
+		
+		Projeto projeto1 = new Projeto(1, "Projeto Xiomi", "O melhor celular", data, data, EstadoProjeto.EM_ANDAMENTO, cliente1);
+		Produto produto1 = new Produto(1, "produto", "produto");
+		Requisito requisito1 = new Requisito(1, "descricao", Prioridade.toEnum(1), produto1);
+		produto1.getRequisitos().addAll(Arrays.asList(requisito1));
+		Equipe equipe1 = new Equipe(1, "alfa");
+		Funcionario funcionario1 = new Funcionario(1, "robs", "123", "123", big);
+		Tarefa tarefa1 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
+		funcionario1.getTarefas().addAll(Arrays.asList(tarefa1));
+		Atribuicao atribuicao1 = new Atribuicao(123, big, equipe1, funcionario1, Papel.toEnum(1));
+		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
+		projeto1.setEquipe(equipe1);
+		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
+		
 		System.out.println("----- Gerenciador de Projetos ------");
 		menuPrincipal();
 	}
