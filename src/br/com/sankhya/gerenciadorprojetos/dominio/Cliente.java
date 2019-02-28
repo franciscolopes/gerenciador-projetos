@@ -90,8 +90,15 @@ public class Cliente extends Usuario implements Serializable {
 		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
 	}
 	
-	public List<Projeto> exibirTodosProjetos() {
-		List<Projeto> todosProjetos = projetos;
+	public String exibirTodosProjetos() {
+		StringBuffer strProjetos = new StringBuffer();
+		
+		for(Projeto projeto : projetos) {
+			strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome());
+		}
+		
+		String todosProjetos = strProjetos.toString();
+		
 		return todosProjetos;
 	}
 	
