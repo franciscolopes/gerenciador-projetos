@@ -408,7 +408,6 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Listar Projetos - Código :+%8$R
-	// Incompleto
 	public static void listarProjetos() {
 		while(true) {
 			System.out.println();
@@ -467,7 +466,6 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Informações do Projeto - Código YJYF|&
-	// Incompleto
 	public static void informacoesDoProjeto() {
 		while(true) {
 			System.out.println();
@@ -497,20 +495,48 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Tarefas do Projeto - Código D!)maL
-	// Incompleto
 	public static void tarefasDoProjeto() {
-		System.out.println();
-		System.out.println("[ Tarefas do Projeto ]");
-		System.out.println();
-		
 		while(true) {
 			System.out.println();
-			System.out.println("1.Voltar ao menu informações do projeto");
-			System.out.println("2.Voltar ao menu principal");
+			System.out.println("[ Tarefas do Projeto ]");
+			System.out.println("1.Todas as tarefas");
+			System.out.println("2.Tarefas concluidas");
+			System.out.println("3.Tarefas atrasadas");
+			System.out.println("4.Tarefas para entregar ate data");
+			System.out.println("5.Tarefas pendentes");
 			System.out.println();
 		
 			System.out.print("Escolha uma opção: ");
 			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				System.out.println(projeto.exibirTodasTarefas());
+			} else if(opcao == 2) {
+				System.out.println(projeto.exibirTarefasConcluidas());
+			} else if(opcao == 3) {
+				System.out.println(projeto.exibirTarefasAtrasadas());
+			} else if(opcao == 4) {
+				try {
+					System.out.print("Insira a data: ");
+					System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
+					String dataDesejadaString = leitor.nextLine();
+					Date dataDesejada = formatadorData.parse(dataDesejadaString);
+					projeto.exibirTarefasParaEntregarAte(dataDesejada);
+				} catch(Exception e) {
+					System.out.println("Formato Incorreto de Data");
+				}
+			} else if(opcao == 5) {
+				System.out.println(projeto.exibirTarefasPendentes());
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+			
+			System.out.println("1.Voltar ao menu informações do projeto");
+			System.out.println("2.Voltar ao menu principal");
+			
+			System.out.print("Escolha uma opção: ");
+			opcao = leitor.nextInt();
 			leitor.nextLine();
 			
 			if(opcao == 1) {
