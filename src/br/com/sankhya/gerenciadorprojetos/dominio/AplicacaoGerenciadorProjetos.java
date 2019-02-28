@@ -177,7 +177,6 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Dados Pessoais - Código dtzsP+
-	// Incompleto
 	public static void dadosPessoais() {
 		System.out.println();
 		System.out.println("[ Dados Pessoais ]");
@@ -221,7 +220,6 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Projetos - Código !E.U^x
-	// Incompleto
 	public static void projetos() {
 		while(true) {
 			System.out.println();
@@ -318,8 +316,8 @@ public class AplicacaoGerenciadorProjetos {
 			requisitoID++;
 		}
 		
-		projetoID++;
 		produtoID++;
+		cadastroDeEquipeETarefas();
 	}
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
@@ -329,9 +327,10 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println();
 		
 		System.out.print("Nome: ");
-		String nome = leitor.nextLine();
+		String nomeEquipe = leitor.nextLine();
 		
-		Equipe equipe = new Equipe(equipeID, nome);
+		Equipe equipe = new Equipe(equipeID, nomeEquipe);
+		clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).setEquipe(equipe);
 		
 		System.out.println();
 		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
@@ -368,12 +367,6 @@ public class AplicacaoGerenciadorProjetos {
 			
 			Funcionario funcionario = new Funcionario(usuarioID, nomeFuncionario, cpf, cargo, salario);
 			
-			Atribuicao atribuicao = new Atribuicao(qtdeHoras, precoHora, equipe, funcionario, Papel.toEnum(papel));
-			
-			equipe.getAtribuicoes().addAll(Arrays.asList(atribuicao));
-			
-			funcionarioID++;
-			
 			System.out.println();
 			System.out.println("[ Cadastro de Tarefa ]");
 			System.out.println();
@@ -396,14 +389,22 @@ public class AplicacaoGerenciadorProjetos {
 					Date dataEntrega = formatadorData.parse(dataEntregaString);
 					
 					Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
+					
 					funcionario.getTarefas().addAll(Arrays.asList(tarefa));
+					
+					tarefaID++;
 				} catch(Exception e) {
 					System.out.println("Formato Incorreto de Data");
 				}
 			}
 			
+			Atribuicao atribuicao = new Atribuicao(qtdeHoras, precoHora, equipe, funcionario, Papel.toEnum(papel));
+			
+			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
 		}
 		
+		projetoID++;
+		projetos();
 	}
 	
 	// Menu Listar Projetos - Código :+%8$R
