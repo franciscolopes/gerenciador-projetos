@@ -8,11 +8,12 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
 
-public class Projeto implements Serializable {
+public class Projeto implements ExibeTarefas, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer projetoID;
@@ -143,4 +144,50 @@ public class Projeto implements Serializable {
 		return "Projeto [IDCliente=" + cliente.getUsuarioID() + ", nomeCliente=" + cliente.getNome() + ", projetoID=" + projetoID + ", nome=" + nome + ", objetivoInteligente=" + objetivoInteligente
 				+ ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", status=" + status + "]";
 	}
+
+	@Override
+	public String exibirTodasTarefas() {
+		StringBuffer todasTarefas = new StringBuffer(" ");
+		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
+			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTodasTarefas());
+		}
+		return todasTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasPendentes() {
+		StringBuffer todasTarefas = new StringBuffer(" ");
+		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
+			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasPendentes());
+		}
+		return todasTarefas.append("\n").toString();
+	}
+
+	@Override
+	public String exibirTarefasConcluidas() {
+		StringBuffer todasTarefas = new StringBuffer(" ");
+		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
+			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasConcluidas()).append("\n");
+		}
+		return todasTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasAtrasadas() {
+		StringBuffer todasTarefas = new StringBuffer(" ");
+		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
+			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasAtrasadas()).append("\n");
+		}
+		return todasTarefas.toString();
+	}
+
+	@Override
+	public String exibirTarefasParaEntregarAte(Date data) {
+		StringBuffer todasTarefas = new StringBuffer(" ");
+		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
+			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasParaEntregarAte(data)).append("\n");
+		}
+		return todasTarefas.toString();
+	}
+	
 }
