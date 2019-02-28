@@ -50,15 +50,10 @@ public class Requisito implements Serializable{
 		return Prioridade.toEnum(prioridade);
 	}
 
-	public void setPrioridade(Integer prioridade) {
-		this.prioridade = prioridade;
+	public void setPrioridade(Prioridade prioridade) {
+		this.prioridade = prioridade.getCodigo();
 	}
-	
-	public void atualizaPrioridade(Prioridade prioridade) {
-		setPrioridade(prioridade.getCodigo());
-}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -66,6 +61,7 @@ public class Requisito implements Serializable{
 		result = prime * result + ((requisitoID == null) ? 0 : requisitoID.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -90,5 +86,8 @@ public class Requisito implements Serializable{
 				+ "descricao=" + descricao + ", "
 				+ "prioridade=" + getPrioridade()+ "]";
 	}
-
+	
+	public void atualizaPrioridade(Prioridade prioridade) {
+		setPrioridade(prioridade);
+	}
 }
