@@ -307,7 +307,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Descrição: ");
 			String descricaoRequisito = leitor.nextLine();
 			
-			System.out.print("Prioridade(1 Alta)(2 Media)(3 Alta): ");
+			System.out.print("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
 			Integer prioridade = leitor.nextInt();
 			leitor.nextLine();
 			
@@ -552,26 +552,43 @@ public class AplicacaoGerenciadorProjetos {
 	// Menu Produto e Requisitos do Projeto - Código k)Lf(A
 	// Incompleto
 	public static void produtoERequisitosDoProjeto() {
-		System.out.println();
-		System.out.println("[ Produto do Projeto ]");
-		System.out.println();
-		
-		// Algo
-		
-		System.out.println();
-		System.out.println("[ Requisitos do Produto ]");
-		System.out.println();
-		
-		// Algo
-		
 		while(true) {
+			System.out.println();
+			System.out.println("[ Produto do Projeto ]");
+			System.out.println();
+			
+			System.out.println("ID: " + projeto.getProduto().getProdutoID() +
+					"Nome: " + projeto.getProduto().getNome() + 
+					"Descrição: " + projeto.getProduto().getDescricao());	
+			
+			System.out.println();
+			System.out.println("[ Requisitos do Produto ]");
+			System.out.println();
+			
+			System.out.println("1.Exibir todos os requisitos");
+			System.out.println("2.Exibir requisitos por prioridade");
+			
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				System.out.println(projeto.getProduto().exibirTodosRequisitos());
+			} else if(opcao == 2) {
+				System.out.print("Qual prioridade(1 Alta)(2 Media)(3 Baixa): ");
+				int prioridade = leitor.nextInt();
+				System.out.println(projeto.getProduto().exibirRequisitosPorPrioridade(Prioridade.toEnum(prioridade)));
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+			
 			System.out.println();
 			System.out.println("1.Voltar ao menu informações do projeto");
 			System.out.println("2.Voltar ao menu principal");
 			System.out.println();
 		
 			System.out.print("Escolha uma opção: ");
-			int opcao = leitor.nextInt();
+			opcao = leitor.nextInt();
 			leitor.nextLine();
 			
 			if(opcao == 1) {
