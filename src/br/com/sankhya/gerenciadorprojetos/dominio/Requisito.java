@@ -1,7 +1,7 @@
 /*
-Nome do autor: Ilton Batista da Silva Júnior
-Data de criação do arquivo: 20/02/2019
-Objetivo sucinto da classe:Cria uma classe que manipula os requisitos e atualizações de prioridade de um produto
+Nome do autor: Ilton Batista da Silva JÃºnior
+Data de criaÃ§Ã£o do arquivo: 20/02/2019
+Objetivo sucinto da classe:Cria uma classe que manipula os requisitos e atualizaÃ§Ãµes de prioridade de um produto
 Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 
@@ -18,16 +18,18 @@ public class Requisito implements Serializable{
 	private Integer requisitoID;
 	private String descricao;
 	private Integer prioridade;
+	private Produto produto;
 	
 	public Requisito() {
 		super();
 	}
 	
-	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum) {
+	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum, Produto produto) {
 		super();
 		this.requisitoID = requisitoID;
 		this.descricao = descricao;
 		this.prioridade = prioridadeEnum.getCodigo();
+		this.produto = produto;
 	}
 	
 	public Integer getRequisitoID() {
@@ -81,13 +83,14 @@ public class Requisito implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Requisito ["
-				+ "requisitoID=" + requisitoID + ", "
-				+ "descricao=" + descricao + ", "
-				+ "prioridade=" + getPrioridade()+ "]";
+		return "\n__________________________________\n"
+				+"\nrequisitoID = " + requisitoID
+				+ "\ndescricao = " + descricao
+				+ "\nprioridade = " + Prioridade.toEnum(prioridade);
 	}
 	
 	public void atualizaPrioridade(Prioridade prioridade) {
 		setPrioridade(prioridade);
 	}
 }
+
