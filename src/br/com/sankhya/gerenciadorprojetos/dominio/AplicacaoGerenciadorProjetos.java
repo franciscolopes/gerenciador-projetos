@@ -427,13 +427,13 @@ public class AplicacaoGerenciadorProjetos {
 			if(opcao == 1) {
 				projetos();
 			} else if(opcao == 2) {
-				exibicaoDeProjetos(1);
-			} else if(opcao == 3) {
 				exibicaoDeProjetos(2);
-			} else if(opcao == 4) {
+			} else if(opcao == 3) {
 				exibicaoDeProjetos(3);
-			} else if(opcao == 5) {
+			} else if(opcao == 4) {
 				exibicaoDeProjetos(4);
+			} else if(opcao == 5) {
+				exibicaoDeProjetos(5);
 			} else {
 				System.out.println("opção inválida, tente novamente");
 			}	
@@ -441,9 +441,16 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Exibicao de Projetos - Código >de1DM
-	// Incompleto
 	public static void exibicaoDeProjetos(int modoExibicao) {
-		// Algo
+		if(modoExibicao == 2) {
+			System.out.println(cliente.exibirTodosProjetos());
+		} else if(modoExibicao == 3) {
+			System.out.println(cliente.exibirProjetosEmAndamento());
+		} else if(modoExibicao == 4) {
+			System.out.println(cliente.exibirProjetosConcluidos());
+		} else if(modoExibicao == 5) {
+			System.out.println(cliente.exibirProjetosAtrasados());
+		}
 	}
 	
 	// Menu Informações do Projeto - Código YJYF|&
