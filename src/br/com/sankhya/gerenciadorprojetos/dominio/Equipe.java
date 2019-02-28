@@ -123,7 +123,8 @@ public class Equipe implements Serializable {
 	}
 
 	public String exibirFuncionariosTarefasAtrasadas() {
-		StringBuilder funcionariosTarefasAtrasadas = new StringBuilder();
+		StringBuilder funcionariosTarefasAtrasadas = new StringBuilder(
+				"-----------------------------Lista de funcionarios com tarefas atrasadas-----------------------------\n");
 
 		for (Atribuicao atribuicao : atribuicoes) {
 			for (Tarefa tarefa : atribuicao.getFuncionario().getTarefas()) {
