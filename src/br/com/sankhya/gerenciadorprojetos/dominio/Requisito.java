@@ -18,11 +18,11 @@ public class Requisito implements Serializable{
 	private Integer requisitoID;
 	private String descricao;
 	private Integer prioridade;
-	/*
+	
 	public Requisito() {
 		super();
 	}
-	*/
+	
 	public Requisito(Integer requisitoID, String descricao, Prioridade prioridadeEnum) {
 		super();
 		this.requisitoID = requisitoID;
