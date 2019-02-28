@@ -9,6 +9,7 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
@@ -188,6 +189,17 @@ public class Projeto implements ExibeTarefas, Serializable {
 			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasParaEntregarAte(data)).append("\n");
 		}
 		return todasTarefas.toString();
+	}
+	
+	public BigDecimal calcularCustoTotal() {
+		
+		BigDecimal custoTotal = new BigDecimal(0);
+		
+		for(Atribuicao atribuicao : equipe.getAtribuicoes()) {
+			BigDecimal custoAtribuicao = atribuicao.calcularPrecoTotal();
+			custoTotal = custoTotal.add(custoAtribuicao);
+		}
+		return custoTotal;
 	}
 	
 }
