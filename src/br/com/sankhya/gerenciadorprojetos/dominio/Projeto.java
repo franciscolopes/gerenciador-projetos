@@ -196,10 +196,16 @@ public class Projeto implements ExibeTarefas, Serializable {
 		BigDecimal custoTotal = new BigDecimal(0);
 		
 		for(Atribuicao atribuicao : equipe.getAtribuicoes()) {
-			BigDecimal custoAtribuicao = atribuicao.calcularPrecoTotal();
-			custoTotal = custoTotal.add(custoAtribuicao);
+			custoTotal = custoTotal.add(atribuicao.calcularPrecoTotal());
 		}
 		return custoTotal;
 	}
 	
+	public Integer exibirTotalHoras() {
+		Integer totalHoras = 0;
+		for(Atribuicao atribuicao : equipe.getAtribuicoes()) {
+			totalHoras += atribuicao.getQtdeHoras();
+		}
+		return totalHoras;
+	}
 }
