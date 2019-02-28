@@ -568,7 +568,7 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Main - Código ^(P6tO
 	public static void main(String[] args) {
-		/*Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
+		Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
 		Cliente cliente1 = new Cliente(1, "Roobson Silva", "069.231.590-08", "roobson@gmail.com", "34 9999-9999");
 		cliente1.setEndereco(endereco1);
 		clientes.add(cliente1);
@@ -590,21 +590,7 @@ public class AplicacaoGerenciadorProjetos {
 		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
 		
 		System.out.println("----- Gerenciador de Projetos ------");
-		menuPrincipal();*/
-		
-		Date data = new Date();
-		
-		Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
-		Cliente cliente1 = new Cliente(1, "Roobson Silva", "069.231.590-08", "roobson@gmail.com", "34 9999-9999");
-		cliente1.setEndereco(endereco1);
-		clientes.add(cliente1);
-		
-		Projeto projeto1 = new Projeto(1, "Projeto Xiomi", "O melhor celular", data, data, EstadoProjeto.EM_ANDAMENTO, cliente1);
-		Projeto projeto2 = new Projeto(2, "Projeto Xiomi", "O melhor celular", data, data, EstadoProjeto.EM_ANDAMENTO, cliente1);
-		
-		cliente1.getProjetos().addAll(Arrays.asList(projeto1, projeto2));
-		
-		System.out.println(cliente1.exibirTodosProjetos());
+		menuPrincipal();
 	}
 
 }
