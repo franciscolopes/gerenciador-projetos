@@ -296,7 +296,7 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("[ Cadastro dos Requisitos ]");
 		System.out.println();
 		
-		System.out.print("Você deseja cadastrar quantos requisitos? ");
+		System.out.print("Você deseja cadastrar quantos requisitos?\n");
 		Integer quantidade = leitor.nextInt();
 		leitor.nextLine();
 		
@@ -324,7 +324,7 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
 	public static void cadastroDeEquipeETarefas() {
-		System.out.println();
+		System.out.println("\n\n");
 		System.out.println("[ Cadastro de Equipe ]");
 		System.out.println();
 		
@@ -336,9 +336,10 @@ public class AplicacaoGerenciadorProjetos {
 		
 		System.out.println();
 		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
-		System.out.println();
+		System.out.println("\n\n");
+
 		
-		System.out.print("Deseja cadastrar quantos funcionarios? ");
+		System.out.print("Deseja cadastrar quantos funcionarios?\n");
 		Integer quantidadeFuncionarios = leitor.nextInt();
 		leitor.nextLine();
 		
@@ -373,7 +374,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Cadastro de Tarefa ]");
 			System.out.println();
 			
-			System.out.print("Deseja cadastrar quantos tarefas? ");
+			System.out.print("Deseja cadastrar quantos tarefas?\n");
 			Integer quantidadeTarefas = leitor.nextInt();
 			leitor.nextLine();
 			
