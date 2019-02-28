@@ -442,14 +442,27 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Menu Exibicao de Projetos - Código >de1DM
 	public static void exibicaoDeProjetos(int modoExibicao) {
-		if(modoExibicao == 2) {
-			System.out.println(cliente.exibirTodosProjetos());
-		} else if(modoExibicao == 3) {
-			System.out.println(cliente.exibirProjetosEmAndamento());
-		} else if(modoExibicao == 4) {
-			System.out.println(cliente.exibirProjetosConcluidos());
-		} else if(modoExibicao == 5) {
-			System.out.println(cliente.exibirProjetosAtrasados());
+		while(true) {
+			if(modoExibicao == 2) {
+				System.out.println(cliente.exibirTodosProjetos());
+			} else if(modoExibicao == 3) {
+				System.out.println(cliente.exibirProjetosEmAndamento());
+			} else if(modoExibicao == 4) {
+				System.out.println(cliente.exibirProjetosConcluidos());
+			} else if(modoExibicao == 5) {
+				System.out.println(cliente.exibirProjetosAtrasados());
+			}
+			
+			System.out.println("Selecione um projeto por seu ID: ");
+			int ID = leitor.nextInt();
+			leitor.nextLine();
+			
+			try {
+				projeto = cliente.getProjetos().get(ID - 1);
+				informacoesDoProjeto();
+			} catch(Exception e) {
+				System.out.println("ID inválido, insira um valor válido");
+			}
 		}
 	}
 	
