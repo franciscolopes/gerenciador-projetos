@@ -24,6 +24,7 @@ Sumário:
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +33,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
+import br.com.sankhya.gerenciadorprojetos.enums.EstadoTarefa;
+import br.com.sankhya.gerenciadorprojetos.enums.Papel;
 import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
 
 public class AplicacaoGerenciadorProjetos {
@@ -40,10 +43,13 @@ public class AplicacaoGerenciadorProjetos {
 	public static Projeto projeto;
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
+	public static Integer funcionarioID = 1;
 	public static Integer enderecoID = 1;
 	public static Integer projetoID = 1;
 	public static Integer produtoID = 1;
+	public static Integer equipeID = 1;
 	public static Integer requisitoID = 1;
+	public static Integer tarefaID = 1;
 	public static SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy"); 
 	
 	// Menu Principal - Código wbo$Lp
@@ -317,12 +323,87 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
-	// Incompleto
 	public static void cadastroDeEquipeETarefas() {
 		System.out.println();
-		System.out.println("[ Cadastro de Equipe e Tarefas ]");
+		System.out.println("[ Cadastro de Equipe ]");
 		System.out.println();
-		// Algo
+		
+		System.out.print("Nome: ");
+		String nome = leitor.nextLine();
+		
+		Equipe equipe = new Equipe(equipeID, nome);
+		
+		System.out.println();
+		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
+		System.out.println();
+		
+		System.out.print("Deseja cadastrar quantos funcionarios? ");
+		Integer quantidadeFuncionarios = leitor.nextInt();
+		leitor.nextLine();
+		
+		for (int i = 0; i < quantidadeFuncionarios; i++) {
+			System.out.println();
+			System.out.println("[ Cadastro de Funcionario ]");
+			System.out.println();
+			
+			System.out.print("Nome: ");
+			String nomeFuncionario = leitor.nextLine();
+			System.out.print("CPF: ");
+			String cpf = leitor.nextLine();
+			System.out.print("Cargo: ");
+			String cargo = leitor.nextLine();
+			System.out.print("Salário: ");
+			BigDecimal salario = leitor.nextBigDecimal();
+			leitor.nextLine();
+			
+			System.out.print("Quantidade de Horas: ");
+			int qtdeHoras = leitor.nextInt();
+			leitor.nextLine();
+			System.out.print("Preco Hora: ");
+			BigDecimal precoHora = leitor.nextBigDecimal();
+			leitor.nextLine();
+			System.out.print("Papel(1 Gerente)(2 Colaborador): ");
+			int papel = leitor.nextInt();
+			leitor.nextLine();
+			
+			Funcionario funcionario = new Funcionario(usuarioID, nomeFuncionario, cpf, cargo, salario);
+			
+			Atribuicao atribuicao = new Atribuicao(qtdeHoras, precoHora, equipe, funcionario, Papel.toEnum(papel));
+			
+			equipe.getAtribuicoes().addAll(Arrays.asList(atribuicao));
+			
+			funcionarioID++;
+			
+			System.out.println();
+			System.out.println("[ Cadastro de Tarefa ]");
+			System.out.println();
+			
+			System.out.print("Deseja cadastrar quantos tarefas? ");
+			Integer quantidadeTarefas = leitor.nextInt();
+			leitor.nextLine();
+			
+			for (int j = 0; j < quantidadeTarefas; j++) {
+				System.out.println();
+				System.out.println("[ Cadastro de Tarefa ]");
+				System.out.println();
+				
+				System.out.print("Descrição: ");
+				String descricao = leitor.nextLine();
+				
+				try {
+					System.out.print("Data de entrega no formato(dd/mm/aaaa): ");
+					String dataEntregaString = leitor.nextLine();
+					Date dataEntrega = formatadorData.parse(dataEntregaString);
+					
+					Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
+					funcionario.getTarefas().addAll(Arrays.asList(tarefa));
+				} catch(Exception e) {
+					System.out.println("Formato Incorreto de Data");
+				}
+			}
+			
+		}
+		
 	}
 	
 	// Menu Listar Projetos - Código :+%8$R
