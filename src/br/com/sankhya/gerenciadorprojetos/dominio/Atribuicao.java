@@ -2,14 +2,14 @@ package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import br.com.sankhya.gerenciadorprojetos.enums.Papel;
 
 public class Atribuicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int qtdeHoras;
-	private BigDecimal precoHora;
+	private Integer qtdeHoras;
 	private Equipe equipe;
 	private Funcionario funcionario;
 	private Integer papel;
@@ -17,10 +17,9 @@ public class Atribuicao implements Serializable {
 	public Atribuicao() {
 	}
 
-	public Atribuicao(int qtdeHoras, BigDecimal precoHora, Equipe equipe, Funcionario funcionario, Papel papel) {
+	public Atribuicao(Integer qtdeHoras, Equipe equipe, Funcionario funcionario, Papel papel) {
 		super();
 		this.qtdeHoras = qtdeHoras;
-		this.precoHora = precoHora;
 		this.equipe = equipe;
 		this.funcionario = funcionario;
 		this.papel = papel.getCodigo();
@@ -30,16 +29,8 @@ public class Atribuicao implements Serializable {
 		return qtdeHoras;
 	}
 
-	public void setQtdeHoras(int qtdeHoras) {
+	public void setQtdeHoras(Integer qtdeHoras) {
 		this.qtdeHoras = qtdeHoras;
-	}
-
-	public BigDecimal getPrecoHora() {
-		return precoHora;
-	}
-
-	public void setPrecoHora(BigDecimal precoHora) {
-		this.precoHora = precoHora;
 	}
 
 	public Equipe getEquipe() {
@@ -99,11 +90,15 @@ public class Atribuicao implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Atribuicao [qtdeHoras=" + qtdeHoras + ", precoHora=" + precoHora + ", equipe=" + equipe
+		return "Atribuicao [qtdeHoras=" + qtdeHoras + ", equipe=" + equipe
 				+ ", funcionario=" + funcionario + "]";
 	}
 	
+	public BigDecimal caculaPrecoHora() {
+		return funcionario.getSalario().divide(new BigDecimal(176.0), 2,RoundingMode.HALF_UP);
+	}
+	
 	public BigDecimal calcularPrecoTotal() {
-		return new BigDecimal(qtdeHoras).multiply(precoHora);
+		return new BigDecimal(getQtdeHoras()).multiply(caculaPrecoHora());
 	}
 }
