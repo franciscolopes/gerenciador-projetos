@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
+import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
 
 public class AplicacaoGerenciadorProjetos {
 	public static List<Cliente> clientes = new ArrayList<>();     
@@ -41,6 +42,8 @@ public class AplicacaoGerenciadorProjetos {
 	public static Integer usuarioID = 1;
 	public static Integer enderecoID = 1;
 	public static Integer projetoID = 1;
+	public static Integer produtoID = 1;
+	public static Integer requisitoID = 1;
 	public static SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy"); 
 	
 	// Menu Principal - Código wbo$Lp
@@ -271,16 +274,46 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Cadastro do Produto e Requisitos - Código duxkX0
-	// Incompleto
 	public static void cadastroDoProdutoERequisitos() {
 		System.out.println();
 		System.out.println("[ Cadastro do Produto ]");
 		System.out.println();
-		// Algo
+		
+		System.out.print("Nome: ");
+		String nome = leitor.nextLine();
+		System.out.print("Descrição: ");
+		String descricaoProduto = leitor.nextLine();
+		
+		Produto produto = new Produto(produtoID, nome, descricaoProduto);
+		cliente.getProjetos().get(projetoID - 1).setProduto(produto);
+		
 		System.out.println();
 		System.out.println("[ Cadastro dos Requisitos ]");
 		System.out.println();
-		// Algo
+		
+		System.out.print("Você deseja cadastrar quantos requisitos? ");
+		Integer quantidade = leitor.nextInt();
+		leitor.nextLine();
+		
+		for (int i = 0; i < quantidade; i++) {
+			System.out.println();
+			System.out.println("[ Cadastro dos Requisitos ]");
+			System.out.println();
+			
+			System.out.print("Descrição: ");
+			String descricaoRequisito = leitor.nextLine();
+			
+			System.out.print("Prioridade(1 Alta)(2 Media)(3 Alta): ");
+			Integer prioridade = leitor.nextInt();
+			leitor.nextLine();
+			
+			Requisito requisito = new Requisito(requisitoID, descricaoRequisito, Prioridade.toEnum(prioridade), produto);
+			cliente.getProjetos().get(projetoID - 1).getProduto().getRequisitos().addAll(Arrays.asList(requisito));
+			requisitoID++;
+		}
+		
+		projetoID++;
+		produtoID++;
 	}
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
