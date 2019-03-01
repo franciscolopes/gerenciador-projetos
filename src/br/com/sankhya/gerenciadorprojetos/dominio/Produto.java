@@ -7,24 +7,22 @@ Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5
 
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sankhya.gerenciadorprojetos.enums.Prioridade;
 
-public class Produto implements Serializable{
-	
+public class Produto implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer produtoID;
 	private String nome;
 	private String descricao;
 
 	private List<Requisito> requisitos = new ArrayList<>();
-  
+
 	private Projeto projeto;
 
 	public Produto() {
@@ -61,7 +59,7 @@ public class Produto implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public List<Requisito> getRequisitos() {
 		return requisitos;
 	}
@@ -73,7 +71,7 @@ public class Produto implements Serializable{
 	public Projeto getProjeto() {
 		return projeto;
 	}
-	
+
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
 	}
@@ -102,33 +100,38 @@ public class Produto implements Serializable{
 			return false;
 		return true;
 	}
-	
-	public List<Requisito> exibirTodosRequisitos(){
 
-		return requisitos;
-		
-	}
-	
-	public String exibirRequisitosPorPrioridade(Prioridade prioridade){		
-		StringBuffer listaRequisitos = new StringBuffer("-------------------------Lista Prioridade--------------------------\n");
-		
-		for(Requisito requisitoProduto : requisitos) {
-				if(requisitoProduto.getPrioridade().getCodigo() == prioridade.getCodigo()) {
-					
-					listaRequisitos.append("").append(requisitoProduto.getRequisitoID()).append(" - ").append(requisitoProduto.getDescricao()).append(" - ").append("Prioridade: ").append(requisitoProduto.getPrioridade()).append("\n");
-				}
-			}
+	public String exibirTodosRequisitos() {
+		StringBuffer listaRequisitos = new StringBuffer("\n-------------------------Lista de todos os requisitos do produto ")
+				.append(getNome()).append("--------------------------\n");
+
+		for (Requisito requisitoProduto : requisitos) {
+
+			listaRequisitos.append("").append(requisitoProduto.getRequisitoID()).append(" - ")
+					.append(requisitoProduto.getDescricao()).append(" - ").append("Prioridade: ")
+					.append(requisitoProduto.getPrioridade()).append("\n");
+		}
 		return listaRequisitos.toString();
 	}
-	
+
+	public String exibirRequisitosPorPrioridade(Prioridade prioridade) {
+		StringBuffer listaRequisitos = new StringBuffer("\n-------------------------Lista de requisitos do produto ")
+				.append(getNome()).append("--------------------------\n");
+
+		for (Requisito requisitoProduto : requisitos) {
+			if (requisitoProduto.getPrioridade().getCodigo() == prioridade.getCodigo()) {
+
+				listaRequisitos.append("").append(requisitoProduto.getRequisitoID()).append(" - ")
+						.append(requisitoProduto.getDescricao()).append(" - ").append("Prioridade: ")
+						.append(requisitoProduto.getPrioridade()).append("\n");
+			}
+		}
+		return listaRequisitos.toString();
+	}
+
 	@Override
 	public String toString() {
-		return "Produto ["
-				+ "ProjetoID=" + projeto.getProjetoID() + ", "
-				+ " ProjetoNome=" + projeto.getNome() + ", "
-				+ " produtoID=" + produtoID + ", "
-				+ "nome=" + nome + ", "
-				+ "descricao=" + descricao + 
-				"]" ;
+		return "Produto [" + "ProjetoID=" + projeto.getProjetoID() + ", " + " ProjetoNome=" + projeto.getNome() + ", "
+				+ " produtoID=" + produtoID + ", " + "nome=" + nome + ", " + "descricao=" + descricao + "]";
 	}
 }

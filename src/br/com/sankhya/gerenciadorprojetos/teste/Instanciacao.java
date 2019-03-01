@@ -86,6 +86,22 @@ public class Instanciacao {
 	
 		cliente1.getProjetos().addAll(Arrays.asList(projeto1, projeto2, projeto3, projeto4, projeto5));
 		
+		//Fluxo Cadastro do Projeto - Cadastro de Produto e Requisitos
+		Produto produto1 = new Produto(31, "Market Place", "Mercado on-line, livre de filas e lentidao");
+		
+		Requisito requisito1 = new Requisito(31, "Criar uma plataforma rapida", Prioridade.ALTA, produto1);
+		Requisito requisito2 = new Requisito(32, "Comprar a lisenciasao on-line", Prioridade.MEDIA, produto1);
+		Requisito requisito3 = new Requisito(33, "Fazer relatorio do projeto", Prioridade.BAIXA, produto1);
+		
+		produto1.getRequisitos().addAll(Arrays.asList(requisito1, requisito2, requisito3));
+
+		System.out.println(produto1.exibirRequisitosPorPrioridade(Prioridade.ALTA));
+		System.out.println(produto1.exibirRequisitosPorPrioridade(Prioridade.MEDIA));
+		System.out.println(produto1.exibirRequisitosPorPrioridade(Prioridade.BAIXA));
+		
+		System.out.println(produto1.exibirTodosRequisitos());
+		
+		/*
 		//Fluxo Listar Projetos - Todos os projetos
 		System.out.println(cliente1.exibirTodosProjetos());
 		System.out.println(cliente1.exibirProjetosAtrasados());
