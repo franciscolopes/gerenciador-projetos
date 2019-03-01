@@ -626,12 +626,10 @@ public class AplicacaoGerenciadorProjetos {
 			
 			try {
 				for(Atribuicao atribuicao : equipe.getAtribuicoes()) {
-					if(atribuicao.getFuncionario().getUsuarioID() == (ID - 1)) {
-						projeto = cliente.getProjetos().get(ID - 1);
+					if(atribuicao.getFuncionario().getUsuarioID() == (ID)) {
 						funcionario = atribuicao.getFuncionario();
 					}
 				}
-				
 				funcionarioDaEquipe();
 			} catch(Exception e) {
 				System.out.println("ID inválido, insira um valor válido");
