@@ -269,6 +269,7 @@ public class AplicacaoGerenciadorProjetos {
 		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
 				String dataFimString = leitor.nextLine();
 				Date dataFim = formatadorData.parse(dataFimString);
+				System.out.println("\n\n");
 				
 				Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
 				cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
@@ -297,7 +298,7 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("[ Cadastro dos Requisitos ]");
 		System.out.println();
 		
-		System.out.print("Você deseja cadastrar quantos requisitos? ");
+		System.out.print("Você deseja cadastrar quantos requisitos?\n");
 		Integer quantidade = leitor.nextInt();
 		leitor.nextLine();
 		
@@ -312,19 +313,19 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
 			Integer prioridade = leitor.nextInt();
 			leitor.nextLine();
+			System.out.println("\n\n");
 			
 			Requisito requisito = new Requisito(requisitoID, descricaoRequisito, Prioridade.toEnum(prioridade), produto);
 			cliente.getProjetos().get(projetoID - 1).getProduto().getRequisitos().addAll(Arrays.asList(requisito));
 			requisitoID++;
 		}
-		
 		produtoID++;
 		cadastroDeEquipeETarefas();
 	}
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
 	public static void cadastroDeEquipeETarefas() {
-		System.out.println();
+		System.out.println("\n\n");
 		System.out.println("[ Cadastro de Equipe ]");
 		System.out.println();
 		
@@ -336,9 +337,9 @@ public class AplicacaoGerenciadorProjetos {
 		
 		System.out.println();
 		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
-		System.out.println();
+		System.out.println("\n\n");
 		
-		System.out.print("Deseja cadastrar quantos funcionarios? ");
+		System.out.print("Deseja cadastrar quantos funcionarios?\n");
 		Integer quantidadeFuncionarios = leitor.nextInt();
 		leitor.nextLine();
 		
@@ -370,7 +371,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Cadastro de Tarefa ]");
 			System.out.println();
 			
-			System.out.print("Deseja cadastrar quantos tarefas? ");
+			System.out.print("Deseja cadastrar quantos tarefas?\n");
 			Integer quantidadeTarefas = leitor.nextInt();
 			leitor.nextLine();
 			
@@ -398,10 +399,10 @@ public class AplicacaoGerenciadorProjetos {
 			}
 			
 			Atribuicao atribuicao = new Atribuicao(qtdeHoras, equipe, funcionario, Papel.toEnum(papel));
+
 			
 			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
 		}
-		
 		projetoID++;
 		projetos();
 	}
@@ -437,7 +438,6 @@ public class AplicacaoGerenciadorProjetos {
 			}	
 		}
 	}
-	
 	// Menu Exibicao de Projetos - Código >de1DM
 	public static void exibicaoDeProjetos(int modoExibicao) {
 		while(true) {
@@ -467,6 +467,7 @@ public class AplicacaoGerenciadorProjetos {
 				System.out.println("ID inválido, insira um valor válido");
 			}
 		}
+		
 	}
 	
 	// Menu Informações do Projeto - Código YJYF|&
@@ -697,5 +698,4 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("----- Gerenciador de Projetos ------");
 		menuPrincipal();
 	}
-
 }
