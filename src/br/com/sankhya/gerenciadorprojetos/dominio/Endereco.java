@@ -134,7 +134,7 @@ public class Endereco implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Endereco [idResidente=" + cliente.getUsuarioID() + ", nomeResidente=" + cliente.getNome() + ", enderecoID=" + enderecoID + ", logradouro=" + logradouro + ", numero=" + numero
+		return "Endereco [enderecoID=" + enderecoID + ", logradouro=" + logradouro + ", numero=" + numero
 				+ ", complemento=" + complemento + ", bairro=" + bairro + ", cep=" + cep + ", cidade=" + cidade
 				+ ", estado=" + estado + "]";
 	}
