@@ -268,8 +268,8 @@ public class AplicacaoGerenciadorProjetos {
 				String dataFimString = leitor.nextLine();
 				Date dataFim = formatadorData.parse(dataFimString);
 				
-				Projeto projeto = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
-				cliente.getProjetos().addAll(Arrays.asList(projeto));
+				Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
+				cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
 				cadastroDoProdutoERequisitos();
 			} catch(Exception e) {
 				System.out.println("Formato Incorreto de Data");
@@ -557,9 +557,9 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Produto do Projeto ]");
 			System.out.println();
 			
-			System.out.println("ID: " + projeto.getProduto().getProdutoID() +
-					"Nome: " + projeto.getProduto().getNome() + 
-					"Descrição: " + projeto.getProduto().getDescricao());	
+			/*System.out.println("ID: " + projeto.getProduto().getProdutoID()
+					+ "Nome: " + projeto.getProduto().getNome() 
+					+ "Descrição: " + projeto.getProduto().getDescricao());*/
 			
 			System.out.println();
 			System.out.println("[ Requisitos do Produto ]");
