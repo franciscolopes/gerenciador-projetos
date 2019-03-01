@@ -7,6 +7,7 @@ Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5U
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,8 +20,9 @@ public class Cliente extends Usuario implements Serializable {
 	private String telefone;
 	private Endereco endereco;
 	private List<Projeto> projetos = new ArrayList<>();
-	
-	public Cliente() { }
+
+	public Cliente() {
+	}
 
 	public Cliente(Integer usuarioID, String nome, String cpf, String email, String telefone) {
 		super(usuarioID, nome, cpf);
@@ -43,7 +45,7 @@ public class Cliente extends Usuario implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -86,57 +88,68 @@ public class Cliente extends Usuario implements Serializable {
 	}
 
 	@Override
-	public String toString() {		
-		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email=" + getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
+	public String toString() {
+		return "Cliente [usuarioID=" + getUsuarioID() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", email="
+				+ getEmail() + ", telefone=" + getTelefone() + ", endereco={" + this.endereco + "}]";
 	}
-	
+
 	public String exibirTodosProjetos() {
-		StringBuffer strProjetos = new StringBuffer();
-		
-		for(Projeto projeto : projetos) {
+		StringBuffer strProjetos = new StringBuffer("\n-------------------------Lista de todos os projetos do cliente ")
+				.append(getNome()).append("--------------------------\n");
+
+		for (Projeto projeto : projetos) {
 			strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome() + "\n");
 		}
-		
+
 		String todosProjetos = strProjetos.toString();
 		return todosProjetos;
 	}
-	
+
 	public String exibirProjetosConcluidos() {
-		StringBuffer strProjetos = new StringBuffer();
-		
-		for(Projeto projetoAtual : projetos) {
-			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(2).getCodigo()) {
+		StringBuffer strProjetos = new StringBuffer(
+				"\n-------------------------Lista de projetos concluidos do cliente ").append(getNome())
+						.append("--------------------------\n");
+
+		for (Projeto projetoAtual : projetos) {
+			if (projetoAtual.getStatusProjeto().getCodigo() == 2) {
 				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		
+
 		String projetosConcluidos = strProjetos.toString();
 		return projetosConcluidos;
 	}
-	
-	public String exibirProjetosAtrasados() {
-		StringBuffer strProjetos = new StringBuffer();
-		Date dataAtual = new Date();
+
+	public String exibirProjetosAtrasados() throws Exception {
+		StringBuffer strProjetos = new StringBuffer(
+				"\n-------------------------Lista de projetos atrasados do cliente ").append(getNome())
+						.append("--------------------------\n");
+		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 		
-		for(Projeto projetoAtual : projetos) {
-			if(dataAtual.getTime() > projetoAtual.getDataFim().getTime() && projetoAtual.getStatusProjeto().getCodigo() != EstadoProjeto.toEnum(2).getCodigo()) {
+		Date dataAtual = formatador.parse(formatador.format(new Date()));
+
+		for (Projeto projetoAtual : projetos) {
+			if (dataAtual.compareTo(projetoAtual.getDataFim()) > 0
+					&& projetoAtual.getStatusProjeto().getCodigo() == 1) {
 				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		
+
 		String projetosAtrasados = strProjetos.toString();
 		return projetosAtrasados;
 	}
-	
+
 	public String exibirProjetosEmAndamento() {
-		StringBuffer strProjetos = new StringBuffer();
-		
-		for(Projeto projetoAtual : projetos) {
-			if(projetoAtual.getStatusProjeto().getCodigo() == EstadoProjeto.toEnum(1).getCodigo()) {
+		StringBuffer strProjetos = new StringBuffer(
+				"\n-------------------------Lista de projetos em andamento do cliente ").append(getNome())
+						.append("--------------------------\n");
+
+		for (Projeto projetoAtual : projetos) {
+			if (projetoAtual.getStatusProjeto().getCodigo() == 1) {
 				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
 			}
 		}
-		
+
 		String projetosEmAndamento = strProjetos.toString();
 		return projetosEmAndamento;
 	}
