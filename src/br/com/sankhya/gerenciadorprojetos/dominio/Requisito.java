@@ -83,10 +83,8 @@ public class Requisito implements Serializable{
 
 	@Override
 	public String toString() {
-		return "\n__________________________________\n"
-				+"\nrequisitoID = " + requisitoID
-				+ "\ndescricao = " + descricao
-				+ "\nprioridade = " + Prioridade.toEnum(prioridade);
+		return "Requisito [requisitoID=" + requisitoID + ", descricao=" + descricao + ", prioridade=" + Prioridade.toEnum(prioridade)
+				+ "]";
 	}
 	
 	public void atualizaPrioridade(Prioridade prioridade) {
