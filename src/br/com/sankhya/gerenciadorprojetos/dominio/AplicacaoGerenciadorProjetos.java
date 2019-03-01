@@ -41,6 +41,8 @@ public class AplicacaoGerenciadorProjetos {
 	public static List<Cliente> clientes = new ArrayList<>();     
 	public static Cliente cliente;
 	public static Projeto projeto;
+	public static Equipe equipe;
+	public static Funcionario funcionario;
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer funcionarioID = 1;
@@ -459,6 +461,7 @@ public class AplicacaoGerenciadorProjetos {
 			
 			try {
 				projeto = cliente.getProjetos().get(ID - 1);
+				equipe = projeto.getEquipe();
 				informacoesDoProjeto();
 			} catch(Exception e) {
 				System.out.println("ID inválido, insira um valor válido");
@@ -602,14 +605,37 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Equipe do Projeto - Código T9a(xJ
-	// Incompleto
 	public static void equipeDoProjeto() {
 		while(true) {
 			System.out.println();
 			System.out.println("[ Equipe do Projeto ]");
 			System.out.println();
 			
-			// Algo
+			System.out.println("ID: " + equipe.getEquipeID());
+			System.out.println("Nome: " + equipe.getNome());
+			
+			System.out.println();
+			System.out.println("[ Lista de Funcionários ]");
+			System.out.println();
+			
+			System.out.println(equipe.exibirFuncionaraios());
+			
+			System.out.println("Selecione um funcionario por seu ID: ");
+			int ID = leitor.nextInt();
+			leitor.nextLine();
+			
+			try {
+				for(Atribuicao atribuicao : equipe.getAtribuicoes()) {
+					if(atribuicao.getFuncionario().getUsuarioID() == (ID - 1)) {
+						projeto = cliente.getProjetos().get(ID - 1);
+						funcionario = atribuicao.getFuncionario();
+					}
+				}
+				
+				funcionarioDaEquipe();
+			} catch(Exception e) {
+				System.out.println("ID inválido, insira um valor válido");
+			}
 		}	
 	}
 	
