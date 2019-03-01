@@ -640,12 +640,36 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Funcionário da Equipe - Código Llc*q[
-	// Incompleto
 	public static void funcionarioDaEquipe() {
-		System.out.println();
-		System.out.println("[ Funcionario da Equipe ]");
-		System.out.println();
-		// Algo
+		while(true) {
+			System.out.println();
+			System.out.println("[ Funcionario da Equipe ]");
+			System.out.println();
+			
+			System.out.println("Nome: " + funcionario.getNome());
+			System.out.println("CPF: " + funcionario.getCpf());
+			System.out.println("Cargo: " + funcionario.getCargo());
+			System.out.println("Salário: " + funcionario.getSalario());
+			System.out.println("Tarefas: " + funcionario.getTarefas());
+			System.out.println("Atribuicoes: " + funcionario.getAtribuicoes());
+			
+			System.out.println();
+			System.out.println("1.Voltar ao menu informações do projeto");
+			System.out.println("2.Voltar ao menu principal");
+			System.out.println();
+		
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				informacoesDoProjeto();
+			} else if(opcao == 2) {
+				menuPrincipal();
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+		}
 	}
 	
 	// Main - Código ^(P6tO
