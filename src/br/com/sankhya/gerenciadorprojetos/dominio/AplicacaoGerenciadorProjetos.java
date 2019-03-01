@@ -358,9 +358,6 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Quantidade de Horas: ");
 			int qtdeHoras = leitor.nextInt();
 			leitor.nextLine();
-			System.out.print("Preco Hora: ");
-			BigDecimal precoHora = leitor.nextBigDecimal();
-			leitor.nextLine();
 			System.out.print("Papel(1 Gerente)(2 Colaborador): ");
 			int papel = leitor.nextInt();
 			leitor.nextLine();
@@ -398,7 +395,7 @@ public class AplicacaoGerenciadorProjetos {
 				}
 			}
 			
-			Atribuicao atribuicao = new Atribuicao(qtdeHoras, precoHora, equipe, funcionario, Papel.toEnum(papel));
+			Atribuicao atribuicao = new Atribuicao(qtdeHoras, equipe, funcionario, Papel.toEnum(papel));
 			
 			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
 		}
@@ -449,7 +446,11 @@ public class AplicacaoGerenciadorProjetos {
 			} else if(modoExibicao == 4) {
 				System.out.println(cliente.exibirProjetosConcluidos());
 			} else if(modoExibicao == 5) {
-				System.out.println(cliente.exibirProjetosAtrasados());
+				try {
+					System.out.println(cliente.exibirProjetosAtrasados());
+				} catch (Exception e) {
+					System.out.println("Problema ao exibir projetos atrasados");
+				}
 			}
 			
 			System.out.println("Selecione um projeto por seu ID: ");
@@ -550,16 +551,15 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Produto e Requisitos do Projeto - Código k)Lf(A
-	// Incompleto
 	public static void produtoERequisitosDoProjeto() {
 		while(true) {
 			System.out.println();
 			System.out.println("[ Produto do Projeto ]");
 			System.out.println();
 			
-			/*System.out.println("ID: " + projeto.getProduto().getProdutoID()
-					+ "Nome: " + projeto.getProduto().getNome() 
-					+ "Descrição: " + projeto.getProduto().getDescricao());*/
+			System.out.println("ID: " + projeto.getProduto().getProdutoID());
+			System.out.println("Nome: " + projeto.getProduto().getNome());
+			System.out.println("Descrição: " + projeto.getProduto().getDescricao());
 			
 			System.out.println();
 			System.out.println("[ Requisitos do Produto ]");
@@ -635,12 +635,13 @@ public class AplicacaoGerenciadorProjetos {
 		Projeto projeto1 = new Projeto(1, "Projeto Xiomi", "O melhor celular", data, data, EstadoProjeto.EM_ANDAMENTO, cliente1);
 		Produto produto1 = new Produto(1, "produto", "produto");
 		Requisito requisito1 = new Requisito(1, "descricao", Prioridade.toEnum(1), produto1);
+		projeto1.setProduto(produto1);
 		produto1.getRequisitos().addAll(Arrays.asList(requisito1));
 		Equipe equipe1 = new Equipe(1, "alfa");
 		Funcionario funcionario1 = new Funcionario(1, "robs", "123", "123", big);
 		Tarefa tarefa1 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
 		funcionario1.getTarefas().addAll(Arrays.asList(tarefa1));
-		Atribuicao atribuicao1 = new Atribuicao(123, big, equipe1, funcionario1, Papel.toEnum(1));
+		Atribuicao atribuicao1 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(1));
 		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
 		projeto1.setEquipe(equipe1);
 		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
