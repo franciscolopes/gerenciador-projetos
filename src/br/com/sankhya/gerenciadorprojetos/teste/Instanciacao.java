@@ -35,27 +35,27 @@ public class Instanciacao {
 
 		//Fluxo Cadastro de Cliente 
 		List<Cliente> clientes = new ArrayList<>();
-		Cliente cliente1 = new Cliente(21, "Felispe Calipto", "328486528-94", "elCalipto@gmail.com", "(34) 9898-3434");
-		Cliente cliente2 = new Cliente(31, "Zeca Estarvolds", "684987881-54", "estarvolds@gmail.com", "(16) 9768-9627");
-		Cliente cliente3 = new Cliente(41, "Phillipi Kabrito", "465981567-84", "elCalipto@gmail.com", "(11) 8814-1836");
-		Cliente cliente4 = new Cliente(51, "Ripa na Xulipa", "132898471-96", "elCalipto@gmail.com", "(58) 9640-0071");
-		Cliente cliente5 = new Cliente(61, "Jose Antonio", "021545486-36", "kiboa@gmail.com", "(34) 8841-6550");
+		Cliente cliente1 = new Cliente(1, "Felispe Calipto", "328486528-94", "elCalipto@gmail.com", "(34) 9898-3434");
+		Cliente cliente2 = new Cliente(2, "Zeca Estarvolds", "684987881-54", "estarvolds@gmail.com", "(16) 9768-9627");
+		Cliente cliente3 = new Cliente(3, "Phillipi Kabrito", "465981567-84", "elCalipto@gmail.com", "(11) 8814-1836");
+		Cliente cliente4 = new Cliente(4, "Ripa na Xulipa", "132898471-96", "elCalipto@gmail.com", "(58) 9640-0071");
+		Cliente cliente5 = new Cliente(5, "Jose Antonio", "021545486-36", "kiboa@gmail.com", "(34) 8841-6550");
 		clientes.addAll(Arrays.asList(cliente1, cliente2, cliente3, cliente4, cliente5));
 		
 		//Cria e seta enderecos
-		Endereco endereco1 = new Endereco(26, "Esse aqui eu sei nao", 666, "Do lado da zona", "Lindice", "38407615",
+		Endereco endereco1 = new Endereco(11, "Esse aqui eu sei nao", 666, "Do lado da zona", "Lindice", "38407615",
 				"Ubersandia", "Minas Diversas"); 
 		cliente1.setEndereco(endereco1);
-		Endereco endereco2 = new Endereco(63, "O mano que corta cabelo", 578, "Do lado da zona", "Dona Zumira",
+		Endereco endereco2 = new Endereco(12, "O mano que corta cabelo", 578, "Do lado da zona", "Dona Zumira",
 				"38969454 ", "Belo Horisol", "Rio de Fevereiro");
 		cliente2.setEndereco(endereco2);
-		Endereco endereco3 = new Endereco(54, "Super-mercado valor", 330, "Do lado da zona", "Bairro Brasil",
+		Endereco endereco3 = new Endereco(13, "Super-mercado valor", 330, "Do lado da zona", "Bairro Brasil",
 				"38384864", "Pedrinopolio", "Mato Grosso do Leste");
 		cliente3.setEndereco(endereco3);
-		Endereco endereco4 = new Endereco(97, "O banco da esquina", 237, "Praca do nao sei", "Luizote de Freitas",
+		Endereco endereco4 = new Endereco(14, "O banco da esquina", 237, "Praca do nao sei", "Luizote de Freitas",
 				"38404658", "Uberraba", "Sao Chico");
 		cliente4.setEndereco(endereco4);
-		Endereco endereco5 = new Endereco(81, "Aonde todo mundo era bem vindo", 140, "Em frente o ponto",
+		Endereco endereco5 = new Endereco(15, "Aonde todo mundo era bem vindo", 140, "Em frente o ponto",
 				"Segismundo Pereira", "38408306", "Ubercanja", "STS");
 		cliente5.setEndereco(endereco5);
 		
@@ -72,11 +72,28 @@ public class Instanciacao {
 		System.out.println(cliente5);
 		
 		//Fluxo Detalhes de Clientes - Projetos do cliente 
-		//Fluxo Menu de Projetos - Listar projetos
+		//Fluxo Menu de Projetos - Cadastrar projetos
+		Projeto projeto1 = new Projeto(21, "Market Atzap", "Criar um chat conversa para o mercado de trabalho",
+				dataDoisDiasAtras, dataHoje, EstadoProjeto.CONCLUIDO, cliente1);
+		Projeto projeto2 = new Projeto(22, "Manager Liber", "Desenolver uma replicação de uma biblioteca",
+				dataQuatroDiasAtras, dataDoisDiasAtras, EstadoProjeto.EM_ANDAMENTO, cliente1);
+		Projeto projeto3 = new Projeto(23, "Calculate Back-ENd", "Software de uma calculadora feita com Java",
+				dataDoisDiasAtras, dataHoje, EstadoProjeto.CONCLUIDO, cliente1);
+		Projeto projeto4 = new Projeto(24, "Fortnite Lite", "Otimizar o game - Fortnite", dataDoisDiasAtras, dataHoje,
+				EstadoProjeto.EM_ANDAMENTO, cliente1);
+		Projeto projeto5 = new Projeto(25, "Grabs Hero", "Buscar picos para dar uma stritada", dataDoisDiasAtras,
+				dataHoje, EstadoProjeto.CONCLUIDO, cliente1);
+	
+		cliente1.getProjetos().addAll(Arrays.asList(projeto1, projeto2, projeto3, projeto4, projeto5));
+		
 		//Fluxo Listar Projetos - Todos os projetos
-		//System.out.println(cliente1.exibirTodosProjetos());
+		System.out.println(cliente1.exibirTodosProjetos());
+		System.out.println(cliente1.exibirProjetosAtrasados());
+		System.out.println(cliente1.exibirProjetosConcluidos());
+		System.out.println(cliente1.exibirProjetosEmAndamento());
 		
-		
+		System.out.println(projeto1);
+				
 		/*Funcionario funcionario = new Funcionario(1, "Ana", "100605106-74", "Analista", new BigDecimal("1.5"));
 		Funcionario funcionario2 = new Funcionario(2, "Clara", "100995106-74", "Analista 1", new BigDecimal("1.8"));
 		Funcionario funcionario3 = new Funcionario(3, "Francisc", "1002345506-74", "Analista de treino",
