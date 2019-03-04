@@ -41,6 +41,8 @@ public class AplicacaoGerenciadorProjetos {
 	public static List<Cliente> clientes = new ArrayList<>();     
 	public static Cliente cliente;
 	public static Projeto projeto;
+	public static Equipe equipe;
+	public static Funcionario funcionario;
 	public static Scanner leitor = new Scanner(System.in);
 	public static Integer usuarioID = 1;
 	public static Integer funcionarioID = 1;
@@ -267,9 +269,10 @@ public class AplicacaoGerenciadorProjetos {
 		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
 				String dataFimString = leitor.nextLine();
 				Date dataFim = formatadorData.parse(dataFimString);
+				System.out.println("\n\n");
 				
-				Projeto projeto = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
-				cliente.getProjetos().addAll(Arrays.asList(projeto));
+				Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
+				cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
 				cadastroDoProdutoERequisitos();
 			} catch(Exception e) {
 				System.out.println("Formato Incorreto de Data");
@@ -295,7 +298,7 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("[ Cadastro dos Requisitos ]");
 		System.out.println();
 		
-		System.out.print("Você deseja cadastrar quantos requisitos? ");
+		System.out.print("Você deseja cadastrar quantos requisitos?\n");
 		Integer quantidade = leitor.nextInt();
 		leitor.nextLine();
 		
@@ -307,22 +310,22 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Descrição: ");
 			String descricaoRequisito = leitor.nextLine();
 			
-			System.out.print("Prioridade(1 Alta)(2 Media)(3 Alta): ");
+			System.out.print("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
 			Integer prioridade = leitor.nextInt();
 			leitor.nextLine();
+			System.out.println("\n\n");
 			
 			Requisito requisito = new Requisito(requisitoID, descricaoRequisito, Prioridade.toEnum(prioridade), produto);
 			cliente.getProjetos().get(projetoID - 1).getProduto().getRequisitos().addAll(Arrays.asList(requisito));
 			requisitoID++;
 		}
-		
 		produtoID++;
 		cadastroDeEquipeETarefas();
 	}
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
 	public static void cadastroDeEquipeETarefas() {
-		System.out.println();
+		System.out.println("\n\n");
 		System.out.println("[ Cadastro de Equipe ]");
 		System.out.println();
 		
@@ -334,9 +337,9 @@ public class AplicacaoGerenciadorProjetos {
 		
 		System.out.println();
 		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
-		System.out.println();
+		System.out.println("\n\n");
 		
-		System.out.print("Deseja cadastrar quantos funcionarios? ");
+		System.out.print("Deseja cadastrar quantos funcionarios?\n");
 		Integer quantidadeFuncionarios = leitor.nextInt();
 		leitor.nextLine();
 		
@@ -358,9 +361,6 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Quantidade de Horas: ");
 			int qtdeHoras = leitor.nextInt();
 			leitor.nextLine();
-			System.out.print("Preco Hora: ");
-			BigDecimal precoHora = leitor.nextBigDecimal();
-			leitor.nextLine();
 			System.out.print("Papel(1 Gerente)(2 Colaborador): ");
 			int papel = leitor.nextInt();
 			leitor.nextLine();
@@ -371,7 +371,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Cadastro de Tarefa ]");
 			System.out.println();
 			
-			System.out.print("Deseja cadastrar quantos tarefas? ");
+			System.out.print("Deseja cadastrar quantos tarefas?\n");
 			Integer quantidadeTarefas = leitor.nextInt();
 			leitor.nextLine();
 			
@@ -398,17 +398,16 @@ public class AplicacaoGerenciadorProjetos {
 				}
 			}
 			
-			Atribuicao atribuicao = new Atribuicao(qtdeHoras, precoHora, equipe, funcionario, Papel.toEnum(papel));
+			Atribuicao atribuicao = new Atribuicao(qtdeHoras, equipe, funcionario, Papel.toEnum(papel));
+
 			
 			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
 		}
-		
 		projetoID++;
 		projetos();
 	}
 	
 	// Menu Listar Projetos - Código :+%8$R
-	// Incompleto
 	public static void listarProjetos() {
 		while(true) {
 			System.out.println();
@@ -439,22 +438,39 @@ public class AplicacaoGerenciadorProjetos {
 			}	
 		}
 	}
-	
 	// Menu Exibicao de Projetos - Código >de1DM
 	public static void exibicaoDeProjetos(int modoExibicao) {
-		if(modoExibicao == 2) {
-			System.out.println(cliente.exibirTodosProjetos());
-		} else if(modoExibicao == 3) {
-			System.out.println(cliente.exibirProjetosEmAndamento());
-		} else if(modoExibicao == 4) {
-			System.out.println(cliente.exibirProjetosConcluidos());
-		} else if(modoExibicao == 5) {
-			System.out.println(cliente.exibirProjetosAtrasados());
+		while(true) {
+			if(modoExibicao == 2) {
+				System.out.println(cliente.exibirTodosProjetos());
+			} else if(modoExibicao == 3) {
+				System.out.println(cliente.exibirProjetosEmAndamento());
+			} else if(modoExibicao == 4) {
+				System.out.println(cliente.exibirProjetosConcluidos());
+			} else if(modoExibicao == 5) {
+				try {
+					System.out.println(cliente.exibirProjetosAtrasados());
+				} catch (Exception e) {
+					System.out.println("Problema ao exibir projetos atrasados");
+				}
+			}
+			
+			System.out.println("Selecione um projeto por seu ID: ");
+			int ID = leitor.nextInt();
+			leitor.nextLine();
+			
+			try {
+				projeto = cliente.getProjetos().get(ID - 1);
+				equipe = projeto.getEquipe();
+				informacoesDoProjeto();
+			} catch(Exception e) {
+				System.out.println("ID inválido, insira um valor válido");
+			}
 		}
+		
 	}
 	
 	// Menu Informações do Projeto - Código YJYF|&
-	// Incompleto
 	public static void informacoesDoProjeto() {
 		while(true) {
 			System.out.println();
@@ -484,20 +500,48 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Tarefas do Projeto - Código D!)maL
-	// Incompleto
 	public static void tarefasDoProjeto() {
-		System.out.println();
-		System.out.println("[ Tarefas do Projeto ]");
-		System.out.println();
-		
 		while(true) {
 			System.out.println();
-			System.out.println("1.Voltar ao menu informações do projeto");
-			System.out.println("2.Voltar ao menu principal");
+			System.out.println("[ Tarefas do Projeto ]");
+			System.out.println("1.Todas as tarefas");
+			System.out.println("2.Tarefas concluidas");
+			System.out.println("3.Tarefas atrasadas");
+			System.out.println("4.Tarefas para entregar ate data");
+			System.out.println("5.Tarefas pendentes");
 			System.out.println();
 		
 			System.out.print("Escolha uma opção: ");
 			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				System.out.println(projeto.exibirTodasTarefas());
+			} else if(opcao == 2) {
+				System.out.println(projeto.exibirTarefasConcluidas());
+			} else if(opcao == 3) {
+				System.out.println(projeto.exibirTarefasAtrasadas());
+			} else if(opcao == 4) {
+				try {
+					System.out.print("Insira a data: ");
+					System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
+					String dataDesejadaString = leitor.nextLine();
+					Date dataDesejada = formatadorData.parse(dataDesejadaString);
+					projeto.exibirTarefasParaEntregarAte(dataDesejada);
+				} catch(Exception e) {
+					System.out.println("Formato Incorreto de Data");
+				}
+			} else if(opcao == 5) {
+				System.out.println(projeto.exibirTarefasPendentes());
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+			
+			System.out.println("1.Voltar ao menu informações do projeto");
+			System.out.println("2.Voltar ao menu principal");
+			
+			System.out.print("Escolha uma opção: ");
+			opcao = leitor.nextInt();
 			leitor.nextLine();
 			
 			if(opcao == 1) {
@@ -511,21 +555,103 @@ public class AplicacaoGerenciadorProjetos {
 	}
 	
 	// Menu Produto e Requisitos do Projeto - Código k)Lf(A
-	// Incompleto
 	public static void produtoERequisitosDoProjeto() {
-		System.out.println();
-		System.out.println("[ Produto do Projeto ]");
-		System.out.println();
-		
-		// Algo
-		
-		System.out.println();
-		System.out.println("[ Requisitos do Produto ]");
-		System.out.println();
-		
-		// Algo
-		
 		while(true) {
+			System.out.println();
+			System.out.println("[ Produto do Projeto ]");
+			System.out.println();
+			
+			System.out.println("ID: " + projeto.getProduto().getProdutoID());
+			System.out.println("Nome: " + projeto.getProduto().getNome());
+			System.out.println("Descrição: " + projeto.getProduto().getDescricao());
+			
+			System.out.println();
+			System.out.println("[ Requisitos do Produto ]");
+			System.out.println();
+			
+			System.out.println("1.Exibir todos os requisitos");
+			System.out.println("2.Exibir requisitos por prioridade");
+			
+			System.out.print("Escolha uma opção: ");
+			int opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				System.out.println(projeto.getProduto().exibirTodosRequisitos());
+			} else if(opcao == 2) {
+				System.out.print("Qual prioridade(1 Alta)(2 Media)(3 Baixa): ");
+				int prioridade = leitor.nextInt();
+				System.out.println(projeto.getProduto().exibirRequisitosPorPrioridade(Prioridade.toEnum(prioridade)));
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+			
+			System.out.println();
+			System.out.println("1.Voltar ao menu informações do projeto");
+			System.out.println("2.Voltar ao menu principal");
+			System.out.println();
+		
+			System.out.print("Escolha uma opção: ");
+			opcao = leitor.nextInt();
+			leitor.nextLine();
+			
+			if(opcao == 1) {
+				informacoesDoProjeto();
+			} else if(opcao == 2) {
+				menuPrincipal();
+			} else {
+				System.out.println("opção inválida, tente novamente");
+			}
+		}
+	}
+	
+	// Menu Equipe do Projeto - Código T9a(xJ
+	public static void equipeDoProjeto() {
+		while(true) {
+			System.out.println();
+			System.out.println("[ Equipe do Projeto ]");
+			System.out.println();
+			
+			System.out.println("ID: " + equipe.getEquipeID());
+			System.out.println("Nome: " + equipe.getNome());
+			
+			System.out.println();
+			System.out.println("[ Lista de Funcionários ]");
+			System.out.println();
+			
+			System.out.println(equipe.exibirFuncionaraios());
+			
+			System.out.println("Selecione um funcionario por seu ID: ");
+			int ID = leitor.nextInt();
+			leitor.nextLine();
+			
+			try {
+				for(Atribuicao atribuicao : equipe.getAtribuicoes()) {
+					if(atribuicao.getFuncionario().getUsuarioID() == (ID)) {
+						funcionario = atribuicao.getFuncionario();
+					}
+				}
+				funcionarioDaEquipe();
+			} catch(Exception e) {
+				System.out.println("ID inválido, insira um valor válido");
+			}
+		}	
+	}
+	
+	// Menu Funcionário da Equipe - Código Llc*q[
+	public static void funcionarioDaEquipe() {
+		while(true) {
+			System.out.println();
+			System.out.println("[ Funcionario da Equipe ]");
+			System.out.println();
+			
+			System.out.println("Nome: " + funcionario.getNome());
+			System.out.println("CPF: " + funcionario.getCpf());
+			System.out.println("Cargo: " + funcionario.getCargo());
+			System.out.println("Salário: " + funcionario.getSalario());
+			System.out.println("Tarefas: " + funcionario.getTarefas());
+			System.out.println("Atribuicoes: " + funcionario.getAtribuicoes());
+			
 			System.out.println();
 			System.out.println("1.Voltar ao menu informações do projeto");
 			System.out.println("2.Voltar ao menu principal");
@@ -543,27 +669,6 @@ public class AplicacaoGerenciadorProjetos {
 				System.out.println("opção inválida, tente novamente");
 			}
 		}
-	}
-	
-	// Menu Equipe do Projeto - Código T9a(xJ
-	// Incompleto
-	public static void equipeDoProjeto() {
-		while(true) {
-			System.out.println();
-			System.out.println("[ Equipe do Projeto ]");
-			System.out.println();
-			
-			// Algo
-		}	
-	}
-	
-	// Menu Funcionário da Equipe - Código Llc*q[
-	// Incompleto
-	public static void funcionarioDaEquipe() {
-		System.out.println();
-		System.out.println("[ Funcionario da Equipe ]");
-		System.out.println();
-		// Algo
 	}
 	
 	// Main - Código ^(P6tO
@@ -579,12 +684,13 @@ public class AplicacaoGerenciadorProjetos {
 		Projeto projeto1 = new Projeto(1, "Projeto Xiomi", "O melhor celular", data, data, EstadoProjeto.EM_ANDAMENTO, cliente1);
 		Produto produto1 = new Produto(1, "produto", "produto");
 		Requisito requisito1 = new Requisito(1, "descricao", Prioridade.toEnum(1), produto1);
+		projeto1.setProduto(produto1);
 		produto1.getRequisitos().addAll(Arrays.asList(requisito1));
 		Equipe equipe1 = new Equipe(1, "alfa");
 		Funcionario funcionario1 = new Funcionario(1, "robs", "123", "123", big);
 		Tarefa tarefa1 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
 		funcionario1.getTarefas().addAll(Arrays.asList(tarefa1));
-		Atribuicao atribuicao1 = new Atribuicao(123, big, equipe1, funcionario1, Papel.toEnum(1));
+		Atribuicao atribuicao1 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(1));
 		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
 		projeto1.setEquipe(equipe1);
 		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
@@ -592,5 +698,4 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("----- Gerenciador de Projetos ------");
 		menuPrincipal();
 	}
-
 }
