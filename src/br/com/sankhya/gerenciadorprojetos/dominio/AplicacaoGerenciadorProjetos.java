@@ -4,6 +4,8 @@ Data de criação do arquivo: 19/02/2019
 Objetivo sucinto da classe: Gerencia os dados e os menus da aplicação
 Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 Sumário:
+	Método Validação de Inteiros - Código uKkS7f
+	Método Validação de Big Decimal - Código usDS41
 	Main - Código ^(P6tO
 	Menu Principal - Código wbo$Lp
  	Menu Cadastrar Cliente - Código 5tg:h&
@@ -32,6 +34,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoTarefa;
 import br.com.sankhya.gerenciadorprojetos.enums.Papel;
@@ -44,7 +47,8 @@ public class AplicacaoGerenciadorProjetos {
 	public static Equipe equipe;
 	public static Funcionario funcionario;
 	public static Scanner leitor = new Scanner(System.in);
-	public static Integer usuarioID = 1;
+	public static BigDecimal bigDecimalInvalido = new BigDecimal("-1");
+	public static Integer usuarioID = 2;
 	public static Integer funcionarioID = 1;
 	public static Integer enderecoID = 1;
 	public static Integer projetoID = 1;
@@ -53,6 +57,33 @@ public class AplicacaoGerenciadorProjetos {
 	public static Integer requisitoID = 1;
 	public static Integer tarefaID = 1;
 	public static SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy"); 
+	
+	// Validação de Inteiros - Código uKkS7f
+	public static int validacaoDeInteiros(String campo) {
+		try {
+			System.out.print(campo);
+			String stringInteiro = leitor.nextLine();
+			Integer inteiro = Integer.parseInt(stringInteiro);
+			return inteiro;
+		} catch(Exception e){
+			System.out.println("O valor digitado não é válido, tente novamente");
+			return -1;
+		}
+	}
+	
+	// Validação de Big Decimal - Código usDS41
+	public static BigDecimal validacaoDeBigDecimal(String campo) {
+		try {
+			System.out.print(campo);
+			String stringBigDecimal = leitor.nextLine();
+			BigDecimal bigDecimal = new BigDecimal(stringBigDecimal);
+			return bigDecimal;
+		} catch(Exception e){
+			System.out.println("O valor digitado não é válido, tente novamente");
+			BigDecimal bigDecimal = new BigDecimal("-1");
+			return bigDecimal;
+		}
+	}
 	
 	// Menu Principal - Código wbo$Lp
 	public static void menuPrincipal() {
@@ -102,9 +133,10 @@ public class AplicacaoGerenciadorProjetos {
 			
 			System.out.print("Logradouro(Rua): ");
 			String logradouro = leitor.nextLine();
-			System.out.print("Número: ");
-			Integer numero = leitor.nextInt();
-			leitor.nextLine();
+			Integer numero = validacaoDeInteiros("Número: ");
+			while(numero == -1) {
+				numero = validacaoDeInteiros("Número: ");
+			}		
 			System.out.print("Complemento: ");
 			String complemento = leitor.nextLine();
 			System.out.print("Bairro: ");
@@ -269,7 +301,6 @@ public class AplicacaoGerenciadorProjetos {
 		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
 				String dataFimString = leitor.nextLine();
 				Date dataFim = formatadorData.parse(dataFimString);
-				System.out.println("\n\n");
 				
 				Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
 				cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
@@ -298,9 +329,11 @@ public class AplicacaoGerenciadorProjetos {
 		System.out.println("[ Cadastro dos Requisitos ]");
 		System.out.println();
 		
-		System.out.print("Você deseja cadastrar quantos requisitos?\n");
-		Integer quantidade = leitor.nextInt();
-		leitor.nextLine();
+		Integer quantidade = validacaoDeInteiros("Você deseja cadastrar quantos requisitos? ");
+		while(quantidade == -1 || quantidade <= 0) {
+			System.out.println("Quantidade inválida");
+			quantidade = validacaoDeInteiros("Você deseja cadastrar quantos requisitos? ");
+		}
 		
 		for (int i = 0; i < quantidade; i++) {
 			System.out.println();
@@ -310,10 +343,12 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Descrição: ");
 			String descricaoRequisito = leitor.nextLine();
 			
-			System.out.print("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
-			Integer prioridade = leitor.nextInt();
-			leitor.nextLine();
-			System.out.println("\n\n");
+			Integer prioridade = validacaoDeInteiros("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
+			
+			while(prioridade != 1 && prioridade != 2 && prioridade != 3) {
+				System.out.println("Prioridade inválida");
+				prioridade = validacaoDeInteiros("Prioridade(1 Alta)(2 Media)(3 Baixa): ");
+			}
 			
 			Requisito requisito = new Requisito(requisitoID, descricaoRequisito, Prioridade.toEnum(prioridade), produto);
 			cliente.getProjetos().get(projetoID - 1).getProduto().getRequisitos().addAll(Arrays.asList(requisito));
@@ -325,7 +360,7 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Menu Cadastro de Equipe e Tarefas - Código ?<&H$#
 	public static void cadastroDeEquipeETarefas() {
-		System.out.println("\n\n");
+		System.out.println();
 		System.out.println("[ Cadastro de Equipe ]");
 		System.out.println();
 		
@@ -337,11 +372,13 @@ public class AplicacaoGerenciadorProjetos {
 		
 		System.out.println();
 		System.out.println("[ Cadastro de Funcionario e Tarefa ]");
-		System.out.println("\n\n");
+		System.out.println();
 		
-		System.out.print("Deseja cadastrar quantos funcionarios?\n");
-		Integer quantidadeFuncionarios = leitor.nextInt();
-		leitor.nextLine();
+		Integer quantidadeFuncionarios = validacaoDeInteiros("Deseja cadastrar quantos funcionarios? ");
+		while(quantidadeFuncionarios == -1 || quantidadeFuncionarios <= 0) {
+			System.out.println("Quantidade inválida");
+			quantidadeFuncionarios = validacaoDeInteiros("Deseja cadastrar quantos funcionarios? ");
+		}
 		
 		for (int i = 0; i < quantidadeFuncionarios; i++) {
 			System.out.println();
@@ -354,16 +391,22 @@ public class AplicacaoGerenciadorProjetos {
 			String cpf = leitor.nextLine();
 			System.out.print("Cargo: ");
 			String cargo = leitor.nextLine();
-			System.out.print("Salário: ");
-			BigDecimal salario = leitor.nextBigDecimal();
-			leitor.nextLine();
 			
-			System.out.print("Quantidade de Horas: ");
-			int qtdeHoras = leitor.nextInt();
-			leitor.nextLine();
-			System.out.print("Papel(1 Gerente)(2 Colaborador): ");
-			int papel = leitor.nextInt();
-			leitor.nextLine();
+			BigDecimal salario = validacaoDeBigDecimal("Salário: ");
+			while(salario.equals(bigDecimalInvalido)) {
+				salario = validacaoDeBigDecimal("Salário: ");
+			}
+			
+			int qtdeHoras = validacaoDeInteiros("Quantidade de Horas: ");
+			while(qtdeHoras == -1) {
+				qtdeHoras = validacaoDeInteiros("Quantidade de Horas: ");
+			}
+			
+			int papel = validacaoDeInteiros("Papel(1 Gerente)(2 Colaborador): ");
+			while(papel != 1 && papel != 2) {
+				System.out.println("Papel inválido, tente novamente");
+				papel = validacaoDeInteiros("Papel(1 Gerente)(2 Colaborador): ");
+			}
 			
 			Funcionario funcionario = new Funcionario(usuarioID, nomeFuncionario, cpf, cargo, salario);
 			
@@ -371,9 +414,12 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Cadastro de Tarefa ]");
 			System.out.println();
 			
-			System.out.print("Deseja cadastrar quantos tarefas?\n");
-			Integer quantidadeTarefas = leitor.nextInt();
-			leitor.nextLine();
+			
+			Integer quantidadeTarefas = validacaoDeInteiros("Deseja cadastrar quantos tarefas? ");
+			while(quantidadeTarefas == -1 || quantidadeTarefas <= 0) {
+				System.out.println("Quantidade inválida");
+				quantidadeTarefas = validacaoDeInteiros("Deseja cadastrar quantos tarefas? ");
+			}
 			
 			for (int j = 0; j < quantidadeTarefas; j++) {
 				System.out.println();
@@ -383,24 +429,28 @@ public class AplicacaoGerenciadorProjetos {
 				System.out.print("Descrição: ");
 				String descricao = leitor.nextLine();
 				
-				try {
-					System.out.print("Data de entrega no formato(dd/mm/aaaa): ");
-					String dataEntregaString = leitor.nextLine();
-					Date dataEntrega = formatadorData.parse(dataEntregaString);
-					
-					Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
-					
-					funcionario.getTarefas().addAll(Arrays.asList(tarefa));
-					
-					tarefaID++;
-				} catch(Exception e) {
-					System.out.println("Formato Incorreto de Data");
+				while(true) {
+					try {
+						System.out.print("Data de entrega no formato(dd/mm/aaaa): ");
+						String dataEntregaString = leitor.nextLine();
+						Date dataEntrega = formatadorData.parse(dataEntregaString);
+						
+						Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
+						
+						funcionario.getTarefas().addAll(Arrays.asList(tarefa));
+						
+						tarefaID++;
+						
+						break;
+					} catch(Exception e) {
+						System.out.println("Formato Incorreto de Data");
+					}
 				}
 			}
 			
 			Atribuicao atribuicao = new Atribuicao(qtdeHoras, equipe, funcionario, Papel.toEnum(papel));
+			funcionario.getAtribuicoes().add(atribuicao);
 
-			
 			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
 		}
 		projetoID++;
@@ -579,8 +629,11 @@ public class AplicacaoGerenciadorProjetos {
 			if(opcao == 1) {
 				System.out.println(projeto.getProduto().exibirTodosRequisitos());
 			} else if(opcao == 2) {
-				System.out.print("Qual prioridade(1 Alta)(2 Media)(3 Baixa): ");
-				int prioridade = leitor.nextInt();
+				int prioridade = validacaoDeInteiros("Qual prioridade(1 Alta)(2 Media)(3 Baixa)? ");
+				while(prioridade != 1 && prioridade != 2 && prioridade != 3) {
+					System.out.println("Prioridade inválida, tente novamente");
+					prioridade = validacaoDeInteiros("Qual prioridade(1 Alta)(2 Media)(3 Baixa)? ");
+				}
 				System.out.println(projeto.getProduto().exibirRequisitosPorPrioridade(Prioridade.toEnum(prioridade)));
 			} else {
 				System.out.println("opção inválida, tente novamente");
@@ -650,7 +703,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("Cargo: " + funcionario.getCargo());
 			System.out.println("Salário: " + funcionario.getSalario());
 			System.out.println("Tarefas: " + funcionario.getTarefas());
-			System.out.println("Atribuicoes: " + funcionario.getAtribuicoes());
+			System.out.println("Atribuicoes: " + funcionario.getAtribuicoes().toString());
 			
 			System.out.println();
 			System.out.println("1.Voltar ao menu informações do projeto");
@@ -691,6 +744,7 @@ public class AplicacaoGerenciadorProjetos {
 		Tarefa tarefa1 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
 		funcionario1.getTarefas().addAll(Arrays.asList(tarefa1));
 		Atribuicao atribuicao1 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(1));
+		funcionario1.getAtribuicoes().add(atribuicao1);
 		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
 		projeto1.setEquipe(equipe1);
 		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
