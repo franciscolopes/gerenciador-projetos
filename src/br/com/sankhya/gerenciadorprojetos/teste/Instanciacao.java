@@ -136,30 +136,29 @@ public class Instanciacao {
 		
 		System.out.println(projeto1);
 				
-		Funcionario funcionario = new Funcionario(1, "Ana", "100605106-74", "Analista", new BigDecimal("1.5"));
-		Funcionario funcionario2 = new Funcionario(2, "Clara", "100995106-74", "Analista 1", new BigDecimal("1.8"));
-		Funcionario funcionario3 = new Funcionario(3, "Francisc", "1002345506-74", "Analista de treino",
+		Funcionario funcionario = new Funcionario(41, "Ana", "100605106-74", "Analista", new BigDecimal("1.5"));
+		Funcionario funcionario2 = new Funcionario(42, "Clara", "100995106-74", "Analista 1", new BigDecimal("1.8"));
+		Funcionario funcionario3 = new Funcionario(43, "Francisc", "1002345506-74", "Analista de treino",
 				new BigDecimal("8.8"));
-		Funcionario funcionario4 = new Funcionario(4, "Indente", "100995106-87", "Analista 4", new BigDecimal("2.8"));
-		Funcionario funcionario5 = new Funcionario(5, "Escura", "100995106-987", "Analista 5", new BigDecimal("3.8"));
+		Funcionario funcionario4 = new Funcionario(44, "Indente", "100995106-87", "Analista 4", new BigDecimal("2.8"));
+		Funcionario funcionario5 = new Funcionario(45, "Escura", "100995106-987", "Analista 5", new BigDecimal("3.8"));
 
-		Tarefa taf1 = new Tarefa(12, "Tudo gado", dataDoisDiasAtras, EstadoTarefa.ATRASADA, funcionario);
-		Tarefa taf2 = new Tarefa(22, "Tudo boi", dataDoisDiasAtras, EstadoTarefa.PENDENTE, funcionario);
-		Tarefa taf3 = new Tarefa(32, "Tudo vaca", dataDoisDiasAtras, EstadoTarefa.CONCLUIDA, funcionario2);
-		Tarefa taf4 = new Tarefa(42, "Tudo rere", dataDoisDiasAtras, EstadoTarefa.ATRASADA, funcionario2);
-		Tarefa taf5 = new Tarefa(52, "Tudo do pasto", dataDoisDiasAtras, EstadoTarefa.PENDENTE, funcionario2);
+		Tarefa taf1 = new Tarefa(51, "Tudo gado", dataDoisDiasAtras, EstadoTarefa.ATRASADA, funcionario);
+		Tarefa taf2 = new Tarefa(52, "Tudo boi", dataDoisDiasAtras, EstadoTarefa.PENDENTE, funcionario);
+		Tarefa taf3 = new Tarefa(53, "Tudo vaca", dataDoisDiasAtras, EstadoTarefa.CONCLUIDA, funcionario2);
+		Tarefa taf4 = new Tarefa(54, "Tudo rere", dataDoisDiasAtras, EstadoTarefa.ATRASADA, funcionario2);
+		Tarefa taf5 = new Tarefa(55, "Tudo do pasto", dataDoisDiasAtras, EstadoTarefa.PENDENTE, funcionario2);
 
 		funcionario.getTarefas().addAll(Arrays.asList(taf1, taf2, taf5));
 		funcionario2.getTarefas().addAll(Arrays.asList(taf3, taf4));
 
-		Equipe equipe = new Equipe(1, "Equipe aguia");
+		Equipe equipe = new Equipe(01, "Equipe aguia");
 		
-
-		Atribuicao atribuicao1 = new Atribuicao(5, equipe, funcionario, Papel.COLABORADOR);
-		Atribuicao atribuicao2 = new Atribuicao(6, equipe, funcionario2, Papel.COLABORADOR);
-		Atribuicao atribuicao3 = new Atribuicao(8, equipe, funcionario3, Papel.GERENTE);
-		Atribuicao atribuicao4 = new Atribuicao(5, equipe, funcionario4, Papel.COLABORADOR);
-		Atribuicao atribuicao5 = new Atribuicao(3, equipe, funcionario5, Papel.COLABORADOR);
+		Atribuicao atribuicao1 = new Atribuicao(61, equipe, funcionario, Papel.COLABORADOR);
+		Atribuicao atribuicao2 = new Atribuicao(62, equipe, funcionario2, Papel.COLABORADOR);
+		Atribuicao atribuicao3 = new Atribuicao(63, equipe, funcionario3, Papel.GERENTE);
+		Atribuicao atribuicao4 = new Atribuicao(64, equipe, funcionario4, Papel.COLABORADOR);
+		Atribuicao atribuicao5 = new Atribuicao(65, equipe, funcionario5, Papel.COLABORADOR);
 
 		funcionario.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
 		funcionario2.getAtribuicoes().addAll(Arrays.asList(atribuicao2));
