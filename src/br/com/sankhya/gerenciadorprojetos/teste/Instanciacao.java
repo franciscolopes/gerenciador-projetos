@@ -88,6 +88,10 @@ public class Instanciacao {
 		
 		//Fluxo Cadastro do Projeto - Cadastro de Produto e Requisitos
 		Produto produto1 = new Produto(31, "Market Place", "Mercado on-line, livre de filas e lentidao");
+		Produto produto2 = new Produto(32, "Robo", "Limpa sua casa");
+		Produto produto3 = new Produto(33, "Iphone XX", "Holograma fisico");
+		Produto produto4 = new Produto(34, "Never Gear", "Oculos de realidade virtual");
+		Produto produto5 = new Produto(35, "Xaiomi mi 1099 plus ultra", "50 PENTABYTE");
 		
 		Requisito requisito1 = new Requisito(31, "Criar uma plataforma rapida", Prioridade.ALTA, produto1);
 		Requisito requisito2 = new Requisito(32, "Comprar a lisenciasao on-line", Prioridade.MEDIA, produto1);
@@ -101,16 +105,38 @@ public class Instanciacao {
 		
 		System.out.println(produto1.exibirTodosRequisitos());
 		
-		/*
+		
+		
 		//Fluxo Listar Projetos - Todos os projetos
 		System.out.println(cliente1.exibirTodosProjetos());
 		System.out.println(cliente1.exibirProjetosAtrasados());
 		System.out.println(cliente1.exibirProjetosConcluidos());
 		System.out.println(cliente1.exibirProjetosEmAndamento());
 		
+		//Fluxo Lista dados dos produtos
+		System.out.println(produto1.getProdutoID());
+		System.out.println(produto1.getNome());
+		System.out.println(produto1.getDescricao());
+		
+		System.out.println(produto2.getProdutoID());
+		System.out.println(produto2.getNome());
+		System.out.println(produto2.getDescricao());
+		
+		System.out.println(produto3.getProdutoID());
+		System.out.println(produto3.getNome());
+		System.out.println(produto3.getDescricao());
+		
+		System.out.println(produto4.getProdutoID());
+		System.out.println(produto4.getNome());
+		System.out.println(produto4.getDescricao());
+		
+		System.out.println(produto5.getProdutoID());
+		System.out.println(produto5.getNome());
+		System.out.println(produto5.getDescricao());
+		
 		System.out.println(projeto1);
 				
-		/*Funcionario funcionario = new Funcionario(1, "Ana", "100605106-74", "Analista", new BigDecimal("1.5"));
+		Funcionario funcionario = new Funcionario(1, "Ana", "100605106-74", "Analista", new BigDecimal("1.5"));
 		Funcionario funcionario2 = new Funcionario(2, "Clara", "100995106-74", "Analista 1", new BigDecimal("1.8"));
 		Funcionario funcionario3 = new Funcionario(3, "Francisc", "1002345506-74", "Analista de treino",
 				new BigDecimal("8.8"));
@@ -127,6 +153,7 @@ public class Instanciacao {
 		funcionario2.getTarefas().addAll(Arrays.asList(taf3, taf4));
 
 		Equipe equipe = new Equipe(1, "Equipe aguia");
+		
 
 		Atribuicao atribuicao1 = new Atribuicao(5, equipe, funcionario, Papel.COLABORADOR);
 		Atribuicao atribuicao2 = new Atribuicao(6, equipe, funcionario2, Papel.COLABORADOR);
@@ -141,7 +168,16 @@ public class Instanciacao {
 		funcionario5.getAtribuicoes().addAll(Arrays.asList(atribuicao5));
 
 		equipe.getAtribuicoes().addAll(Arrays.asList(atribuicao1, atribuicao2, atribuicao3, atribuicao4, atribuicao5));
-
+		
+		projeto1.setEquipe(equipe);
+		equipe.setProjeto(projeto1);
+		
+		System.out.println(projeto1.exibirTodasTarefas());
+		
+		System.out.println(projeto1.toString());
+		System.out.println(produto1.exibiProduto());
+		
+		/*
 		Endereco endereco1 = new Endereco(26, "Esse aqui eu sei nao", 666, "Do lado da zona", "Lindice", "38407615",
 				"Ubersandia", "Minas Diversas");
 		Endereco endereco2 = new Endereco(63, "O mano que corta cabelo", 578, "Do lado da zona", "Dona Zumira",
@@ -152,9 +188,12 @@ public class Instanciacao {
 				"38404658", "Uberraba", "Sao Chico");
 		Endereco endereco5 = new Endereco(81, "Aonde todo mundo era bem vindo", 140, "Em frente o ponto",
 				"Segismundo Pereira", "38408306", "Ubercanja", "STS");
-
+		*/
+		
+		/*
 		Projeto projeto1 = new Projeto(23, "Market Atzap", "Criar um chat conversa para o mercado de trabalho",
 				dataDoisDiasAtras, dataHoje, EstadoProjeto.CONCLUIDO, cliente1);
+		
 		Projeto projeto2 = new Projeto(33, "Manager Liber", "Desenolver uma replicação de uma biblioteca",
 				dataQuatroDiasAtras, dataDoisDiasAtras, EstadoProjeto.EM_ANDAMENTO, cliente2);
 		Projeto projeto3 = new Projeto(23, "Calculate Back-ENd", "Software de uma calculadora feita com Java",
@@ -163,7 +202,9 @@ public class Instanciacao {
 				EstadoProjeto.EM_ANDAMENTO, cliente4);
 		Projeto projeto5 = new Projeto(23, "Grabs Hero", "Buscar picos para dar uma stritada", dataDoisDiasAtras,
 				dataHoje, EstadoProjeto.CONCLUIDO, cliente5);
-
+		*/
+		
+		/*
 		Produto produto1 = new Produto(24, "Este e um produto", "Nao sabemos o que ele faz");
 
 		Requisito requisito1 = new Requisito(45, "Precisamos que ele faça o que voce nao faz", Prioridade.MEDIA,
@@ -180,8 +221,8 @@ public class Instanciacao {
 		System.out.println(atribuicao5.calcularPrecoTotal());
 
 		System.out.println(equipe.exibirFuncionariosTarefasAtrasadas());
-		System.out.println(requisito1);*/
-		
+		System.out.println(requisito1);
+		*/
 		//System.out.println();
 	}
 }
