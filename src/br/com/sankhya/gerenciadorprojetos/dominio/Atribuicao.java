@@ -1,3 +1,10 @@
+/*
+Nome do autor: João Victor Oliveira Marques 
+Data de criação do arquivo: 01/03/2019
+Objetivo sucinto da classe: Fazer conexao entre as classes Projeto e Equipe
+Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
+*/
+
 package br.com.sankhya.gerenciadorprojetos.dominio;
 
 import java.io.Serializable;
@@ -90,14 +97,13 @@ public class Atribuicao implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Atribuicao [qtdeHoras=" + qtdeHoras + ", equipe=" + equipe
-				+ ", funcionario=" + funcionario + "]";
+		return "Atribuicao [qtdeHoras=" + qtdeHoras + ", equipe=" + equipe + ", funcionario=" + funcionario + "]";
 	}
-	
+
 	public BigDecimal caculaPrecoHora() {
-		return funcionario.getSalario().divide(new BigDecimal(176.0), 2,RoundingMode.HALF_UP);
+		return funcionario.getSalario().divide(new BigDecimal(176.0), 2, RoundingMode.HALF_UP);
 	}
-	
+
 	public BigDecimal calcularPrecoTotal() {
 		return new BigDecimal(getQtdeHoras()).multiply(caculaPrecoHora());
 	}
