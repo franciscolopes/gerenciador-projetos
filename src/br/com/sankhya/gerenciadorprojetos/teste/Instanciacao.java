@@ -1,3 +1,10 @@
+/*
+Nome do autor: João Victor Oliveira Marques 
+Data de criação do arquivo: 01/03/2019
+Objetivo sucinto da classe: Testar todas as classes seguindo o padrao de fluxo inicial.
+Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
+*/
+
 package br.com.sankhya.gerenciadorprojetos.teste;
 
 import java.math.BigDecimal;

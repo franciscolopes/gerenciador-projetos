@@ -1,8 +1,8 @@
 /*
-Nome do autor: Jo�o Victor Oliveira Marques 
-Data de cria��o do arquivo: 20/02/2019
-Objetivo sucinto da classe: Criar metodos basicos para disponibilizar os relacionamentos
-Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
+Nome do autor: Joao Victor Oliveira Marques 
+Data de criacao do arquivo: 20/02/2019
+Objetivo sucinto da classe: Criar metodos basicos para disponibilizar os relacionamentos.
+Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 
 package br.com.sankhya.gerenciadorprojetos.dominio;

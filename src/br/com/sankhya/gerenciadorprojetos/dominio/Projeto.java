@@ -1,8 +1,8 @@
 /*
 Nome do autor: Ezequiel de Oliveira Sant'Ana
 Data de criacaoo do arquivo: 19/02/2019
-Objetivo sucinto da classe: Cria classe Projeto que implementa metodos da interface ExibeTarefas
-Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
+Objetivo sucinto da classe: Cria classe Projeto que implementa metodos da interface ExibeTarefas.
+Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 
 package br.com.sankhya.gerenciadorprojetos.dominio;
