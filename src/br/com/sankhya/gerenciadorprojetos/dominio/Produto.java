@@ -1,7 +1,7 @@
 /*
 Nome do autor: Ilton Batista da Silva Júnior
 Data de criação do arquivo: 27/02/2019
-Objetivo sucinto da classe: Cria uma classe que manipula estado e comportamento de um produto e exibe seus requisitos
+Objetivo sucinto da classe: Cria uma classe que manipula estado e comportamento de um produto e exibe seus requisitos.
 Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 

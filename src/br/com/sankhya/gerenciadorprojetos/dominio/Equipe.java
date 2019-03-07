@@ -1,7 +1,7 @@
 /*
 Nome do autor: João Victor Oliveira Marques 
 Data de criação do arquivo: 20/02/2019
-Objetivo sucinto da classe: Criar metodos basicos para disponibilizar os relacionamentos
+Objetivo sucinto da classe: Criar metodos basicos para disponibilizar os relacionamentos.
 Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 
