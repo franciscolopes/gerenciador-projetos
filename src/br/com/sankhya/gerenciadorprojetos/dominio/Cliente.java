@@ -1,7 +1,7 @@
 /*
 Nome do autor: Elian Melo Morais
 Data de criação do arquivo: 19/02/2019
-Objetivo sucinto da classe: Simular o funcionamento de um cliente deste programa
+Objetivo sucinto da classe: Simular o funcionamento de um cliente deste programa.
 Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
@@ -94,11 +94,11 @@ public class Cliente extends Usuario implements Serializable {
 	}
 
 	public String exibirTodosProjetos() {
-		StringBuffer strProjetos = new StringBuffer("\n-------------------------Lista de todos os projetos do cliente ")
-				.append(getNome()).append("--------------------------\n");
+		StringBuffer strProjetos = new StringBuffer("  ID \t|\t NOME DO PROJETO \t|\t STATUS \t|\t");
 
 		for (Projeto projeto : projetos) {
-			strProjetos.append(projeto.getProjetoID() + " - " + projeto.getNome() + "\n");
+			strProjetos.append("\n  " + projeto.getProjetoID() + " \t|\t " + projeto.getNome().subSequence(0, 15));
+			strProjetos.append(" \t|\t " + projeto.getStatusProjeto() + " \t|\t ");
 		}
 
 		String todosProjetos = strProjetos.toString();
@@ -106,13 +106,12 @@ public class Cliente extends Usuario implements Serializable {
 	}
 
 	public String exibirProjetosConcluidos() {
-		StringBuffer strProjetos = new StringBuffer(
-				"\n-------------------------Lista de projetos concluidos do cliente ").append(getNome())
-						.append("--------------------------\n");
+		StringBuffer strProjetos = new StringBuffer("  ID \t|\t NOME DO PROJETO \t|\t STATUS \t|\t");
 
 		for (Projeto projetoAtual : projetos) {
 			if (projetoAtual.getStatusProjeto().getCodigo() == 2) {
-				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
+				strProjetos.append("\n  " + projetoAtual.getProjetoID() + " \t|\t " + projetoAtual.getNome().subSequence(0, 15));
+				strProjetos.append(" \t|\t " + projetoAtual.getStatusProjeto() + " \t|\t ");
 			}
 		}
 
@@ -121,17 +120,16 @@ public class Cliente extends Usuario implements Serializable {
 	}
 
 	public String exibirProjetosAtrasados() throws Exception {
-		StringBuffer strProjetos = new StringBuffer(
-				"\n-------------------------Lista de projetos atrasados do cliente ").append(getNome())
-						.append("--------------------------\n");
+		StringBuffer strProjetos = new StringBuffer("  ID \t|\t NOME DO PROJETO \t|\t STATUS \t|\t");
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-		
+
 		Date dataAtual = formatador.parse(formatador.format(new Date()));
 
 		for (Projeto projetoAtual : projetos) {
 			if (dataAtual.compareTo(projetoAtual.getDataFim()) > 0
 					&& projetoAtual.getStatusProjeto().getCodigo() == 1) {
-				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
+				strProjetos.append("\n  " + projetoAtual.getProjetoID() + " \t|\t " + projetoAtual.getNome().subSequence(0, 15));
+				strProjetos.append(" \t|\t " + projetoAtual.getStatusProjeto() + " \t|\t ");
 			}
 		}
 
@@ -140,13 +138,12 @@ public class Cliente extends Usuario implements Serializable {
 	}
 
 	public String exibirProjetosEmAndamento() {
-		StringBuffer strProjetos = new StringBuffer(
-				"\n-------------------------Lista de projetos em andamento do cliente ").append(getNome())
-						.append("--------------------------\n");
+		StringBuffer strProjetos = new StringBuffer("  ID \t|\t NOME DO PROJETO \t|\t STATUS \t|\t");
 
 		for (Projeto projetoAtual : projetos) {
 			if (projetoAtual.getStatusProjeto().getCodigo() == 1) {
-				strProjetos.append(projetoAtual.getProjetoID() + " - " + projetoAtual.getNome() + "\n");
+				strProjetos.append("\n  " + projetoAtual.getProjetoID() + " \t|\t " + projetoAtual.getNome().subSequence(0, 15));
+				strProjetos.append(" \t|\t " + projetoAtual.getStatusProjeto() + " \t|\t ");
 			}
 		}
 
