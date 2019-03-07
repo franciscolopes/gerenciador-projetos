@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.Set;
 
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoProjeto;
 import br.com.sankhya.gerenciadorprojetos.enums.EstadoTarefa;
@@ -293,20 +293,22 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Objetivo Inteligente: ");
 			String objetivoInteligente = leitor.nextLine();
 
-			try {
-				System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
-				String dataInicioString = leitor.nextLine();
-				Date dataInicio = formatadorData.parse(dataInicioString);
-				
-		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
-				String dataFimString = leitor.nextLine();
-				Date dataFim = formatadorData.parse(dataFimString);
-				
-				Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
-				cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
-				cadastroDoProdutoERequisitos();
-			} catch(Exception e) {
-				System.out.println("Formato Incorreto de Data");
+			while(true){
+				try {
+					System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
+					String dataInicioString = leitor.nextLine();
+					Date dataInicio = formatadorData.parse(dataInicioString);
+					
+			 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
+					String dataFimString = leitor.nextLine();
+					Date dataFim = formatadorData.parse(dataFimString);
+					
+					Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
+					cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
+					cadastroDoProdutoERequisitos();
+				} catch(Exception e) {
+					System.out.println("Formato Incorreto de Data");
+				}
 			}
 		}
 	}
@@ -408,7 +410,7 @@ public class AplicacaoGerenciadorProjetos {
 				papel = validacaoDeInteiros("Papel(1 Gerente)(2 Colaborador): ");
 			}
 			
-			Funcionario funcionario = new Funcionario(usuarioID, nomeFuncionario, cpf, cargo, salario);
+			Funcionario funcionario = new Funcionario(funcionarioID, nomeFuncionario, cpf, cargo, salario);
 			
 			System.out.println();
 			System.out.println("[ Cadastro de Tarefa ]");
@@ -429,33 +431,44 @@ public class AplicacaoGerenciadorProjetos {
 				System.out.print("Descrição: ");
 				String descricao = leitor.nextLine();
 				
+				Date dataEntrega = new Date();
+				
 				while(true) {
 					try {
 						System.out.print("Data de entrega no formato(dd/mm/aaaa): ");
 						String dataEntregaString = leitor.nextLine();
-						Date dataEntrega = formatadorData.parse(dataEntregaString);
-						
-						Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
-						
-						funcionario.getTarefas().addAll(Arrays.asList(tarefa));
-						
-						tarefaID++;
-						
+						dataEntrega = formatadorData.parse(dataEntregaString);
 						break;
 					} catch(Exception e) {
 						System.out.println("Formato Incorreto de Data");
 					}
 				}
+				
+				Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
+				funcionario.getTarefas().addAll(Arrays.asList(tarefa));
+				tarefaID++;
 			}
 			
 			Atribuicao atribuicao = new Atribuicao(qtdeHoras, equipe, funcionario, Papel.toEnum(papel));
-			funcionario.getAtribuicoes().add(atribuicao);
-
-			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
+			
+			try {
+				clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().add(atribuicao);
+			} catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			Set<Atribuicao> atribuicoes = clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes();
+			for(Atribuicao atribuicaoAtual : atribuicoes) {
+				if(atribuicaoAtual.getFuncionario().getUsuarioID() == funcionario.getUsuarioID()) {
+					atribuicaoAtual.getFuncionario().getAtribuicoes().add(atribuicaoAtual);
+				}
+			}
+			
+			funcionarioID++;
+			}
+			projetoID++;
+			projetos();
 		}
-		projetoID++;
-		projetos();
-	}
 	
 	// Menu Listar Projetos - Código :+%8$R
 	public static void listarProjetos() {
@@ -740,13 +753,25 @@ public class AplicacaoGerenciadorProjetos {
 		projeto1.setProduto(produto1);
 		produto1.getRequisitos().addAll(Arrays.asList(requisito1));
 		Equipe equipe1 = new Equipe(1, "alfa");
+		
 		Funcionario funcionario1 = new Funcionario(1, "robs", "123", "123", big);
 		Tarefa tarefa1 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
 		funcionario1.getTarefas().addAll(Arrays.asList(tarefa1));
+		
 		Atribuicao atribuicao1 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(1));
 		funcionario1.getAtribuicoes().add(atribuicao1);
 		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
+		
+		Funcionario funcionario2 = new Funcionario(1, "robs", "123", "123", big);
+		Tarefa tarefa2 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
+		funcionario2.getTarefas().addAll(Arrays.asList(tarefa2));
+		
+		Atribuicao atribuicao2 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(2));
+		funcionario2.getAtribuicoes().add(atribuicao2);
+		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao2));
+		
 		projeto1.setEquipe(equipe1);
+		
 		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
 		
 		System.out.println("----- Gerenciador de Projetos ------");
