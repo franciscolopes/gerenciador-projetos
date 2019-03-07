@@ -148,7 +148,7 @@ public class Projeto implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTodasTarefas() {
-		StringBuffer todasTarefas = new StringBuffer(" ");
+		StringBuffer todasTarefas = new StringBuffer("");
 		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
 			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTodasTarefas());
 		}
@@ -157,7 +157,7 @@ public class Projeto implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasPendentes() {
-		StringBuffer todasTarefas = new StringBuffer(" ");
+		StringBuffer todasTarefas = new StringBuffer("");
 		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
 			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasPendentes());
 		}
@@ -166,7 +166,7 @@ public class Projeto implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasConcluidas() {
-		StringBuffer todasTarefas = new StringBuffer(" ");
+		StringBuffer todasTarefas = new StringBuffer("");
 		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
 			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasConcluidas()).append("\n");
 		}
@@ -175,7 +175,7 @@ public class Projeto implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasAtrasadas() {
-		StringBuffer todasTarefas = new StringBuffer(" ");
+		StringBuffer todasTarefas = new StringBuffer("");
 		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
 			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasAtrasadas()).append("\n");
 		}
@@ -184,7 +184,7 @@ public class Projeto implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasParaEntregarAte(Date data) {
-		StringBuffer todasTarefas = new StringBuffer(" ");
+		StringBuffer todasTarefas = new StringBuffer("");
 		for (Atribuicao atribuicoesLista : equipe.getAtribuicoes()){
 			todasTarefas.append(atribuicoesLista.getFuncionario().exibirTarefasParaEntregarAte(data)).append("\n");
 		}

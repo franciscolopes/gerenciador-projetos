@@ -94,14 +94,12 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTodasTarefas() {
-		StringBuffer listaTarefas = new StringBuffer(
-				"\n-------------------------Lista de todas as tarefas do funcionario ").append(getNome()).append("--------------------------\n");
+		StringBuffer listaTarefas = new StringBuffer("  ID  \t|\t DESCRICAO \t\t|\t DATA ENTREGA \t\t\t|\t STATUS \t|");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
-			listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ")
-					.append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ")
-					.append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ")
-					.append(colecaoDeTarefas.getEstado());
+			listaTarefas.append("\n").append("  " + colecaoDeTarefas.getTarefaID()).append(" \t|\t ")
+					.append(colecaoDeTarefas.getDescricao().subSequence(0, 15)).append(" \t|\t ").append(colecaoDeTarefas.getDataEntrega())
+					.append(" \t|\t ").append(colecaoDeTarefas.getEstado()).append(" \t|\t ");
 		}
 		listaTarefas.append("\n");
 		return listaTarefas.toString();
@@ -109,15 +107,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasPendentes() {
-		StringBuffer listaTarefas = new StringBuffer(
-				"\n-------------------------Lista de todas as tarefas pendentes do funcionario ").append(getNome()).append("--------------------------\n");
+		StringBuffer listaTarefas = new StringBuffer("  ID  \t|\t DESCRICAO \t\t|\t DATA ENTREGA \t\t\t|\t STATUS \t|");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.PENDENTE.getCodigo()) {
-				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ")
-						.append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ")
-						.append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ")
-						.append(colecaoDeTarefas.getEstado());
+				listaTarefas.append("\n").append("  " + colecaoDeTarefas.getTarefaID()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDescricao().subSequence(0, 15)).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDataEntrega()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getEstado()).append(" \t|\t ");
 			}
 		}
 		listaTarefas.append("\n");
@@ -126,15 +123,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasConcluidas() {
-		StringBuffer listaTarefas = new StringBuffer(
-				"\n-------------------------Lista de todas as tarefas concluidas do funcionario ").append(getNome()).append("--------------------------\n");
+		StringBuffer listaTarefas = new StringBuffer("  ID  \t|\t DESCRICAO \t\t|\t DATA ENTREGA \t\t\t|\t STATUS \t|");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.CONCLUIDA.getCodigo()) {
-				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ")
-						.append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ")
-						.append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ")
-						.append(colecaoDeTarefas.getEstado());
+				listaTarefas.append("\n").append(" " + colecaoDeTarefas.getTarefaID()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDescricao().subSequence(0, 15)).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDataEntrega()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getEstado()).append(" \t|\t ");
 			}
 		}
 		listaTarefas.append("\n");
@@ -143,15 +139,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasAtrasadas() {
-		StringBuffer listaTarefas = new StringBuffer(
-				"\n-------------------------Lista de todas as tarefas atrasadas do funcionario ").append(getNome()).append("--------------------------\n");
+		StringBuffer listaTarefas = new StringBuffer("  ID  \t|\t DESCRICAO \t\t|\t DATA ENTREGA \t\t\t|\t STATUS \t|");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getEstado().getCodigo() == EstadoTarefa.ATRASADA.getCodigo()) {
-				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ")
-						.append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ")
-						.append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ")
-						.append(colecaoDeTarefas.getEstado());
+				listaTarefas.append("\n").append(" " + colecaoDeTarefas.getTarefaID()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDescricao().subSequence(0, 15)).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDataEntrega()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getEstado()).append(" \t|\t ");
 			}
 		}
 		listaTarefas.append("\n");
@@ -160,15 +155,14 @@ public class Funcionario extends Usuario implements ExibeTarefas, Serializable {
 
 	@Override
 	public String exibirTarefasParaEntregarAte(Date data) {
-		StringBuffer listaTarefas = new StringBuffer(
-				"\n-------------------------Lista de tarefas para entregar ate a data especificada do funcionario ").append(getNome()).append("--------------------------\n");
+		StringBuffer listaTarefas = new StringBuffer("  ID  \t|\t DESCRICAO \t\t|\t DATA ENTREGA \t\t\t|\t STATUS \t|");
 
 		for (Tarefa colecaoDeTarefas : tarefas) {
 			if (colecaoDeTarefas.getDataEntrega().compareTo(data) <= 0) {
-				listaTarefas.append("\n").append(colecaoDeTarefas.getTarefaID()).append(" - ")
-						.append(colecaoDeTarefas.getDescricao()).append(" - Data de entrega: ")
-						.append(colecaoDeTarefas.getDataEntrega()).append(" - Status: ")
-						.append(colecaoDeTarefas.getEstado());
+				listaTarefas.append("\n").append(" " + colecaoDeTarefas.getTarefaID()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDescricao().subSequence(0, 15)).append(" \t|\t ")
+						.append(colecaoDeTarefas.getDataEntrega()).append(" \t|\t ")
+						.append(colecaoDeTarefas.getEstado()).append(" \t|\t ");
 			}
 		}
 		listaTarefas.append("\n");
