@@ -1,7 +1,7 @@
 /*
 Nome do autor: Elian Melo Morais
 Data de criação do arquivo: 19/02/2019
-Objetivo sucinto da classe: Servir como superclasse para futuras implementações
+Objetivo sucinto da classe: Servir como superclasse para futuras implementações.
 Escopo do projeto: https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
 package br.com.sankhya.gerenciadorprojetos.dominio;
