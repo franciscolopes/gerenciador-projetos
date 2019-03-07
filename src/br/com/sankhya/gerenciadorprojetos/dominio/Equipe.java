@@ -1,6 +1,6 @@
 /*
-Nome do autor: João Victor Oliveira Marques 
-Data de criação do arquivo: 20/02/2019
+Nome do autor: Joï¿½o Victor Oliveira Marques 
+Data de criaï¿½ï¿½o do arquivo: 20/02/2019
 Objetivo sucinto da classe: Criar metodos basicos para disponibilizar os relacionamentos
 Escopo do projeto:  https://docs.google.com/document/d/1Hskfyyg0FAgsRGs5d1hBUyV5UH1YGbXMyQM99SFdUWk/edit?usp=sharing
 */
@@ -104,34 +104,38 @@ public class Equipe implements Serializable {
 		return retorno.toString();
 	}
 
-	public String exibirFuncionaraios() {
-		StringBuilder listaFuncionarios = new StringBuilder(
-				"-----------------------------Lista de membros da equipe-----------------------------\n");
-
+public String exibirFuncionarios() {
+		
+		StringBuilder listaFuncionarios = new StringBuilder("  ID \t|\t NOME \t\t|\t CARGO \t\t|\t PAPEL \t\t|\t\n");
+		
 		for (Atribuicao atribuicao : atribuicoes) {
-			listaFuncionarios.append(atribuicao.getFuncionario().getUsuarioID());
-			listaFuncionarios.append(" - ");
-			listaFuncionarios.append("Nome: ");
-			listaFuncionarios.append(atribuicao.getFuncionario().getNome());
-			listaFuncionarios.append(" Cargo: ");
+			listaFuncionarios.append("  " + atribuicao.getFuncionario().getUsuarioID());
+			listaFuncionarios.append(" \t|\t ");
+			listaFuncionarios.append(atribuicao.getFuncionario().getNome().subSequence(0, 8));
+			listaFuncionarios.append(" \t|\t ");
 			listaFuncionarios.append(atribuicao.getFuncionario().getCargo());
-			listaFuncionarios.append(" Papel: ");
+			listaFuncionarios.append(" \t|\t ");
 			listaFuncionarios.append(atribuicao.getPapel());
+			listaFuncionarios.append(" \t|\t ");
 			listaFuncionarios.append("\n");
 		}
 		return listaFuncionarios.toString();
 	}
 
 	public String exibirFuncionariosTarefasAtrasadas() {
-		StringBuilder funcionariosTarefasAtrasadas = new StringBuilder(
-				"-----------------------------Lista de funcionarios com tarefas atrasadas-----------------------------\n");
+		StringBuilder funcionariosTarefasAtrasadas = new StringBuilder("  ID \t|\t NOME \t\t|\t ID TAREFA ATRASADA \t|\t CARGO \t\t|\t\n");
 
 		for (Atribuicao atribuicao : atribuicoes) {
 			for (Tarefa tarefa : atribuicao.getFuncionario().getTarefas()) {
 				if (tarefa.getEstado().getCodigo() == 3) {
-					funcionariosTarefasAtrasadas.append(tarefa.getFuncionario().getUsuarioID());
-					funcionariosTarefasAtrasadas.append(" - ");
-					funcionariosTarefasAtrasadas.append(tarefa.getFuncionario().getNome());
+					funcionariosTarefasAtrasadas.append("  " + tarefa.getFuncionario().getUsuarioID());
+					funcionariosTarefasAtrasadas.append(" \t|\t ");
+					funcionariosTarefasAtrasadas.append(tarefa.getFuncionario().getNome().subSequence(0, 8));
+					funcionariosTarefasAtrasadas.append(" \t|\t ");
+					funcionariosTarefasAtrasadas.append(tarefa.getTarefaID());
+					funcionariosTarefasAtrasadas.append(" \t\t\t|\t ");
+					funcionariosTarefasAtrasadas.append(atribuicao.getPapel());
+					funcionariosTarefasAtrasadas.append(" \t|\t ");
 					funcionariosTarefasAtrasadas.append("\n");
 				}
 			}
@@ -140,14 +144,17 @@ public class Equipe implements Serializable {
 	}
 
 	public String exibirGerente() {
-		StringBuilder exibeGerente = new StringBuilder(
-				"-----------------------------Geremte do projeto-----------------------------\n");
+		StringBuilder exibeGerente = new StringBuilder("  ID \t|\t NOME \t\t \t|\t PAPEL \t\t|\t\n");
 
 		for (Atribuicao atribuicao : atribuicoes) {
 			if (atribuicao.getPapel() == Papel.GERENTE) {
-				exibeGerente.append(atribuicao.getFuncionario().getUsuarioID());
-				exibeGerente.append(" - ");
-				exibeGerente.append(atribuicao.getFuncionario().getNome());
+				exibeGerente.append("  " + atribuicao.getFuncionario().getUsuarioID());
+				exibeGerente.append(" \t|\t ");
+				exibeGerente.append(atribuicao.getFuncionario().getNome().subSequence(0, 20));
+				exibeGerente.append(" \t|\t ");
+				exibeGerente.append(atribuicao.getPapel());
+				exibeGerente.append(" \t|\t ");
+				exibeGerente.append("\n");
 			}
 		}
 		return exibeGerente.toString();
