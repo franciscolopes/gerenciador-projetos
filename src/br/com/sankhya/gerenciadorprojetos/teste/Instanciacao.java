@@ -159,7 +159,7 @@ public class Instanciacao {
 		System.out.println(produto1.exibirRequisitosPorPrioridade(Prioridade.BAIXA));
 
 		// Fluxo Informacoes do Projeto - Equipe
-		System.out.println(equipe1.exibirFuncionaraios());
+		System.out.println(equipe1.exibirFuncionarios());
 		System.out.println(equipe1.exibirFuncionariosTarefasAtrasadas());
 
 		// Fluxo Informacoes do Projeto - Tarefas
