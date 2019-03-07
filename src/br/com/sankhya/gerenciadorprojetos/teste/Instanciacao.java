@@ -35,28 +35,28 @@ public class Instanciacao {
 
 		// Fluxo Cadastro de Cliente
 		List<Cliente> clientes = new ArrayList<>();
-		Cliente cliente1 = new Cliente(1, "Felispe Calipto", "328486528-94", "elCalipto@gmail.com", "(34) 9898-3434");
-		Cliente cliente2 = new Cliente(2, "Zeca Estarvolds", "684987881-54", "estarvolds@gmail.com", "(16) 9768-9627");
-		Cliente cliente3 = new Cliente(3, "Phillipi Kabrito", "465981567-84", "elCalipto@gmail.com", "(11) 8814-1836");
-		Cliente cliente4 = new Cliente(4, "Ripa na Xulipa", "132898471-96", "elCalipto@gmail.com", "(58) 9640-0071");
-		Cliente cliente5 = new Cliente(5, "Jose Antonio", "021545486-36", "kiboa@gmail.com", "(34) 8841-6550");
+		Cliente cliente1 = new Cliente(1, "Jorge Matagal", "328486528-94", "mataGales@net.com", "(34) 9898-3434");
+		Cliente cliente2 = new Cliente(4, "Vitoria Lemes", "132898471-96", "vivi@gmail.com", "(58) 9640-0071");
+		Cliente cliente3 = new Cliente(3, "John deLonge", "465981567-84", "jonhjonh@outlook.com", "(11) 8814-1836");
+		Cliente cliente4 = new Cliente(2, "Phabio Estarvolds", "684987881-54", "estarvolds@gmail.com", "(16) 9768-9627");
+		Cliente cliente5 = new Cliente(5, "Jose Antonio", "021545486-86", "kiboa@inesq.com", "(34) 8841-6550");
 		clientes.addAll(Arrays.asList(cliente1, cliente2, cliente3, cliente4, cliente5));
 
 		// Cria e seta enderecos
-		Endereco endereco1 = new Endereco(11, "Esse aqui eu sei nao", 666, "Do lado da zona", "Lindice", "38407615",
-				"Ubersandia", "Minas Diversas");
+		Endereco endereco1 = new Endereco(11, "Rua Mato Grosso", 666, "Esquina com a Quarta", "Lidice", "38407615",
+				"Araguari", "Minas Gerais");
 		cliente1.setEndereco(endereco1);
-		Endereco endereco2 = new Endereco(12, "O mano que corta cabelo", 578, "Do lado da zona", "Dona Zumira",
-				"38969454 ", "Belo Horisol", "Rio de Fevereiro");
+		Endereco endereco2 = new Endereco(12, "Rua Angelo Bortolai", 578, "Em frente a imobiliaria", "Centro",
+				"38969454 ", "Torrinha", "Sao Paulo");
 		cliente2.setEndereco(endereco2);
-		Endereco endereco3 = new Endereco(13, "Super-mercado valor", 330, "Do lado da zona", "Bairro Brasil",
+		Endereco endereco3 = new Endereco(13, "Av. China", 330, "Logo apos farmacia Bela", "Santa Monica",
 				"38384864", "Pedrinopolio", "Mato Grosso do Leste");
 		cliente3.setEndereco(endereco3);
-		Endereco endereco4 = new Endereco(14, "O banco da esquina", 237, "Praca do nao sei", "Luizote de Freitas",
-				"38404658", "Uberraba", "Sao Chico");
+		Endereco endereco4 = new Endereco(14, "Av. Francisco Ribeiro", 237, "Lado a praca", "Morumbi",
+				"38404658", "Telemaco Borba", "Parana");
 		cliente4.setEndereco(endereco4);
-		Endereco endereco5 = new Endereco(15, "Aonde todo mundo era bem vindo", 140, "Em frente o ponto",
-				"Segismundo Pereira", "38408306", "Ubercanja", "STS");
+		Endereco endereco5 = new Endereco(15, "Rua Jamil Anbraao", 140, "Em frente o ponto",
+				"Segismundo Pereira", "38408306", "Uberlandia", "Segismundo Pereira");
 		cliente5.setEndereco(endereco5);
 
 		// Fluxo Listar Clientes
