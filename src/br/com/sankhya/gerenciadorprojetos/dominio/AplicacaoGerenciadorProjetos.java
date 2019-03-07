@@ -48,7 +48,7 @@ public class AplicacaoGerenciadorProjetos {
 	public static Funcionario funcionario;
 	public static Scanner leitor = new Scanner(System.in);
 	public static BigDecimal bigDecimalInvalido = new BigDecimal("-1");
-	public static Integer usuarioID = 2;
+	public static Integer usuarioID = 1;
 	public static Integer funcionarioID = 1;
 	public static Integer enderecoID = 1;
 	public static Integer projetoID = 1;
@@ -685,7 +685,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Lista de Funcionários ]");
 			System.out.println();
 			
-			System.out.println(equipe.exibirFuncionaraios());
+			System.out.println(equipe.exibirFuncionarios());
 			
 			System.out.println("Selecione um funcionario por seu ID: ");
 			int ID = leitor.nextInt();
@@ -739,42 +739,7 @@ public class AplicacaoGerenciadorProjetos {
 	
 	// Main - Código ^(P6tO
 	public static void main(String[] args) {
-		Endereco endereco1 = new Endereco(1, "Rua Alberto Alves Cabral", 5748, "Perto do joaozinho", "Santa Monica", "38408-226" , "Uberlândia", "Minas Gerais");
-		Cliente cliente1 = new Cliente(1, "Roobson Silva", "069.231.590-08", "roobson@gmail.com", "34 9999-9999");
-		cliente1.setEndereco(endereco1);
-		clientes.add(cliente1);
-		
-		Date data = new Date();
-		BigDecimal big = new BigDecimal(10);
-		
-		Projeto projeto1 = new Projeto(1, "Projeto Xiomi", "O melhor celular", data, data, EstadoProjeto.EM_ANDAMENTO, cliente1);
-		Produto produto1 = new Produto(1, "produto", "produto");
-		Requisito requisito1 = new Requisito(1, "descricao", Prioridade.toEnum(1), produto1);
-		projeto1.setProduto(produto1);
-		produto1.getRequisitos().addAll(Arrays.asList(requisito1));
-		Equipe equipe1 = new Equipe(1, "alfa");
-		
-		Funcionario funcionario1 = new Funcionario(1, "robs", "123", "123", big);
-		Tarefa tarefa1 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
-		funcionario1.getTarefas().addAll(Arrays.asList(tarefa1));
-		
-		Atribuicao atribuicao1 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(1));
-		funcionario1.getAtribuicoes().add(atribuicao1);
-		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao1));
-		
-		Funcionario funcionario2 = new Funcionario(1, "robs", "123", "123", big);
-		Tarefa tarefa2 = new Tarefa(1, "123", data, EstadoTarefa.toEnum(1), funcionario1);
-		funcionario2.getTarefas().addAll(Arrays.asList(tarefa2));
-		
-		Atribuicao atribuicao2 = new Atribuicao(123, equipe1, funcionario1, Papel.toEnum(2));
-		funcionario2.getAtribuicoes().add(atribuicao2);
-		equipe1.getAtribuicoes().addAll(Arrays.asList(atribuicao2));
-		
-		projeto1.setEquipe(equipe1);
-		
-		clientes.get(cliente1.getUsuarioID() - 1).getProjetos().addAll(Arrays.asList(projeto1));
-		
-		System.out.println("----- Gerenciador de Projetos ------");
+		System.out.println("[ Gerenciador de Projetos ]");
 		menuPrincipal();
 	}
 }
