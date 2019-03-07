@@ -102,28 +102,28 @@ public class Produto implements Serializable {
 	}
 
 	public String exibirTodosRequisitos() {
-		StringBuffer listaRequisitos = new StringBuffer("\n-------------------------Lista de todos os requisitos do produto ")
-				.append(getNome()).append("--------------------------\n");
+		StringBuffer listaRequisitos = new StringBuffer("  NOME \t\t|\t REQUISITO ID \t|\t DESCRICAO \t\t\t|\t PRIORIDADE \t|\t\n");
 
 		for (Requisito requisitoProduto : requisitos) {
 
-			listaRequisitos.append("").append(requisitoProduto.getRequisitoID()).append(" - ")
-					.append(requisitoProduto.getDescricao()).append(" - ").append("Prioridade: ")
-					.append(requisitoProduto.getPrioridade()).append("\n");
+			listaRequisitos.append("  ").append(getNome()).append(" \t|\t ")
+			.append(requisitoProduto.getRequisitoID()).append(" \t\t|\t ")
+			.append(requisitoProduto.getDescricao()).append(" \t|\t ")
+			.append(requisitoProduto.getPrioridade()).append(" \t\t|\t \n");
 		}
 		return listaRequisitos.toString();
 	}
 
 	public String exibirRequisitosPorPrioridade(Prioridade prioridade) {
-		StringBuffer listaRequisitos = new StringBuffer("\n-------------------------Lista de requisitos do produto ")
-				.append(getNome()).append("--------------------------\n");
+		StringBuffer listaRequisitos = new StringBuffer("  NOME \t\t|\t REQUISITO ID \t|\t DESCRICAO \t\t\t|\t PRIORIDADE \t|\t\n");
 
 		for (Requisito requisitoProduto : requisitos) {
 			if (requisitoProduto.getPrioridade().getCodigo() == prioridade.getCodigo()) {
 
-				listaRequisitos.append("").append(requisitoProduto.getRequisitoID()).append(" - ")
-						.append(requisitoProduto.getDescricao()).append(" - ").append("Prioridade: ")
-						.append(requisitoProduto.getPrioridade()).append("\n");
+				listaRequisitos.append("  ").append(getNome()).append(" \t|\t ")
+				.append(requisitoProduto.getRequisitoID()).append(" \t\t|\t ")
+				.append(requisitoProduto.getDescricao()).append(" \t|\t ")
+				.append(requisitoProduto.getPrioridade()).append(" \t\t|\t\n");
 			}
 		}
 		return listaRequisitos.toString();
