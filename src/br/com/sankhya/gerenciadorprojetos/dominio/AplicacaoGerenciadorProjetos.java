@@ -293,20 +293,22 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.print("Objetivo Inteligente: ");
 			String objetivoInteligente = leitor.nextLine();
 
-			try {
-				System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
-				String dataInicioString = leitor.nextLine();
-				Date dataInicio = formatadorData.parse(dataInicioString);
-				
-		 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
-				String dataFimString = leitor.nextLine();
-				Date dataFim = formatadorData.parse(dataFimString);
-				
-				Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
-				cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
-				cadastroDoProdutoERequisitos();
-			} catch(Exception e) {
-				System.out.println("Formato Incorreto de Data");
+			while(true){
+				try {
+					System.out.print("Data de inicio no formato(dd/mm/aaaa): ");
+					String dataInicioString = leitor.nextLine();
+					Date dataInicio = formatadorData.parse(dataInicioString);
+					
+			 		System.out.print("Data de fim no formato(dd/mm/aaaa): ");
+					String dataFimString = leitor.nextLine();
+					Date dataFim = formatadorData.parse(dataFimString);
+					
+					Projeto projetoCriado = new Projeto(projetoID, nome, objetivoInteligente, dataInicio, dataFim , EstadoProjeto.toEnum(1), cliente);
+					cliente.getProjetos().addAll(Arrays.asList(projetoCriado));
+					cadastroDoProdutoERequisitos();
+				} catch(Exception e) {
+					System.out.println("Formato Incorreto de Data");
+				}
 			}
 		}
 	}
@@ -429,33 +431,32 @@ public class AplicacaoGerenciadorProjetos {
 				System.out.print("Descrição: ");
 				String descricao = leitor.nextLine();
 				
+				Date dataEntrega = new Date();
+				
 				while(true) {
 					try {
 						System.out.print("Data de entrega no formato(dd/mm/aaaa): ");
 						String dataEntregaString = leitor.nextLine();
-						Date dataEntrega = formatadorData.parse(dataEntregaString);
-						
-						Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
-						
-						funcionario.getTarefas().addAll(Arrays.asList(tarefa));
-						
-						tarefaID++;
-						
+						dataEntrega = formatadorData.parse(dataEntregaString);
 						break;
 					} catch(Exception e) {
 						System.out.println("Formato Incorreto de Data");
 					}
 				}
+				
+				Tarefa tarefa = new Tarefa(tarefaID, descricao, dataEntrega, EstadoTarefa.toEnum(1), funcionario);
+				funcionario.getTarefas().addAll(Arrays.asList(tarefa));
+				tarefaID++;
 			}
 			
 			Atribuicao atribuicao = new Atribuicao(qtdeHoras, equipe, funcionario, Papel.toEnum(papel));
 			funcionario.getAtribuicoes().add(atribuicao);
-
 			clientes.get(cliente.getUsuarioID() - 1).getProjetos().get(projetoID - 1).getEquipe().getAtribuicoes().addAll(Arrays.asList(atribuicao));
+			funcionarioID++;
+			}
+			projetoID++;
+			projetos();
 		}
-		projetoID++;
-		projetos();
-	}
 	
 	// Menu Listar Projetos - Código :+%8$R
 	public static void listarProjetos() {
