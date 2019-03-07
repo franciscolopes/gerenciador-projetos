@@ -685,7 +685,7 @@ public class AplicacaoGerenciadorProjetos {
 			System.out.println("[ Lista de Funcionários ]");
 			System.out.println();
 			
-			System.out.println(equipe.exibirFuncionaraios());
+			System.out.println(equipe.exibirFuncionarios());
 			
 			System.out.println("Selecione um funcionario por seu ID: ");
 			int ID = leitor.nextInt();
